@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-labelledby="t d">
+<title id="t">Evolução para uma Torre de Controle</title><desc id="d">Dados dispersos são integrados, contextualizados e convertidos em decisões e aprendizado.</desc>
+<rect width="1200" height="420" fill="#111"/><g font-family="Arial,sans-serif">
+<text x="55" y="55" fill="#ff5a00" font-size="18" font-weight="700">EVOLUÇÃO DA GESTÃO</text>
+<g transform="translate(55 100)"><rect width="230" height="230" fill="#202020" stroke="#444"/><text x="25" y="45" fill="#fff" font-size="25" font-weight="700">Dados dispersos</text><text x="25" y="85" fill="#bbb" font-size="17">Planilhas</text><text x="25" y="118" fill="#bbb" font-size="17">Telefonemas</text><text x="25" y="151" fill="#bbb" font-size="17">Portais isolados</text><text x="25" y="184" fill="#bbb" font-size="17">Status tardio</text></g>
+<path d="M305 215h70" stroke="#ff5a00" stroke-width="7"/><path d="m365 195 28 20-28 20" fill="none" stroke="#ff5a00" stroke-width="7"/>
+<g transform="translate(405 100)"><rect width="330" height="230" fill="#ff5a00"/><text x="28" y="45" fill="#fff" font-size="26" font-weight="700">Torre de Controle</text><text x="28" y="88" fill="#fff" font-size="18">Integra e contextualiza</text><text x="28" y="123" fill="#fff" font-size="18">Prevê e prioriza</text><text x="28" y="158" fill="#fff" font-size="18">Coordena a resposta</text><text x="28" y="193" fill="#fff" font-size="18">Preserva o histórico</text></g>
+<path d="M755 215h70" stroke="#ff5a00" stroke-width="7"/><path d="m815 195 28 20-28 20" fill="none" stroke="#ff5a00" stroke-width="7"/>
+<g transform="translate(855 100)"><rect width="290" height="230" fill="#202020" stroke="#444"/><text x="25" y="45" fill="#fff" font-size="25" font-weight="700">Decisão orientada</text><text x="25" y="85" fill="#bbb" font-size="17">Menos surpresa</text><text x="25" y="118" fill="#bbb" font-size="17">Resposta mais rápida</text><text x="25" y="151" fill="#bbb" font-size="17">Comunicação confiável</text><text x="25" y="184" fill="#bbb" font-size="17">Melhoria contínua</text></g>
+</g></svg>
