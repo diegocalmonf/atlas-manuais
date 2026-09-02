@@ -1,5 +1,5 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Manual Digital LTL — NSTECH</title><style>
+<title>Manual Digital — Cadeia de Suprimentos e LTL | NSTECH</title><style>
 :root{--o:#f36a10;--ink:#111827;--nav:#0c1522;--paper:#fff;--bg:#eef1f4;--muted:#667085;--line:#d9dee7;--blue:#163c72;--green:#15803d;--red:#b42318}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.58}
 .topbar{height:70px;position:sticky;top:0;z-index:40;background:#080c12;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 26px;border-bottom:3px solid var(--o)}
@@ -30,12 +30,59 @@ table{width:100%;border-collapse:collapse;margin:18px 0 26px;font-size:14px}th{b
 .interactive-onepage .io-head{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;margin-bottom:14px}.interactive-onepage .io-kicker{font-size:11px;color:#ff9a5b;font-weight:900;letter-spacing:1px}.interactive-onepage h3{color:#fff;margin:4px 0 3px}.interactive-onepage p{color:#cbd5e1}.io-stage{background:#fff;color:#172033;border-radius:12px;padding:16px;min-height:210px;overflow:hidden}.io-controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.io-btn{border:0;background:#f36a10;color:#fff;font-weight:800;padding:9px 12px;border-radius:8px;cursor:pointer}.io-btn.alt{background:#26364d}.io-btn.light{background:#eef2f6;color:#172033}.io-status{font-size:12px;background:#23324a;color:#fff;border:1px solid #3b4b64;padding:7px 10px;border-radius:999px;white-space:nowrap}.io-flow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:12px 0}.io-step{padding:10px;border:1px solid #d8dee8;background:#f8fafc;border-radius:9px;font-size:12px;font-weight:700;transition:.3s}.io-step.on{border-color:#f36a10;background:#fff3ea}.io-step.done{border-color:#86efac;background:#ecfdf3}.io-arrow{color:#f36a10;font-weight:900}.io-truck{font-size:36px;display:inline-block;transition:transform .7s ease}.io-track{height:8px;background:#d7dee7;border-radius:99px;overflow:hidden;margin:16px 0}.io-track>i{display:block;height:100%;width:0;background:#f36a10;transition:width .6s ease}.io-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.io-card{border:1px solid #dfe4ea;background:#f8fafc;border-radius:9px;padding:10px;font-size:12px}.io-card b{display:block;font-size:18px;color:#172033}.io-choice{display:grid;grid-template-columns:1fr 1fr;gap:10px}.io-choice>button{border:2px solid #d7dde6;background:#fff;padding:16px;text-align:left;border-radius:10px;cursor:pointer}.io-choice>button.active{border-color:#f36a10;background:#fff4ec}.io-boxes{display:flex;gap:7px;flex-wrap:wrap}.io-box{width:46px;height:38px;border:2px solid #cbd5e1;background:#f8fafc;display:flex;align-items:center;justify-content:center;font-size:11px;border-radius:6px;cursor:pointer}.io-box.scan{background:#ecfdf3;border-color:#22c55e}.io-box.problem{background:#fff1f0;border-color:#ef4444}.io-timeline{display:flex;gap:6px;overflow:auto}.io-event{min-width:125px;border:1px solid #d7dde6;background:#f8fafc;padding:9px;border-radius:8px;font-size:11px}.io-event.done{background:#ecfdf3;border-color:#86efac}.io-event.current{background:#fff4ec;border-color:#f36a10}.io-money{font-size:28px;font-weight:900;color:#172033}.io-bill-step{padding:10px;border-left:4px solid #cbd5e1;background:#f8fafc;margin:6px 0}.io-bill-step.done{border-left-color:#22c55e;background:#ecfdf3}.io-bill-step.current{border-left-color:#f36a10;background:#fff4ec}.io-note{margin-top:10px;padding:9px 11px;background:#fff7ed;border-left:4px solid #f36a10;color:#7c2d12;font-size:12px}.io-route{position:relative;height:170px;background:linear-gradient(180deg,#f8fafc,#edf2f7);border:1px solid #d7dde6;border-radius:10px;overflow:hidden}.io-line{position:absolute;left:8%;right:8%;top:54%;height:6px;background:#cbd5e1}.io-progress{position:absolute;left:8%;top:54%;height:6px;background:#f36a10;width:0;transition:width .7s ease}.io-city{position:absolute;top:38%;transform:translateX(-50%);text-align:center;font-size:11px}.io-city i{display:block;width:24px;height:24px;border-radius:50%;background:#fff;border:3px solid #94a3b8;margin:0 auto 5px}.io-city.active i{border-color:#f36a10}.io-vehicle{position:absolute;top:44%;left:7%;font-size:34px;transition:left .7s ease}.io-scaninfo{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px}.io-scaninfo div{background:#f8fafc;border:1px solid #d7dde6;padding:9px;border-radius:8px;font-size:11px}.io-scaninfo b{font-size:18px;display:block}.io-process{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.io-process div{padding:9px;border:1px solid #d7dde6;background:#f8fafc;border-radius:8px;font-size:11px}.io-process div.skip{opacity:.22;text-decoration:line-through}.io-process div.hot{border-color:#f36a10;background:#fff4ec}@media(max-width:800px){.io-cards,.io-choice,.io-scaninfo,.io-process{grid-template-columns:1fr 1fr}.interactive-onepage .io-head{flex-direction:column}.io-process{grid-template-columns:1fr}}
 </style></head><body id="topo">
 <header class="topbar"><div class="logo"><em>ns</em>tech <span class="sub">| Manual Digital LTL</span></div><div class="sub">Da definição do LTL ao faturamento</div></header>
-<div class="shell"><aside class="toc"><div class="toc-title">Sumário do manual</div><div class="toc-mod">Fundamentos</div><a href="#oque-ltl"><b>01</b><span>O que é LTL</span></a><a href="#ftl-ltl"><b>02</b><span>FTL x LTL — Principais diferenças</span></a><a href="#cobranca"><b>03</b><span>FTL x LTL — Meios de cobrança</span></a><div class="toc-mod">Desenho e contratação</div><a href="#prazo-cidades"><b>04</b><span>Controle de prazo e cidades atendidas</span></a><a href="#inicio-ltl"><b>05</b><span>Como se inicia um processo LTL</span></a><a href="#cotacao-cubagem"><b>06</b><span>Cotação de frete, cubagem e peso tarifável</span></a><a href="#fob-dirigido"><b>07</b><span>FOB Dirigido</span></a><a href="#cte"><b>08</b><span>Tipos de CT-e no LTL</span></a><div class="toc-mod">Entrada física</div><a href="#etiquetas"><b>09</b><span>Etiquetas e etiquetas de clientes</span></a><a href="#coleta-balcao"><b>10</b><span>Coleta balcão</span></a><a href="#coleta-embarcada"><b>11</b><span>Coleta embarcada</span></a><a href="#conferencia"><b>12</b><span>Conferência de carga e descarga</span></a><div class="toc-mod">Execução da malha</div><a href="#middle-mile"><b>13</b><span>Middle Mile</span></a><a href="#carga-mista"><b>14</b><span>Carga mista — transferência + entregas em rota</span></a><a href="#agentes"><b>15</b><span>Agentes parceiros</span></a><div class="toc-mod">Controle e fechamento</div><a href="#tracking"><b>16</b><span>Tracking LTL</span></a><a href="#edi"><b>17</b><span>EDI no LTL</span></a><a href="#faturamento"><b>18</b><span>Faturamento LTL</span></a></aside><main>
+<div class="shell"><aside class="toc"><div class="toc-title">Sumário do manual</div><div class="toc-mod">Contexto da operação</div><a href="#cadeia-suprimentos"><b>01</b><span>Cadeia de Suprimentos</span></a><div class="toc-mod">Fundamentos</div><a href="#oque-ltl"><b>02</b><span>O que é LTL</span></a><a href="#ftl-ltl"><b>03</b><span>FTL x LTL — Principais diferenças</span></a><a href="#cobranca"><b>04</b><span>FTL x LTL — Meios de cobrança</span></a><div class="toc-mod">Desenho e contratação</div><a href="#prazo-cidades"><b>05</b><span>Controle de prazo e cidades atendidas</span></a><a href="#inicio-ltl"><b>06</b><span>Como se inicia um processo LTL</span></a><a href="#cotacao-cubagem"><b>07</b><span>Cotação de frete, cubagem e peso tarifável</span></a><a href="#fob-dirigido"><b>08</b><span>FOB Dirigido</span></a><a href="#cte"><b>09</b><span>Tipos de CT-e no LTL</span></a><div class="toc-mod">Entrada física</div><a href="#etiquetas"><b>10</b><span>Etiquetas e etiquetas de clientes</span></a><a href="#coleta-balcao"><b>11</b><span>Coleta balcão</span></a><a href="#coleta-embarcada"><b>12</b><span>Coleta embarcada</span></a><a href="#conferencia"><b>13</b><span>Conferência de carga e descarga</span></a><div class="toc-mod">Execução da malha</div><a href="#middle-mile"><b>14</b><span>Middle Mile</span></a><a href="#carga-mista"><b>15</b><span>Carga mista — transferência + entregas em rota</span></a><a href="#agentes"><b>16</b><span>Agentes parceiros</span></a><div class="toc-mod">Controle e fechamento</div><a href="#tracking"><b>17</b><span>Tracking LTL</span></a><a href="#edi"><b>18</b><span>EDI no LTL</span></a><a href="#faturamento"><b>19</b><span>Faturamento LTL</span></a></aside><main>
 <section class="cover"><div class="eyebrow">Manual operacional • Transporte fracionado</div><h1>LTL — Operação, malha, controle e faturamento</h1>
-<p>Manual digital consolidando os processos discutidos: conceito LTL, diferenças para FTL, cobrança, cobertura e prazo, nascimento da remessa, cubagem, FOB Dirigido, CT-e, etiquetas, coletas, conferência, Middle Mile, carga mista, agentes, tracking, EDI e faturamento.</p>
-<p style="margin-top:22px;font-size:13px;color:#667085"><strong>One pages:</strong> os capítulos prioritários agora possuem uma versão interativa; o one page estático permanece disponível como resumo e pode ser ampliado em tela cheia.</p><div class="journey"><span>Fundamentos</span><i>→</i><span>Desenho e contratação</span><i>→</i><span>Entrada física</span><i>→</i><span>Execução da malha</span><i>→</i><span>Controle e fechamento</span></div></section>
+<p>Manual digital que parte da <strong>Cadeia de Suprimentos</strong> e aprofunda o papel da distribuição física, dos modais de transporte e da operação LTL: diferenças para FTL, cobrança, cobertura e prazo, nascimento da remessa, cubagem, FOB Dirigido, CT-e, etiquetas, coletas, conferência, Middle Mile, carga mista, agentes, tracking, EDI e faturamento.</p>
+<p style="margin-top:22px;font-size:13px;color:#667085"><strong>One pages:</strong> os capítulos prioritários agora possuem uma versão interativa; o one page estático permanece disponível como resumo e pode ser ampliado em tela cheia.</p><div class="journey"><span>Cadeia de Suprimentos</span><i>→</i><span>Fundamentos</span><i>→</i><span>Desenho e contratação</span><i>→</i><span>Entrada física</span><i>→</i><span>Execução da malha</span><i>→</i><span>Controle e fechamento</span></div></section>
+
+<article id="cadeia-suprimentos" class="chapter">
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 01</span><h2>Cadeia de Suprimentos</h2><p>Contexto da operação</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">A <strong>Cadeia de Suprimentos</strong> — ou <em>Supply Chain</em> — é o conjunto integrado de organizações, pessoas, processos, informações, tecnologias e recursos envolvidos desde o fornecimento de matérias-primas até a entrega de valor ao cliente final. Transporte é uma parte dessa cadeia: ele conecta fisicamente os elos e permite que materiais e produtos avancem entre fornecedores, fábricas, centros de distribuição, terminais, clientes e consumidores.</p>
+<div class="callout key"><b>Objetivo da cadeia</b><p>Disponibilizar o produto certo, no lugar certo, na quantidade certa, no momento adequado, com qualidade e segurança, equilibrando nível de serviço, estoque, capacidade e custo total.</p></div>
+
+<h3>Onde o transporte se encaixa?</h3>
+<div class="flow"><span>Cadeia de Suprimentos</span><i>→</i><span>Distribuição</span><i>→</i><span>Distribuição Física</span><i>→</i><span>Transporte</span><i>→</i><span>Operação TMS</span></div>
+<p><strong>Suprimentos</strong> garante materiais e insumos; <strong>Produção</strong> transforma esses recursos em produtos; <strong>Distribuição</strong> aproxima o produto do mercado. Dentro da distribuição, a <strong>distribuição física</strong> organiza estoques, armazenagem, movimentação e entrega. O <strong>transporte</strong> executa a movimentação entre esses pontos e o TMS dá suporte ao planejamento, execução, controle e fechamento financeiro da operação.</p>
+
+<h3>Modais de transporte</h3>
+<table><thead><tr><th>Modal</th><th>Aplicação típica</th><th>Característica</th></tr></thead><tbody>
+<tr><td><strong>Rodoviário</strong></td><td>Distribuição urbana, regional e nacional</td><td>Alta capilaridade e flexibilidade de rota.</td></tr>
+<tr><td><strong>Ferroviário</strong></td><td>Grandes volumes e longas distâncias</td><td>Boa capacidade, menor flexibilidade porta a porta.</td></tr>
+<tr><td><strong>Aquaviário</strong></td><td>Cabotagem, navegação interior e comércio exterior</td><td>Alta capacidade e menor custo unitário em muitos cenários.</td></tr>
+<tr><td><strong>Aéreo</strong></td><td>Cargas urgentes, valiosas ou sensíveis a prazo</td><td>Alta velocidade e maior custo.</td></tr>
+<tr><td><strong>Dutoviário</strong></td><td>Líquidos, gases e produtos específicos</td><td>Fluxo contínuo e infraestrutura dedicada.</td></tr>
+<tr><td><strong>Multimodal</strong></td><td>Operações que combinam dois ou mais modais</td><td>Busca otimizar custo, capacidade, prazo e alcance.</td></tr>
+</tbody></table>
+
+<div class="two-col"><div>
+<h3>Modelo de carga no rodoviário</h3>
+<p>Dentro do transporte rodoviário, uma forma útil de compreender a operação é pelo nível de utilização e compartilhamento da capacidade do veículo:</p>
+<ul><li><strong>FTL — Full Truckload:</strong> carga lotação, com veículo ou capacidade dedicada a uma operação.</li><li><strong>PTL — Partial Truckload:</strong> carga parcial, com compartilhamento controlado de capacidade; pode assumir características intermediárias entre FTL e LTL.</li><li><strong>LTL — Less Than Truckload:</strong> carga fracionada, normalmente consolidada com outras remessas e movimentada por uma malha de terminais e transferências.</li></ul>
+</div><div>
+<h3>Etapas da jornada de transporte</h3>
+<ul><li><strong>First Mile:</strong> primeira milha, normalmente da origem/remetente até o primeiro ponto da rede.</li><li><strong>Middle Mile:</strong> transferência entre terminais, hubs ou regiões.</li><li><strong>Last Mile:</strong> distribuição final até o destinatário ou ponto de entrega.</li></ul>
+<div class="callout note"><b>Não são a mesma classificação</b><p>FTL, PTL e LTL descrevem o <strong>modelo de carga/operação</strong>. First, Middle e Last Mile descrevem a <strong>etapa da jornada</strong>. Uma operação LTL pode possuir as três etapas.</p></div>
+</div></div>
+
+<h3>Da cadeia de suprimentos à operação no TMS</h3>
+<div class="flow"><span>Planejamento</span><i>→</i><span>Coleta</span><i>→</i><span>Transferência / Viagem</span><i>→</i><span>Terminal / Hub</span><i>→</i><span>Entrega</span><i>→</i><span>Tracking / POD</span><i>→</i><span>Frete / Faturamento</span></div>
+<p>O TMS não gerencia toda a Supply Chain; seu foco é a gestão do transporte e dos processos diretamente relacionados a ele. Ainda assim, precisa trocar informações com os demais elos — ERP, WMS, embarcadores, destinatários, transportadores, agentes e sistemas financeiros — para que a operação seja executada com rastreabilidade.</p>
+
+<h3>Exemplo prático</h3>
+<p>Uma indústria compra componentes de fornecedores (<strong>Suprimentos</strong>), transforma-os em produto acabado (<strong>Produção</strong>) e precisa abastecer clientes em diversas cidades (<strong>Distribuição</strong>). O transporte coleta as remessas, consolida as cargas no terminal, transfere-as pela malha e realiza a entrega. No caso LTL, uma única remessa pode passar por <strong>First Mile → Middle Mile → Last Mile</strong>, com cada evento registrado no TMS até POD e faturamento.</p>
+
+<div class="interactive-onepage"><div class="io-head"><div><div class="io-kicker">ONE PAGE INTERATIVO</div><h3>Explore da Supply Chain até a operação TMS</h3><p>Avance pelas camadas e veja onde distribuição, transporte, LTL e as etapas da jornada se conectam.</p></div><span id="scStatus" class="io-status">Cadeia de Suprimentos</span></div><div class="io-stage">
+<div class="sc-tree"><div class="sc-root">CADEIA DE SUPRIMENTOS</div>
+<div class="sc-row"><div id="scSup" class="sc-node"><b>🏭 SUPRIMENTOS</b><small>fornecedores e insumos</small></div><div id="scProd" class="sc-node"><b>⚙️ PRODUÇÃO</b><small>transformação e valor agregado</small></div><div id="scDist" class="sc-node"><b>📦 DISTRIBUIÇÃO</b><small>produto disponível ao mercado</small></div></div>
+<div id="scModes" class="sc-transport"><div class="sc-mode">🚚 Rodoviário</div><div class="sc-mode">🚆 Ferroviário</div><div class="sc-mode">🚢 Aquaviário</div><div class="sc-mode">✈️ Aéreo</div><div class="sc-mode">◉ Dutoviário</div><div class="sc-mode">🔁 Multimodal</div></div>
+<div class="sc-bottom"><div class="sc-panel"><h4>MODELO DE CARGA</h4><div class="sc-chiprow"><span id="scFtl" class="sc-chip">FTL</span><span id="scPtl" class="sc-chip">PTL</span><span id="scLtl" class="sc-chip">LTL</span></div></div><div class="sc-panel"><h4>ETAPA DA JORNADA</h4><div class="sc-chiprow"><span id="scFirst" class="sc-chip">First Mile</span><span id="scMiddle" class="sc-chip">Middle Mile</span><span id="scLast" class="sc-chip">Last Mile</span></div></div></div>
+<div class="sc-panel"><h4>OPERAÇÃO TMS</h4><div class="sc-tms"><span>Planejamento</span><i>→</i><span>Coleta</span><i>→</i><span>Transferência</span><i>→</i><span>Terminal/Hub</span><i>→</i><span>Entrega</span><i>→</i><span>Tracking/POD</span><i>→</i><span>Faturamento</span></div></div></div>
+<div id="scExplain" class="io-note">A cadeia começa antes do transporte. O TMS atua principalmente na distribuição física e no transporte.</div></div><div class="io-controls"><button class="io-btn" onclick="scNext()">Próxima camada</button><button class="io-btn light" onclick="scReset()">Reiniciar</button></div></div>
+
+<details class="onepage-wrap"><summary>Ver one page — clique para expandir</summary><div class="onepage-view"><img src="assets/onepages/01_cadeia-suprimentos.png" alt="One page Cadeia de Suprimentos" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
+</article>
 <article id="oque-ltl" class="chapter">
-<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 01</span><h2>O que é LTL</h2><p>Fundamentos</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 02</span><h2>O que é LTL</h2><p>Fundamentos</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
 
 <p class="lead">LTL — <em>Less Than Truckload</em> — é o transporte fracionado em que várias remessas de diferentes clientes compartilham capacidade de veículos e utilizam uma rede de terminais, hubs, transferências e rotas de distribuição. A unidade de gestão deixa de ser apenas a viagem e passa a ser, principalmente, a <strong>remessa</strong> e seus <strong>volumes</strong>.</p>
 <div class="two-col"><div>
@@ -57,9 +104,9 @@ table{width:100%;border-collapse:collapse;margin:18px 0 26px;font-size:14px}th{b
 
 <div class="interactive-onepage"><div class="io-head"><div><div class="io-kicker">ONE PAGE INTERATIVO</div><h3>Monte a jornada LTL</h3><p>Clique em “Próxima etapa” e observe como a Remessa 84572 deixa de depender de um único veículo e passa por uma rede.</p></div><span id="ltlStatus" class="io-status">Remessa criada</span></div><div class="io-stage"><div id="ltlFlow" class="io-flow"></div><div class="io-track"><i id="ltlBar"></i></div><div class="io-cards"><div class="io-card"><b id="ltlCust">Remetente</b>Custódia atual</div><div class="io-card"><b id="ltlVeh">0</b>trocas de veículo/ponto</div><div class="io-card"><b id="ltlEvt">1</b>eventos registrados</div></div><div class="io-note">A remessa permanece a mesma, mesmo quando muda de veículo, terminal ou responsável pela execução.</div></div><div class="io-controls"><button class="io-btn" onclick="ltlNext()">Próxima etapa</button><button class="io-btn light" onclick="ltlReset()">Reiniciar</button></div></div>
 <details class="onepage-wrap"><summary>Ver one page — clique para expandir</summary>
-<div class="onepage-view"><img src="assets/onepages/01_oque-ltl.png" alt="One page O que é LTL" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
+<div class="onepage-view"><img src="assets/onepages/02_oque-ltl.png" alt="One page O que é LTL" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
 </article><article id="ftl-ltl" class="chapter">
-<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 02</span><h2>FTL x LTL — Principais diferenças</h2><p>Fundamentos</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 03</span><h2>FTL x LTL — Principais diferenças</h2><p>Fundamentos</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
 
 <p class="lead">FTL e LTL utilizam caminhões, mas possuem lógicas operacionais diferentes. No FTL, a viagem e a capacidade dedicada tendem a ser o eixo do processo; no LTL, a remessa percorre uma malha compartilhada.</p>
 <table><thead><tr><th>Aspecto</th><th>FTL</th><th>LTL</th></tr></thead><tbody>
@@ -79,9 +126,9 @@ table{width:100%;border-collapse:collapse;margin:18px 0 26px;font-size:14px}th{b
 
 <div class="interactive-onepage"><div class="io-head"><div><div class="io-kicker">ONE PAGE INTERATIVO</div><h3>Alterne a lógica FTL ↔ LTL</h3><p>Compare como a mesma capacidade é organizada e controlada em cada modelo.</p></div><span id="cmpStatus" class="io-status">Selecione um modelo</span></div><div class="io-stage"><div class="io-choice"><button id="ftlBtn" onclick="showModel('FTL')"><b>FTL</b><br>1 cliente • veículo dedicado • fluxo direto</button><button id="ltlBtn" onclick="showModel('LTL')"><b>LTL</b><br>múltiplas remessas • capacidade compartilhada • malha</button></div><div id="cmpFlow" class="io-flow" style="margin-top:18px"></div><div id="cmpNote" class="io-note">Escolha FTL ou LTL para visualizar a diferença operacional.</div></div></div>
 <details class="onepage-wrap"><summary>Ver one page — clique para expandir</summary>
-<div class="onepage-view"><img src="assets/onepages/02_ftl-ltl.png" alt="One page FTL x LTL — Principais diferenças" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
+<div class="onepage-view"><img src="assets/onepages/03_ftl-ltl.png" alt="One page FTL x LTL — Principais diferenças" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
 </article><article id="cobranca" class="chapter">
-<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 03</span><h2>FTL x LTL — Meios de cobrança</h2><p>Fundamentos</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 04</span><h2>FTL x LTL — Meios de cobrança</h2><p>Fundamentos</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
 
 <p class="lead">A cobrança LTL distribui o custo da rede entre remessas de perfis diferentes. A transportadora precisa remunerar não apenas distância e peso, mas também o espaço consumido, o risco, o valor da mercadoria e serviços adicionais.</p>
 <h3>FTL</h3><p>É comum negociar por viagem, veículo, faixa de quilometragem, origem/destino ou diária. Exemplo: carreta POA → SP por R$ 9.500.</p>
@@ -91,9 +138,9 @@ table{width:100%;border-collapse:collapse;margin:18px 0 26px;font-size:14px}th{b
 <div class="callout note"><b>Boa prática</b><p>O TMS deve preservar a memória de cálculo da cotação e da cobrança final, permitindo auditar por que determinado valor foi cobrado.</p></div>
 
 <details class="onepage-wrap"><summary>Ver one page — clique para expandir</summary>
-<div class="onepage-view"><img src="assets/onepages/03_cobranca.png" alt="One page FTL x LTL — Meios de cobrança" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
+<div class="onepage-view"><img src="assets/onepages/04_cobranca.png" alt="One page FTL x LTL — Meios de cobrança" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
 </article><article id="prazo-cidades" class="chapter">
-<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 04</span><h2>Controle de prazo e cidades atendidas</h2><p>Desenho e contratação</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 05</span><h2>Controle de prazo e cidades atendidas</h2><p>Desenho e contratação</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
 
 <p class="lead">No LTL, prazo e cobertura são inseparáveis. “Cidade atendida” não deveria ser apenas um indicador SIM/NÃO; deve representar <strong>como</strong> a transportadora atende aquela localidade.</p>
 <h3>Cadastro de cobertura</h3>
@@ -112,9 +159,9 @@ table{width:100%;border-collapse:collapse;margin:18px 0 26px;font-size:14px}th{b
 <div class="callout warn"><b>Regra essencial</b><p>Nunca altere o SLA original para esconder um atraso. Mantenha a promessa contratual e recalcule separadamente o ETA operacional.</p></div>
 
 <details class="onepage-wrap"><summary>Ver one page — clique para expandir</summary>
-<div class="onepage-view"><img src="assets/onepages/04_prazo-cidades.png" alt="One page Controle de prazo e cidades atendidas" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
+<div class="onepage-view"><img src="assets/onepages/05_prazo-cidades.png" alt="One page Controle de prazo e cidades atendidas" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
 </article><article id="inicio-ltl" class="chapter">
-<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 05</span><h2>Como se inicia um processo LTL</h2><p>Desenho e contratação</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 06</span><h2>Como se inicia um processo LTL</h2><p>Desenho e contratação</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
 
 <p class="lead">A operação LTL começa antes do caminhão. A primeira entidade operacional deveria ser a <strong>remessa</strong>, criada a partir de informações comerciais e fiscais recebidas por portal, ERP, EDI, API, arquivo ou digitação.</p>
 <h3>Três marcos diferentes</h3>
@@ -124,9 +171,9 @@ table{width:100%;border-collapse:collapse;margin:18px 0 26px;font-size:14px}th{b
 <div class="callout note"><b>Exemplo</b><p>Remessa 84572: 8 volumes, 300 kg, 1,6 m³, Canoas/RS → Campinas/SP. Ela pode ser criada às 08:00 e coletada apenas às 14:00.</p></div>
 
 <details class="onepage-wrap"><summary>Ver one page — clique para expandir</summary>
-<div class="onepage-view"><img src="assets/onepages/05_inicio-ltl.png" alt="One page Como se inicia um processo LTL" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
+<div class="onepage-view"><img src="assets/onepages/06_inicio-ltl.png" alt="One page Como se inicia um processo LTL" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
 </article><article id="cotacao-cubagem" class="chapter">
-<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 06</span><h2>Cotação de frete, cubagem e peso tarifável</h2><p>Desenho e contratação</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 07</span><h2>Cotação de frete, cubagem e peso tarifável</h2><p>Desenho e contratação</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
 
 <p class="lead">A cotação converte características da remessa em uma promessa comercial de preço e prazo. Cubagem é crítica porque capacidade logística é consumida simultaneamente por peso e por espaço.</p>
 <div class="two-col"><div>
@@ -143,9 +190,9 @@ table{width:100%;border-collapse:collapse;margin:18px 0 26px;font-size:14px}th{b
 
 <div class="interactive-onepage"><div class="io-head"><div><div class="io-kicker">ONE PAGE INTERATIVO</div><h3>Simulador visual de cubagem</h3><p>Altere dimensões, peso real e fator para formar o peso tarifável.</p></div><span class="io-status">Cálculo comercial</span></div><div class="io-stage"><div class="grid-inputs"><label>Comp. (m)<input id="ic" type="number" value="1" step=".1"></label><label>Larg. (m)<input id="il" type="number" value=".8" step=".1"></label><label>Altura (m)<input id="ia" type="number" value="2" step=".1"></label><label>Peso real<input id="ip" type="number" value="300"></label><label>Fator<input id="if" type="number" value="300"></label></div><div class="io-controls"><button class="io-btn" onclick="interactiveCube()">Calcular</button></div><div class="io-cards"><div class="io-card"><b id="iVol">1,60 m³</b>Volume</div><div class="io-card"><b id="iCub">480 kg</b>Peso cubado</div><div class="io-card"><b id="iTar">480 kg</b>Peso tarifável</div></div><div class="io-note">Neste exemplo, a carga ocupa mais capacidade cúbica do que o peso físico sugere.</div></div></div>
 <details class="onepage-wrap"><summary>Ver one page — clique para expandir</summary>
-<div class="onepage-view"><img src="assets/onepages/06_cotacao-cubagem.png" alt="One page Cotação de frete, cubagem e peso tarifável" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
+<div class="onepage-view"><img src="assets/onepages/07_cotacao-cubagem.png" alt="One page Cotação de frete, cubagem e peso tarifável" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
 </article><article id="fob-dirigido" class="chapter">
-<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 07</span><h2>FOB Dirigido</h2><p>Desenho e contratação</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 08</span><h2>FOB Dirigido</h2><p>Desenho e contratação</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
 
 <p class="lead">FOB Dirigido é um modelo de governança de frete em que o comprador/destinatário controla a contratação ou direciona qual transportadora e contrato devem ser utilizados.</p>
 <h3>Papéis que precisam ser separados</h3>
@@ -159,9 +206,9 @@ table{width:100%;border-collapse:collapse;margin:18px 0 26px;font-size:14px}th{b
 <div class="flow"><span>Comprador define contrato</span><i>→</i><span>Fornecedor solicita</span><i>→</i><span>TMS valida</span><i>→</i><span>Transportadora executa</span></div>
 
 <details class="onepage-wrap"><summary>Ver one page — clique para expandir</summary>
-<div class="onepage-view"><img src="assets/onepages/07_fob-dirigido.png" alt="One page FOB Dirigido" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
+<div class="onepage-view"><img src="assets/onepages/08_fob-dirigido.png" alt="One page FOB Dirigido" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
 </article><article id="cte" class="chapter">
-<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 08</span><h2>Tipos de CT-e no LTL</h2><p>Desenho e contratação</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 09</span><h2>Tipos de CT-e no LTL</h2><p>Desenho e contratação</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
 
 <p class="lead">Não existe um “CT-e LTL”. O documento fiscal deve refletir a natureza da prestação de transporte. O desenho operacional da malha e o enquadramento fiscal precisam ser tratados em camadas distintas.</p>
 <table><thead><tr><th>Tipo/situação</th><th>Uso conceitual</th></tr></thead><tbody>
@@ -172,9 +219,9 @@ table{width:100%;border-collapse:collapse;margin:18px 0 26px;font-size:14px}th{b
 <div class="callout warn"><b>Atenção</b><p>Uma transferência interna entre terminais próprios, por si só, não significa uma nova prestação e não deve gerar automaticamente outro CT-e.</p></div>
 
 <details class="onepage-wrap"><summary>Ver one page — clique para expandir</summary>
-<div class="onepage-view"><img src="assets/onepages/08_cte.png" alt="One page Tipos de CT-e no LTL" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
+<div class="onepage-view"><img src="assets/onepages/09_cte.png" alt="One page Tipos de CT-e no LTL" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
 </article><article id="etiquetas" class="chapter">
-<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 09</span><h2>Etiquetas e etiquetas de clientes</h2><p>Entrada física</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 10</span><h2>Etiquetas e etiquetas de clientes</h2><p>Entrada física</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
 
 <p class="lead">No LTL, a etiqueta é a identidade física do volume. Ela liga a caixa ou pallet ao cadastro digital da remessa e permite que cada leitura gere evidência do caminho percorrido.</p>
 <div class="two-col"><div><h3>Conteúdo mínimo recomendado</h3>
@@ -187,9 +234,9 @@ table{width:100%;border-collapse:collapse;margin:18px 0 26px;font-size:14px}th{b
 <div class="callout note"><b>Regra operacional</b><p>Uma etiqueta danificada ou ilegível não deve ser simplesmente ignorada. A reimpressão precisa ser controlada para não criar duplicidade de identificação.</p></div>
 
 <details class="onepage-wrap"><summary>Ver one page — clique para expandir</summary>
-<div class="onepage-view"><img src="assets/onepages/09_etiquetas.png" alt="One page Etiquetas e etiquetas de clientes" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
+<div class="onepage-view"><img src="assets/onepages/10_etiquetas.png" alt="One page Etiquetas e etiquetas de clientes" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
 </article><article id="coleta-balcao" class="chapter">
-<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 10</span><h2>Coleta balcão</h2><p>Entrada física</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 11</span><h2>Coleta balcão</h2><p>Entrada física</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
 
 <p class="lead">Na coleta balcão, a transportadora não busca a mercadoria no remetente. O próprio fornecedor, cliente ou terceiro autorizado entrega a carga em uma filial/terminal.</p>
 <h3>Fluxo</h3><div class="flow"><span>Remessa criada</span><i>→</i><span>Aguardando balcão</span><i>→</i><span>Apresentação da carga</span><i>→</i><span>Conferência</span><i>→</i><span>Aceite</span><i>→</i><span>RECEBIDO NO BALCÃO</span></div>
@@ -204,9 +251,9 @@ table{width:100%;border-collapse:collapse;margin:18px 0 26px;font-size:14px}th{b
 <div class="callout key"><b>Tracking fiel</b><p>Não gere evento COLETADO se a transportadora não realizou coleta. Use eventos que representem a realidade física, como RECEBIDO NO BALCÃO.</p></div>
 
 <details class="onepage-wrap"><summary>Ver one page — clique para expandir</summary>
-<div class="onepage-view"><img src="assets/onepages/10_coleta-balcao.png" alt="One page Coleta balcão" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
+<div class="onepage-view"><img src="assets/onepages/11_coleta-balcao.png" alt="One page Coleta balcão" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
 </article><article id="coleta-embarcada" class="chapter">
-<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 11</span><h2>Coleta embarcada</h2><p>Entrada física</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 12</span><h2>Coleta embarcada</h2><p>Entrada física</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
 
 <p class="lead">Coleta embarcada é a estratégia em que a mercadoria coletada não retorna ao terminal de origem para descarregar e ser carregada novamente. Ela permanece no veículo que executará o Middle Mile ou parte relevante dele.</p>
 <h3>Comparação</h3><div class="compare"><div><b>Tradicional</b><p>Cliente → veículo de coleta → terminal → descarga → conferência → staging → novo carregamento → Middle Mile.</p></div><div><b>Embarcada</b><p>Transferência → cliente → conferência na origem → carga permanece embarcada → Middle Mile.</p></div></div>
@@ -215,9 +262,9 @@ table{width:100%;border-collapse:collapse;margin:18px 0 26px;font-size:14px}th{b
 
 <div class="interactive-onepage"><div class="io-head"><div><div class="io-kicker">ONE PAGE INTERATIVO</div><h3>Tradicional x Coleta Embarcada</h3><p>Alterne os modelos e observe quais movimentações físicas são eliminadas.</p></div><span id="embStatus" class="io-status">Tradicional</span></div><div class="io-stage"><div class="io-controls"><button class="io-btn" onclick="embMode(false)">Operação tradicional</button><button class="io-btn alt" onclick="embMode(true)">Coleta embarcada</button></div><div id="embProcess" class="io-process"></div><div class="io-cards" style="margin-top:12px"><div class="io-card"><b id="embMoves">5</b>movimentações</div><div class="io-card"><b id="embKg">23.000 kg</b>peso após coleta</div><div class="io-card"><b id="embGain">0</b>etapas eliminadas</div></div><div class="io-note">Coleta embarcada elimina movimentação física desnecessária, mas não elimina conferência, documentação ou controle de capacidade.</div></div></div>
 <details class="onepage-wrap"><summary>Ver one page — clique para expandir</summary>
-<div class="onepage-view"><img src="assets/onepages/11_coleta-embarcada.png" alt="One page Coleta embarcada" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
+<div class="onepage-view"><img src="assets/onepages/12_coleta-embarcada.png" alt="One page Coleta embarcada" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
 </article><article id="conferencia" class="chapter">
-<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 12</span><h2>Conferência de carga e descarga</h2><p>Entrada física</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 13</span><h2>Conferência de carga e descarga</h2><p>Entrada física</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
 
 <p class="lead">Conferência é o mecanismo que transforma um movimento presumido em um movimento comprovado. No LTL, deve ocorrer nos principais pontos de entrada, saída e troca de custódia.</p>
 <div class="two-col"><div>
@@ -232,9 +279,9 @@ table{width:100%;border-collapse:collapse;margin:18px 0 26px;font-size:14px}th{b
 
 <div class="interactive-onepage"><div class="io-head"><div><div class="io-kicker">ONE PAGE INTERATIVO</div><h3>Conferência esperado x lido</h3><p>Leia os 8 volumes da Remessa 84572 e simule uma divergência.</p></div><span id="confStatus" class="io-status">0 de 8 lidos</span></div><div class="io-stage"><div id="confBoxes" class="io-boxes"></div><div class="io-controls"><button class="io-btn" onclick="scanNext(false)">Ler próximo volume</button><button class="io-btn alt" onclick="scanNext(true)">Simular avaria</button><button class="io-btn light" onclick="confReset()">Reiniciar</button></div><div class="io-scaninfo"><div><b id="confRead">0</b>Lidos</div><div><b>8</b>Esperados</div><div><b id="confDiff">8</b>Diferença</div></div><div id="confMessage" class="io-note">Veículo chegou não significa carga recebida: a confirmação ocorre na conferência dos volumes.</div></div></div>
 <details class="onepage-wrap"><summary>Ver one page — clique para expandir</summary>
-<div class="onepage-view"><img src="assets/onepages/12_conferencia.png" alt="One page Conferência de carga e descarga" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
+<div class="onepage-view"><img src="assets/onepages/13_conferencia.png" alt="One page Conferência de carga e descarga" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
 </article><article id="middle-mile" class="chapter">
-<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 13</span><h2>Middle Mile</h2><p>Execução da malha</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 14</span><h2>Middle Mile</h2><p>Execução da malha</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
 
 <p class="lead">Middle Mile é a movimentação consolidada entre terminais, filiais e hubs. É a espinha dorsal da malha LTL porque permite transportar muitas remessas em trechos comuns com melhor ocupação.</p>
 <div class="two-col"><div><h3>Fluxo típico</h3>
@@ -248,9 +295,9 @@ table{width:100%;border-collapse:collapse;margin:18px 0 26px;font-size:14px}th{b
 
 <div class="interactive-onepage"><div class="io-head"><div><div class="io-kicker">ONE PAGE INTERATIVO</div><h3>Transferência TR-4587</h3><p>Acompanhe a Remessa 84572 no trecho POA → Hub SP → próxima conexão.</p></div><span id="mmStatus" class="io-status">Pronto</span></div><div class="io-stage"><div class="io-route"><div class="io-line"></div><div id="mmProgress" class="io-progress"></div><div class="io-city" style="left:9%"><i></i>POA</div><div class="io-city" style="left:38%"><i></i>Consolidação</div><div class="io-city" style="left:70%"><i></i>Hub SP</div><div class="io-city" style="left:91%"><i></i>Campinas</div><div id="mmTruck" class="io-vehicle">🚛</div></div><div class="io-controls"><button class="io-btn" onclick="mmNext()">Próximo evento</button><button class="io-btn light" onclick="mmReset()">Reiniciar</button></div><div id="mmEvents" class="io-timeline"></div><div class="io-cards"><div class="io-card"><b>83</b>remessas</div><div class="io-card"><b>428</b>volumes</div><div class="io-card"><b>20.000 kg</b>transferência</div></div></div></div>
 <details class="onepage-wrap"><summary>Ver one page — clique para expandir</summary>
-<div class="onepage-view"><img src="assets/onepages/13_middle-mile.png" alt="One page Middle Mile" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
+<div class="onepage-view"><img src="assets/onepages/14_middle-mile.png" alt="One page Middle Mile" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
 </article><article id="carga-mista" class="chapter">
-<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 14</span><h2>Carga mista — transferência + entregas em rota</h2><p>Execução da malha</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 15</span><h2>Carga mista — transferência + entregas em rota</h2><p>Execução da malha</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
 
 <p class="lead">Carga mista, neste manual, significa uma viagem de Middle Mile que também realiza entregas LTL durante a rota. O objetivo é evitar levar determinadas remessas até o terminal destino para depois retornar geograficamente em Last Mile.</p>
 <div class="flow"><span>POA</span><i>→</i><span>Caxias</span><i>→</i><span>Vacaria</span><i>→</i><span>Lages</span><i>→</i><span>Curitiba</span></div>
@@ -261,9 +308,9 @@ table{width:100%;border-collapse:collapse;margin:18px 0 26px;font-size:14px}th{b
 
 <div class="interactive-onepage"><div class="io-head"><div><div class="io-kicker">ONE PAGE INTERATIVO</div><h3>Entregas durante o Middle Mile</h3><p>Execute as paradas e acompanhe o saldo físico do veículo até Curitiba.</p></div><span id="mixStatus" class="io-status">420 volumes</span></div><div class="io-stage"><div class="io-flow"><span class="io-step">POA<br>420</span><span class="io-arrow">→</span><button class="io-step" onclick="mixStop(20,'Caxias')">Caxias<br>-20</button><span class="io-arrow">→</span><button class="io-step" onclick="mixStop(15,'Vacaria')">Vacaria<br>-15</button><span class="io-arrow">→</span><button class="io-step" onclick="mixFail(8)">Lages<br>8 frustrados</button><span class="io-arrow">→</span><span class="io-step">Curitiba</span></div><div class="io-cards"><div class="io-card"><b id="mixBal">420</b>saldo físico</div><div class="io-card"><b id="mixDelivered">0</b>entregues</div><div class="io-card"><b id="mixFailed">0</b>frustrados mantidos</div></div><div class="io-controls"><button class="io-btn light" onclick="mixReset()">Reiniciar</button></div><div id="mixMsg" class="io-note">O saldo deve refletir o que efetivamente saiu do veículo, não apenas o que estava planejado para entrega.</div></div></div>
 <details class="onepage-wrap"><summary>Ver one page — clique para expandir</summary>
-<div class="onepage-view"><img src="assets/onepages/14_carga-mista.png" alt="One page Carga mista — transferência + entregas em rota" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
+<div class="onepage-view"><img src="assets/onepages/15_carga-mista.png" alt="One page Carga mista — transferência + entregas em rota" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
 </article><article id="agentes" class="chapter">
-<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 15</span><h2>Agentes parceiros</h2><p>Execução da malha</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 16</span><h2>Agentes parceiros</h2><p>Execução da malha</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
 
 <p class="lead">Agentes parceiros permitem ampliar cobertura sem manter estrutura própria em todas as localidades. Eles podem executar coleta, transferência, Last Mile ou operação regional.</p>
 <h3>O que o TMS deve controlar</h3>
@@ -272,9 +319,9 @@ table{width:100%;border-collapse:collapse;margin:18px 0 26px;font-size:14px}th{b
 <div class="callout key"><b>Conceito central</b><p>Terceirizar execução não significa terceirizar controle. A transportadora continua responsável por visibilidade, SLA e qualidade perante o cliente.</p></div>
 
 <details class="onepage-wrap"><summary>Ver one page — clique para expandir</summary>
-<div class="onepage-view"><img src="assets/onepages/15_agentes.png" alt="One page Agentes parceiros" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
+<div class="onepage-view"><img src="assets/onepages/16_agentes.png" alt="One page Agentes parceiros" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
 </article><article id="tracking" class="chapter">
-<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 16</span><h2>Tracking LTL</h2><p>Controle e fechamento</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 17</span><h2>Tracking LTL</h2><p>Controle e fechamento</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
 
 <p class="lead">Tracking LTL acompanha o estado da remessa e, quando necessário, de cada volume. GPS é um insumo, mas não substitui eventos operacionais.</p>
 <h3>Estrutura recomendada</h3><div class="flow"><span>Remessa</span><i>→</i><span>Documentos</span><i>→</i><span>Volumes</span><i>→</i><span>Eventos</span><i>→</i><span>Status consolidado</span></div>
@@ -291,9 +338,9 @@ table{width:100%;border-collapse:collapse;margin:18px 0 26px;font-size:14px}th{b
 
 <div class="interactive-onepage"><div class="io-head"><div><div class="io-kicker">ONE PAGE INTERATIVO</div><h3>Timeline da Remessa 84572</h3><p>Avance os eventos e introduza atraso sem alterar o SLA contratado.</p></div><span id="trkStatus" class="io-status">Criada</span></div><div class="io-stage"><div id="trkEvents" class="io-timeline"></div><div class="io-controls"><button class="io-btn" onclick="trkNext()">Próximo evento</button><button class="io-btn alt" onclick="trkDelay()">Simular atraso +1 dia</button><button class="io-btn light" onclick="trkReset()">Reiniciar</button></div><div class="io-cards"><div class="io-card"><b id="trkSla">D+3</b>SLA contratado</div><div class="io-card"><b id="trkEta">D+3</b>ETA atual</div><div class="io-card"><b id="trkRisk">No prazo</b>situação</div></div><div class="io-note">O SLA é a promessa original; o ETA é a previsão operacional recalculada a partir dos eventos.</div></div></div>
 <details class="onepage-wrap"><summary>Ver one page — clique para expandir</summary>
-<div class="onepage-view"><img src="assets/onepages/16_tracking.png" alt="One page Tracking LTL" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
+<div class="onepage-view"><img src="assets/onepages/17_tracking.png" alt="One page Tracking LTL" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
 </article><article id="edi" class="chapter">
-<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 17</span><h2>EDI no LTL</h2><p>Controle e fechamento</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 18</span><h2>EDI no LTL</h2><p>Controle e fechamento</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
 
 <p class="lead">EDI é a troca eletrônica de dados entre embarcadores, transportadoras, agentes e áreas financeiras. No LTL, sua importância aumenta porque uma única operação pode gerar centenas de remessas, documentos e eventos.</p>
 <h3>Fluxos tradicionais</h3>
@@ -308,9 +355,9 @@ table{width:100%;border-collapse:collapse;margin:18px 0 26px;font-size:14px}th{b
 <div class="callout note"><b>Eventos como backbone</b><p>Um desenho moderno pode normalizar eventos internos como REMESSA_CRIADA, COLETADA, RECEBIDA_TERMINAL, CARREGADA_TRANSFERENCIA, ENTREGUE e POD_RECEBIDO e convertê-los para cada interface externa.</p></div>
 
 <details class="onepage-wrap"><summary>Ver one page — clique para expandir</summary>
-<div class="onepage-view"><img src="assets/onepages/17_edi.png" alt="One page EDI no LTL" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
+<div class="onepage-view"><img src="assets/onepages/18_edi.png" alt="One page EDI no LTL" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
 </article><article id="faturamento" class="chapter">
-<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 18</span><h2>Faturamento LTL</h2><p>Controle e fechamento</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 19</span><h2>Faturamento LTL</h2><p>Controle e fechamento</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
 
 <p class="lead">Faturamento fecha a jornada econômica da remessa. Ele deve conectar o que foi executado operacionalmente, as regras do contrato e as evidências necessárias para cobrança.</p>
 <h3>Gatilhos possíveis</h3><p>CT-e autorizado, coleta concluída, saída de terminal, entrega, POD ou aprovação do cliente. O gatilho precisa ser parametrizado por contrato.</p>
@@ -322,7 +369,7 @@ table{width:100%;border-collapse:collapse;margin:18px 0 26px;font-size:14px}th{b
 
 <div class="interactive-onepage"><div class="io-head"><div><div class="io-kicker">ONE PAGE INTERATIVO</div><h3>Da operação ao recebimento</h3><p>Avance a remessa pelo fluxo financeiro e observe o bloqueio quando o POD é obrigatório.</p></div><span id="billStatus" class="io-status">Aguardando elegibilidade</span></div><div class="io-stage"><div class="io-choice"><button id="podNo" class="active" onclick="setPod(false)"><b>POD pendente</b><br>Contrato exige comprovação</button><button id="podYes" onclick="setPod(true)"><b>POD recebido</b><br>Remessa pode se tornar elegível</button></div><div id="billSteps" style="margin-top:12px"></div><div class="io-controls"><button class="io-btn" onclick="billNext()">Avançar etapa</button><button class="io-btn light" onclick="billReset()">Reiniciar</button></div><div class="io-cards"><div class="io-card"><b>R$ 580</b>cotado</div><div class="io-card"><b>R$ 80</b>adicional</div><div class="io-card"><b>R$ 660</b>faturável</div></div><div id="billMsg" class="io-note">Entrega não libera automaticamente o faturamento quando o contrato exige POD.</div></div></div>
 <details class="onepage-wrap"><summary>Ver one page — clique para expandir</summary>
-<div class="onepage-view"><img src="assets/onepages/18_faturamento.png" alt="One page Faturamento LTL" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
+<div class="onepage-view"><img src="assets/onepages/19_faturamento.png" alt="One page Faturamento LTL" loading="lazy" onclick="event.stopPropagation(); openOnePage(this.src, this.alt)"></div></details>
 </article>
 
 
@@ -368,5 +415,32 @@ let mixBalV=420,mixDel=0,mixF=0,mixDone={};function mixStop(n,name){if(mixDone[n
 const trkEv=['Criada','Coletada','Terminal origem','Em transferência','Hub destino','Saiu para entrega','Entregue / POD'];let trkPos=0,trkDelayD=0;function trkRender(){trkEvents.innerHTML='';trkEv.forEach((x,i)=>{let d=document.createElement('div');d.className='io-event '+(i<trkPos?'done':i===trkPos?'current':'');d.textContent=x;trkEvents.appendChild(d)});trkStatus.textContent=trkEv[Math.min(trkPos,trkEv.length-1)];trkEta.textContent='D+'+(3+trkDelayD);trkRisk.textContent=trkDelayD?'Risco / atraso':'No prazo';trkRisk.style.color=trkDelayD?'#b42318':'#15803d'}function trkNext(){trkPos=Math.min(trkEv.length-1,trkPos+1);trkRender()}function trkDelay(){trkDelayD++;trkRender()}function trkReset(){trkPos=0;trkDelayD=0;trkRender()}
 const billEv=['Elegível','Pré-fatura','Auditoria','Aprovado','Faturado','Título gerado','Pago'];let billPos=0,podOk=false;function setPod(v){podOk=v;podNo.classList.toggle('active',!v);podYes.classList.toggle('active',v);billMsg.textContent=v?'POD recebido: o gatilho contratual foi atendido.':'POD pendente: a remessa permanece bloqueada para faturamento.'}function billRender(){billSteps.innerHTML='';billEv.forEach((x,i)=>{let d=document.createElement('div');d.className='io-bill-step '+(i<billPos?'done':i===billPos?'current':'');d.textContent=x;billSteps.appendChild(d)});billStatus.textContent=billPos===0?'Aguardando elegibilidade':billEv[billPos-1]}function billNext(){if(!podOk&&billPos===0){billMsg.textContent='Bloqueado: contrato exige POD antes da elegibilidade.';return}billPos=Math.min(billEv.length,billPos+1);billRender()}function billReset(){billPos=0;podOk=false;setPod(false);billRender()}
 renderLtl();embMode(false);confRender();mmRender();mixRender();trkRender();billRender();
+
+
+// Cadeia de Suprimentos — One Page Interativo
+let scStep=0;
+const scTexts=[
+ ['Cadeia de Suprimentos','A cadeia integra fornecedores, produção, distribuição, informação e recursos até o cliente final.'],
+ ['Suprimentos + Produção','Suprimentos abastece a operação; produção transforma insumos e agrega valor.'],
+ ['Distribuição Física','A distribuição disponibiliza o produto e a distribuição física organiza sua movimentação até o mercado.'],
+ ['Transporte e Modais','O transporte pode utilizar diferentes modais. Neste manual, o aprofundamento está no rodoviário.'],
+ ['FTL, PTL e LTL','No rodoviário, o modelo de carga define como a capacidade é dedicada, parcialmente compartilhada ou fracionada.'],
+ ['First, Middle e Last Mile','As milhas indicam a etapa da jornada; não substituem a classificação FTL/PTL/LTL.'],
+ ['Operação TMS','O TMS conecta planejamento, coleta, viagens, terminais, entrega, tracking, POD, frete e faturamento.']
+];
+function scRender(){
+ const ids=['scSup','scProd','scDist','scFtl','scPtl','scLtl','scFirst','scMiddle','scLast']; ids.forEach(id=>{const e=document.getElementById(id); if(e)e.classList.remove('on','done')});
+ document.querySelectorAll('#scModes .sc-mode').forEach(e=>e.classList.remove('on'));
+ if(scStep>=1){scSup.classList.add('on');scProd.classList.add('on')}
+ if(scStep>=2){scSup.classList.replace('on','done');scProd.classList.replace('on','done');scDist.classList.add('on')}
+ if(scStep>=3){scDist.classList.replace('on','done');document.querySelectorAll('#scModes .sc-mode').forEach(e=>e.classList.add('on'))}
+ if(scStep>=4){document.querySelectorAll('#scModes .sc-mode').forEach(e=>e.classList.remove('on'));scFtl.classList.add('on');scPtl.classList.add('on');scLtl.classList.add('on')}
+ if(scStep>=5){scFtl.classList.remove('on');scPtl.classList.remove('on');scLtl.classList.add('on');scFirst.classList.add('on');scMiddle.classList.add('on');scLast.classList.add('on')}
+ if(scStep>=6){scFirst.classList.remove('on');scMiddle.classList.remove('on');scLast.classList.remove('on')}
+ const t=scTexts[Math.min(scStep,scTexts.length-1)]; scStatus.textContent=t[0];scExplain.innerHTML='<b>'+t[0]+'</b><br>'+t[1];
+}
+function scNext(){scStep=Math.min(scStep+1,scTexts.length-1);scRender()}
+function scReset(){scStep=0;scRender()}
+scRender();
 
 </script></body></html>
