@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Manual de Frota</title>
+<style>
+:root{--bg:#0b0c0e;--panel:#14161a;--panel2:#1c1f24;--text:#f5f5f5;--muted:#aeb4bd;--accent:#ff6a00;--line:#30343b;--paper:#f4f5f7;--ink:#1d2025}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--paper);color:var(--ink)}
+header{background:linear-gradient(120deg,#090a0c,#191c21);color:white;padding:42px max(5vw,24px) 34px;border-bottom:5px solid var(--accent)}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;color:#ff9b55;font-size:12px;font-weight:800} h1{font-size:clamp(34px,5vw,66px);line-height:.98;margin:10px 0 14px;max-width:900px} .lead{max-width:900px;color:#d3d6dc;font-size:18px;line-height:1.6}
+.hero-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px;max-width:1050px} .metric{background:#15181d;border:1px solid #30343b;padding:16px} .metric b{display:block;font-size:24px;color:#fff} .metric span{color:#aeb4bd;font-size:12px}
+.layout{display:grid;grid-template-columns:320px minmax(0,1fr);min-height:100vh} aside{background:#111318;color:white;padding:20px;position:sticky;top:0;height:100vh;overflow:auto}
+.brand{font-weight:900;font-size:19px;border-bottom:1px solid #30343b;padding:4px 0 16px;margin-bottom:14px} .brand em{color:var(--accent);font-style:normal}
+.search{width:100%;padding:12px;background:#1b1e23;color:white;border:1px solid #373c45;border-radius:0;outline:none;margin-bottom:12px}
+nav a{display:flex;gap:10px;align-items:flex-start;color:#c8ccd2;text-decoration:none;padding:9px 7px;border-left:2px solid transparent;font-size:12px;line-height:1.25} nav a:hover{background:#1b1e23;border-left-color:var(--accent);color:white} nav a span{color:#ff8c3c;font-weight:800;min-width:20px}
+main{padding:30px max(4vw,28px) 80px;max-width:1500px} .intro{background:white;border-left:5px solid var(--accent);padding:24px;margin-bottom:20px;box-shadow:0 8px 24px #0000000d} .intro h2{margin-top:0}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 28px} .chip{border:1px solid #cfd3d9;background:white;padding:8px 11px;border-radius:0;cursor:pointer;font-weight:700;font-size:12px} .chip:hover,.chip.active{background:#16191e;color:white;border-color:#16191e}
+.chapter{background:white;border:1px solid #dfe2e6;margin:0 0 18px;box-shadow:0 6px 18px #00000008} .chapter-head{display:flex;gap:18px;padding:22px;border-bottom:1px solid #eceef1;align-items:center} .num{font-size:30px;font-weight:900;color:var(--accent);min-width:54px} .tag{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:#717781} .chapter h2{margin:3px 0 0;font-size:25px}
+.chapter-body{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(250px,.8fr);gap:26px;padding:22px} .explain p{font-size:15.5px;line-height:1.72;margin:0 0 12px} .keybox{background:#15181d;color:#f6f6f6;padding:18px;border-top:4px solid var(--accent);align-self:start} .keybox strong{font-size:13px;text-transform:uppercase;letter-spacing:.08em} .keybox ul{padding-left:18px;margin-bottom:0} .keybox li{margin:9px 0;color:#d3d7dd;font-size:13px;line-height:1.35}
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0 34px} .tool{background:#fff;padding:18px;border-top:4px solid #20242a;box-shadow:0 6px 18px #0000000a} .tool h3{margin:0 0 8px} .tool input{width:100%;padding:9px;border:1px solid #cfd3d9;border-radius:0;margin:4px 0} .tool button{background:var(--accent);border:0;padding:9px 12px;font-weight:800;cursor:pointer;margin-top:6px} .result{font-weight:900;margin-top:8px}
+.flow{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:12px} .flow span{background:#171a1f;color:white;padding:9px 11px;font-size:12px;font-weight:700} .flow i{font-style:normal;color:var(--accent);font-weight:900}
+footer{background:#101216;color:#aeb4bd;padding:28px max(5vw,24px);border-top:4px solid var(--accent)} .hidden{display:none}
+@media(max-width:980px){.layout{display:block} aside{position:relative;height:auto;max-height:420px} .hero-grid,.tools{grid-template-columns:1fr 1fr} .chapter-body{grid-template-columns:1fr}}
+@media(max-width:600px){.hero-grid,.tools{grid-template-columns:1fr} main{padding:20px 14px 60px}}
+@media print{aside,.filters,.tools{display:none!important} .layout{display:block} main{max-width:none;padding:0} .chapter{break-inside:avoid;box-shadow:none}}
+
+.visual{margin:18px 0;background:#f7f8fa;border:1px solid #dfe3e8;padding:14px}
+.visual img{width:100%;max-height:520px;object-fit:contain;background:white}
+.caption{font-size:12px;color:#69717a;line-height:1.45;margin-top:8px}
+.interactive-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.sim{background:#15181d;color:white;padding:16px;border-top:4px solid var(--accent)}
+.sim input,.sim select{width:100%;padding:8px;margin:5px 0 10px;border:1px solid #4b515a;border-radius:0}
+.sim button{background:var(--accent);border:0;padding:9px 12px;font-weight:800;cursor:pointer}
+.sim .out{font-size:18px;font-weight:900;margin-top:8px}
+.explore{background:#0f1115;color:white;padding:18px;margin:20px 0}
+.explore svg{width:100%;max-height:390px}
+.hotspot{cursor:pointer;transition:.2s}.hotspot:hover{filter:brightness(1.35)}
+.info-panel{border-left:4px solid var(--accent);background:#20242a;padding:14px;margin-top:12px;min-height:70px}
+.process-anim{display:flex;flex-wrap:wrap;align-items:center;gap:7px}
+.process-anim .pstep{padding:9px 10px;background:#22262d;color:#fff;opacity:.45;transition:.3s}
+.process-anim .pstep.on{opacity:1;transform:translateY(-3px);box-shadow:0 0 0 2px var(--accent)}
+.quizbox{background:#fff7f0;border-left:4px solid var(--accent);padding:16px;margin-top:15px}
+.quizbox button{margin:5px;background:#171a1f;color:white;border:0;padding:8px 10px;cursor:pointer}
+.case{border:1px solid #dfe3e8;padding:15px;background:white;margin-top:14px}
+.badge{display:inline-block;background:#ff6a00;color:white;font-size:10px;font-weight:900;padding:4px 7px;text-transform:uppercase}
+@media(max-width:800px){.interactive-grid{grid-template-columns:1fr}}
+
+
+.tech-section{background:#fff;border:1px solid #dfe3e8;margin:22px 0;box-shadow:0 8px 22px #0000000b}
+.tech-section>header{background:#15181d;color:#fff;padding:18px 22px;border-bottom:4px solid #ff6a00}
+.tech-section>header h2{margin:0;font-size:26px}.tech-content{padding:20px}
+.tech-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.impl-card{border:1px solid #d9dde3;background:#fff;overflow:hidden}.impl-card img,.impl-art{width:100%;height:190px;object-fit:cover;background:#eef0f3}
+.impl-card .pad{padding:14px}.impl-card h3{margin:0 0 8px}.impl-card p{font-size:13px;line-height:1.5;color:#555d67}
+.form-os{border:1px solid #cfd4da;background:#fafafa}.os-head{background:#20242a;color:white;padding:12px;display:flex;justify-content:space-between}.os-grid{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid #d8dce1}.os-cell{padding:9px;border-right:1px solid #d8dce1;font-size:12px}.os-cell b{display:block;color:#555;margin-bottom:3px}.os-block{padding:12px;border-bottom:1px solid #d8dce1;font-size:13px;line-height:1.5}.os-table{width:100%;border-collapse:collapse;font-size:12px}.os-table th,.os-table td{border:1px solid #d8dce1;padding:7px;text-align:left}.os-table th{background:#eceff2}
+.tire-map{background:#111419;color:#fff;padding:16px;overflow:auto}.axle{display:flex;justify-content:center;gap:100px;align-items:center;margin:14px auto;min-width:480px}.wheel{width:58px;height:86px;border:5px solid #6e747d;border-radius:12px;background:#151515;display:flex;align-items:center;justify-content:center;font-size:10px;cursor:pointer}.wheel:hover,.wheel.sel{border-color:#ff6a00}.dual{display:flex;gap:5px}.axle-line{height:7px;background:#858b93;flex:1;max-width:260px}.tire-info{background:#22262d;border-left:4px solid #ff6a00;padding:12px;margin-top:14px}
+.check-table{width:100%;border-collapse:collapse;font-size:13px}.check-table th,.check-table td{border:1px solid #d8dce1;padding:8px}.check-table th{background:#20242a;color:#fff}.check-table select{padding:5px;width:100%}.crit{font-weight:800;color:#b42318}
+.maturity{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.maturity>div{padding:13px;background:#22262d;color:#fff;min-height:145px;border-top:5px solid #666}.maturity>div:nth-child(5){border-top-color:#ff6a00}.maturity small{color:#c9ced5}
+.inf-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.inf-kpis div{background:#171a1f;color:#fff;padding:15px}.inf-kpis b{font-size:24px;color:#ff8a36;display:block}
+.doclib{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}.doc{border:1px solid #d8dce1;padding:13px;background:#fafafa}.doc b{display:block;margin-bottom:6px}
+@media(max-width:800px){.os-grid{grid-template-columns:1fr 1fr}.maturity{grid-template-columns:1fr}.inf-kpis{grid-template-columns:1fr 1fr}}
+
+/* V4 - painéis técnicos aprofundados */
+.deep-modal{position:fixed;inset:0;background:#000b;z-index:9999;display:none;align-items:center;justify-content:center;padding:24px}
+.deep-modal.open{display:flex}.deep-box{background:#fff;width:min(1120px,96vw);max-height:92vh;overflow:auto;border-top:6px solid #ff6a00;box-shadow:0 25px 70px #0008}
+.deep-head{position:sticky;top:0;background:#15181d;color:#fff;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;z-index:2}.deep-head h2{margin:0}.deep-close{font-size:26px;background:none;color:#fff;border:0;cursor:pointer}
+.deep-body{padding:20px}.deep-cols{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}.deep-img{width:100%;max-height:430px;object-fit:contain;background:#f0f2f4;border:1px solid #ddd}
+.deep-card{border:1px solid #d9dde2;padding:13px;margin:10px 0;background:#fafafa}.deep-card h3{margin:0 0 7px}.deep-list{margin:6px 0 0;padding-left:19px;line-height:1.55}
+.actionbar{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}.actionbar button{border:1px solid #cbd0d6;background:#fff;color:#222;padding:8px 10px;cursor:pointer}.actionbar button:hover{background:#171a1f;color:#fff;border-color:#171a1f}
+.microflow{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.microflow span{background:#242830;color:#fff;padding:8px}.microflow b{color:#ff6a00}
+.diag-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px}.diag{border-left:4px solid #ff6a00;background:#f2f4f6;padding:10px;font-size:12px}
+.impl-card{cursor:pointer}.impl-card:hover{box-shadow:0 0 0 3px #ff6a00 inset}.impl-card:after{content:"CLIQUE PARA APROFUNDAR";display:block;background:#171a1f;color:#fff;padding:7px 12px;font-size:10px;font-weight:900;letter-spacing:.08em}
+@media(max-width:800px){.deep-cols{grid-template-columns:1fr}}
+
+/* V5 - aulas interativas em todos os eixos críticos */
+.lesson-launch{display:inline-block;background:#ff6a00;color:#fff!important;border:0;padding:8px 11px;margin:7px 5px 0 0;font-weight:800;cursor:pointer;text-decoration:none}
+.lesson-map{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin:18px 0}
+.lesson-tile{background:#171a1f;user-select:none;color:#fff;padding:14px;border-top:4px solid #ff6a00;cursor:pointer;min-height:112px}.lesson-tile:hover{background:#242932;transform:translateY(-2px)}.lesson-tile b{display:block;font-size:16px;margin-bottom:5px}.lesson-tile small{color:#c8cdd4;line-height:1.45}
+.lesson-progress{height:8px;background:#e4e7eb;margin:12px 0}.lesson-progress i{display:block;height:100%;background:#ff6a00;width:0;transition:.35s}
+.lesson-tabs{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}.lesson-tabs button{background:#fff;color:#222;border:1px solid #cfd4da;padding:8px 10px;cursor:pointer}.lesson-tabs button.on{background:#171a1f;color:#fff;border-color:#171a1f}
+.lesson-stage{border:1px solid #d8dde3;padding:14px;background:#fafafa;min-height:180px}
+.lesson-stage h3{margin-top:0}.lesson-stage table{width:100%;border-collapse:collapse;font-size:12px}.lesson-stage th,.lesson-stage td{border:1px solid #d8dde3;padding:7px}.lesson-stage th{background:#22262d;color:#fff}
+.lesson-flow{display:flex;gap:6px;flex-wrap:wrap;align-items:center}.lesson-flow span{background:#22262d;color:#fff;padding:8px}.lesson-flow b{color:#ff6a00}
+.scenario{background:#fff7f0;border-left:4px solid #ff6a00;padding:12px;margin-top:10px}.scenario button{margin:5px 5px 0 0}
+
+/* V6 - navegação consolidada */
+.filters{display:none!important}
+.academy-single{margin-top:22px}.academy-main-btn{background:#ff6a00;color:#fff;border:0;padding:13px 18px;font-size:14px;font-weight:900;cursor:pointer}
+.new-nav{padding:8px 8px 28px!important}
+.new-nav button,.new-nav a{font-family:inherit}
+.nav-home,.nav-academy{width:100%;text-align:left;border:0;padding:11px 12px;margin:0 0 7px;cursor:pointer;font-weight:900}
+.nav-home{background:#262b32;color:#fff}.nav-academy{background:#ff6a00;color:#fff}
+.nav-group{border-top:1px solid #30353c}
+.nav-group-title{width:100%;display:flex;justify-content:space-between;gap:8px;background:#111419;color:#fff;border:0;padding:11px 8px;text-align:left;font-size:12px;font-weight:800;cursor:pointer}
+.nav-group-title:hover{background:#20252c}.nav-group-title span{color:#ff6a00}
+.nav-group-items{padding:2px 0 8px}.nav-group-items.collapsed{display:none}
+.nav-group-items a{display:block;color:#d9dde3;padding:7px 8px 7px 17px;font-size:11px;line-height:1.25;cursor:pointer;border-left:2px solid transparent}
+.nav-group-items a:hover{color:#fff;background:#22272e;border-left-color:#ff6a00}
+.academy-picker{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:9px}
+.academy-picker button{background:#171a1f;color:#fff;border:0;border-top:4px solid #ff6a00;padding:13px;text-align:left;cursor:pointer;min-height:75px;font-weight:800}
+.academy-picker button:hover{background:#272c34}
+</style>
+</head>
+<body>
+<header>
+<div class="eyebrow">MANUAL DE FROTA</div>
+<h1>Gestão de Frotas de Veículos</h1>
+<p class="lead">Conceitos, processos, manutenção, pneus, combustível, custos, tecnologia, segurança, sustentabilidade e indicadores — organizados do ciclo de vida do ativo à tomada de decisão.</p>
+<div class="hero-grid">
+<div class="metric"><b>36</b><span>capítulos conceituais</span></div>
+<div class="metric"><b>11</b><span>áreas de gestão integradas</span></div>
+<div class="metric"><b>7</b><span>calculadoras e simuladores</span></div>
+<div class="metric"><b>360°</b><span>visão do ciclo da frota</span></div>
+</div>
+</header>
+<div class="layout">
+<aside><div class="brand">FROTA <em>360</em></div><input id="search" class="search" placeholder="Pesquisar no manual...">
+<nav class="new-nav">
+  <button class="nav-home" onclick="goSection('top')">⌂ VISÃO GERAL</button>
+  <button class="nav-academy" onclick="openAcademy()">▶ ACADEMIA INTERATIVA</button>
+
+  <div class="nav-group">
+    <button class="nav-group-title" onclick="toggleNavGroup(this)">01 • Estratégia e Governança <span>−</span></button>
+    <div class="nav-group-items">
+      <a onclick="goChapter(1)">Fundamentos da Gestão de Frotas</a>
+      <a onclick="goChapter(2)">Ciclo de Vida e TCO</a>
+      <a onclick="goChapter(29)">KPIs e Dashboard</a>
+      <a onclick="goChapter(35)">Governança de Dados</a>
+      <a onclick="goChapter(36)">Maturidade da Gestão</a>
+    </div>
+  </div>
+
+  <div class="nav-group">
+    <button class="nav-group-title" onclick="toggleNavGroup(this)">02 • Ativos e Configuração <span>+</span></button>
+    <div class="nav-group-items collapsed">
+      <a onclick="goChapter(3)">Cadastro e Hierarquia de Ativos</a>
+      <a onclick="goChapter(21)">Implementos e Equipamentos</a>
+      <a onclick="goChapter(22)">Conservação e Higienização</a>
+      <a onclick="goChapter(23)">Documentação e Obrigações</a>
+    </div>
+  </div>
+
+  <div class="nav-group">
+    <button class="nav-group-title" onclick="toggleNavGroup(this)">03 • Manutenção e Oficina <span>+</span></button>
+    <div class="nav-group-items collapsed">
+      <a onclick="goChapter(4)">Gestão da Manutenção</a>
+      <a onclick="goChapter(5)">Plano Preventivo</a>
+      <a onclick="goChapter(6)">Ordem de Serviço e Oficina</a>
+      <a onclick="goChapter(7)">MTBF e MTTR</a>
+      <a onclick="goChapter(8)">Análise de Falhas</a>
+      <a onclick="goChapter(9)">Backlog e Programação</a>
+      <a onclick="goChapter(16)">Fornecedores e Garantias</a>
+      <a onclick="goChapter(17)">Socorro e Manutenção Externa</a>
+      <a onclick="goChapter(18)">Checklists e Inspeções</a>
+      <a onclick="goChapter(31)">Recall e Campanhas Técnicas</a>
+    </div>
+  </div>
+
+  <div class="nav-group">
+    <button class="nav-group-title" onclick="toggleNavGroup(this)">04 • Pneus e Componentes <span>+</span></button>
+    <div class="nav-group-items collapsed">
+      <a onclick="goChapter(10)">Gestão de Pneus</a>
+      <a onclick="goChapter(11)">Ciclo de Vida e Reforma</a>
+      <a onclick="goChapter(14)">Baterias e Sistema Elétrico</a>
+      <a onclick="goChapter(15)">Peças e Estoque</a>
+    </div>
+  </div>
+
+  <div class="nav-group">
+    <button class="nav-group-title" onclick="toggleNavGroup(this)">05 • Insumos e Eficiência <span>+</span></button>
+    <div class="nav-group-items collapsed">
+      <a onclick="goChapter(12)">Combustíveis e Abastecimentos</a>
+      <a onclick="goChapter(13)">Lubrificantes e Fluidos</a>
+      <a onclick="goChapter(19)">Condução Econômica</a>
+      <a onclick="goChapter(20)">Telemetria, CAN, IoT e TPMS</a>
+    </div>
+  </div>
+
+  <div class="nav-group">
+    <button class="nav-group-title" onclick="toggleNavGroup(this)">06 • Custos e Performance <span>+</span></button>
+    <div class="nav-group-items collapsed">
+      <a onclick="goChapter(25)">Custos Fixos e Variáveis</a>
+      <a onclick="goChapter(26)">Custo por Quilômetro</a>
+      <a onclick="goChapter(27)">Custo da Indisponibilidade</a>
+      <a onclick="goChapter(28)">Disponibilidade e Utilização</a>
+      <a onclick="goChapter(30)">Renovação e Desmobilização</a>
+    </div>
+  </div>
+
+  <div class="nav-group">
+    <button class="nav-group-title" onclick="toggleNavGroup(this)">07 • Segurança e Risco <span>+</span></button>
+    <div class="nav-group-items collapsed">
+      <a onclick="goChapter(24)">Sinistros, Avarias e Seguros</a>
+      <a onclick="goChapter(32)">Segurança e Gestão de Riscos</a>
+    </div>
+  </div>
+
+  <div class="nav-group">
+    <button class="nav-group-title" onclick="toggleNavGroup(this)">08 • Sustentabilidade e Tecnologia <span>+</span></button>
+    <div class="nav-group-items collapsed">
+      <a onclick="goChapter(33)">ESG, Emissões e Eficiência</a>
+      <a onclick="goChapter(34)">Eletrificação e Novas Tecnologias</a>
+    </div>
+  </div>
+</nav>
+</aside>
+<main>
+<section class="intro"><h2>Mapa da Gestão de Frotas</h2><p>O manual parte do princípio de que o veículo é um ativo produtivo. A gestão conecta estratégia, operação e manutenção para transformar eventos da frota em decisões mensuráveis.</p>
+<div class="flow"><span>Planejar</span><i>→</i><span>Adquirir</span><i>→</i><span>Operar</span><i>→</i><span>Inspecionar</span><i>→</i><span>Manter</span><i>→</i><span>Medir custos</span><i>→</i><span>Analisar</span><i>→</i><span>Renovar</span></div></section>
+
+<section class="intro"><h2>Ferramentas rápidas</h2><p>Primeiras interações do protótipo. A versão seguinte pode incluir TCO, disponibilidade, pneu/km, criticidade e simulador de renovação.</p></section>
+<div class="tools">
+<div class="tool"><h3>Consumo km/l</h3><input id="km" type="number" placeholder="Quilômetros"><input id="litros" type="number" placeholder="Litros"><button onclick="calcConsumo()">Calcular</button><div id="rConsumo" class="result">—</div></div>
+<div class="tool"><h3>Custo por km</h3><input id="custo" type="number" placeholder="Custo total (R$)"><input id="km2" type="number" placeholder="Quilômetros"><button onclick="calcCusto()">Calcular</button><div id="rCusto" class="result">—</div></div>
+<div class="tool"><h3>MTBF</h3><input id="tempo" type="number" placeholder="Horas operacionais"><input id="falhas" type="number" placeholder="Número de falhas"><button onclick="calcMtbf()">Calcular</button><div id="rMtbf" class="result">—</div></div>
+</div>
+
+<section class="intro">
+  <span class="badge">V2 completa</span>
+  <h2>Como utilizar este manual</h2>
+  <p>Esta versão preserva os 36 capítulos conceituais da V1 e adiciona uma camada visual e prática. Use o caminhão explorável para reconhecer sistemas, os simuladores para aplicar fórmulas e os fluxos animados para compreender processos. As imagens técnicas são referências externas e exigem internet; os diagramas, animações e simuladores funcionam no próprio HTML.</p>
+</section>
+
+<section class="explore">
+<h2 style="margin-top:0">🚛 Explore o Caminhão</h2>
+<p style="color:#cfd4db">Clique nos pontos em laranja. Cada sistema conecta função, manutenção, falhas e indicadores.</p>
+<svg viewBox="0 0 900 380" aria-label="Caminhão interativo">
+<rect x="90" y="105" width="510" height="155" fill="#303640"/>
+<rect x="600" y="80" width="165" height="180" fill="#4b535f"/>
+<polygon points="765,125 820,160 820,260 765,260" fill="#4b535f"/>
+<rect x="635" y="105" width="85" height="58" fill="#9fb0c0"/>
+<circle cx="185" cy="285" r="47" fill="#08090b"/><circle cx="185" cy="285" r="21" fill="#808790"/>
+<circle cx="500" cy="285" r="47" fill="#08090b"/><circle cx="500" cy="285" r="21" fill="#808790"/>
+<circle cx="695" cy="285" r="47" fill="#08090b"/><circle cx="695" cy="285" r="21" fill="#808790"/>
+<g class="hotspot" onclick="showSys('Motor','Gera potência para movimentação. Controle óleo, filtros, arrefecimento, injeção, admissão e sinais de falha. Indicadores: custo de manutenção, falhas, consumo e MTBF.')"><circle cx="665" cy="210" r="22" fill="#ff6a00"/><text x="665" y="215" text-anchor="middle" fill="white" font-size="11">Motor</text></g>
+<g class="hotspot" onclick="showSys('Transmissão','Transfere torque do motor aos eixos. Inclui embreagem, câmbio, cardã e diferencial. Observe ruídos, folgas, vazamentos, temperatura e qualidade do lubrificante.')"><circle cx="550" cy="220" r="22" fill="#ff6a00"/><text x="550" y="224" text-anchor="middle" fill="white" font-size="9">Trans.</text></g>
+<g class="hotspot" onclick="showSys('Freios','Sistema crítico de segurança. Inspecione componentes de atuação, desgaste, vazamentos e, quando aplicável, circuitos pneumáticos e eletrônicos.')"><circle cx="500" cy="285" r="19" fill="#ff6a00"/><text x="500" y="289" text-anchor="middle" fill="white" font-size="9">Freio</text></g>
+<g class="hotspot" onclick="showSys('Pneus','Ativos rastreáveis: posição, pressão, sulco, rodízio, reforma, motivo de retirada e custo/km. Desgaste irregular é sinal para investigação técnica.')"><circle cx="185" cy="285" r="19" fill="#ff6a00"/><text x="185" y="289" text-anchor="middle" fill="white" font-size="9">Pneu</text></g>
+<g class="hotspot" onclick="showSys('Telemetria','GPS, CAN, sensores e TPMS podem fornecer eventos para manutenção, segurança, consumo e operação. Dados só geram valor quando ligados a regras de decisão.')"><circle cx="725" cy="62" r="20" fill="#ff6a00"/><text x="725" y="66" text-anchor="middle" fill="white" font-size="8">Dados</text></g>
+<g class="hotspot" onclick="showSys('Implemento','Semirreboques e implementos também possuem pneus, eixos, suspensão, freios, documentação, equipamentos auxiliares e planos próprios de manutenção.')"><circle cx="335" cy="165" r="24" fill="#ff6a00"/><text x="335" y="169" text-anchor="middle" fill="white" font-size="8">Implemento</text></g>
+</svg>
+<div id="sysInfo" class="info-panel"><b>Selecione um sistema</b><br>Os pontos em laranja funcionam como hotspots de treinamento.</div>
+</section>
+
+<section class="intro">
+<h2>Galeria técnica</h2>
+<p>Referências visuais para apoiar os capítulos de manutenção, pneus, freios e telemetria.</p>
+<div class="interactive-grid">
+ <figure class="visual"><img src="https://cdn.shopify.com/s/files/1/0965/6880/3645/files/Cami_n_en_taller_para_chequeo_mec_nico_preventivo.webp?v=1768869756" alt="Inspeção preventiva de caminhão"><figcaption class="caption">Inspeção preventiva: o processo combina inspeção física, diagnóstico e registro de evidências.</figcaption></figure>
+ <figure class="visual"><img src="https://vadenoriginal.com/docs/air-brake-system-diagram-en.png" alt="Diagrama de sistema pneumático de freios"><figcaption class="caption">Sistema de freios pneumáticos: exemplo visual de alimentação, reservatórios, controle e atuação.</figcaption></figure>
+ <figure class="visual"><img src="https://www.unum-iot.com/img/s6-technology.jpg" alt="Arquitetura de telemetria CAN"><figcaption class="caption">Exemplo de arquitetura de telemetria integrando rede CAN, módulos e comunicação.</figcaption></figure>
+</div>
+</section>
+
+<section class="intro">
+<h2>Processo animado — Ordem de Serviço</h2>
+<p>Inicie a animação para acompanhar o fluxo. O tempo total do veículo parado deve ser separado do tempo efetivo de reparo.</p>
+<div id="osAnim" class="process-anim">
+<span class="pstep">Checklist</span><b>→</b><span class="pstep">Solicitação</span><b>→</b><span class="pstep">OS</span><b>→</b><span class="pstep">Diagnóstico</span><b>→</b><span class="pstep">Orçamento</span><b>→</b><span class="pstep">Aprovação</span><b>→</b><span class="pstep">Execução</span><b>→</b><span class="pstep">Teste</span><b>→</b><span class="pstep">Liberação</span>
+</div>
+<button onclick="animateOS()" style="margin-top:12px;background:#ff6a00;border:0;padding:10px 14px;font-weight:800;cursor:pointer">▶ Executar fluxo</button>
+</section>
+
+<section class="intro">
+<h2>Laboratório de indicadores</h2>
+<div class="interactive-grid">
+<div class="sim"><h3>MTTR</h3><label>Horas de reparo</label><input id="mttrH" type="number" value="80"><label>Nº de reparos</label><input id="mttrN" type="number" value="20"><button onclick="mttr()">Calcular</button><div id="mttrO" class="out">—</div></div>
+<div class="sim"><h3>Disponibilidade</h3><label>Horas programadas</label><input id="dispH" type="number" value="720"><label>Horas indisponíveis</label><input id="dispI" type="number" value="36"><button onclick="disp()">Calcular</button><div id="dispO" class="out">—</div></div>
+<div class="sim"><h3>Pneu — R$/km</h3><label>Custo total da vida</label><input id="pnC" type="number" value="2400"><label>Km da vida</label><input id="pnK" type="number" value="120000"><button onclick="pneu()">Calcular</button><div id="pnO" class="out">—</div></div>
+<div class="sim"><h3>TCO simplificado</h3><label>Aquisição</label><input id="tA" type="number" value="650000"><label>Operação + manutenção</label><input id="tO" type="number" value="620000"><label>Valor residual</label><input id="tR" type="number" value="280000"><button onclick="tco()">Calcular</button><div id="tcoO" class="out">—</div></div>
+</div>
+</section>
+
+<section class="intro">
+<h2>Estudo de caso — falha recorrente</h2>
+<div class="case"><b>Cenário:</b> um veículo retorna à oficina pela terceira vez com falha semelhante em um rolamento. Trocar novamente a peça resolve o sintoma, mas não necessariamente a causa.</div>
+<div class="quizbox"><b>Qual é a melhor próxima ação de gestão?</b><br>
+<button onclick="caseAns(false)">Apenas trocar o rolamento</button>
+<button onclick="caseAns(true)">Abrir análise de causa raiz</button>
+<button onclick="caseAns(false)">Aumentar a periodicidade de lavagem</button>
+<div id="caseOut" style="margin-top:8px"></div></div>
+</section>
+
+<section class="intro">
+<h2>Matriz interativa de criticidade</h2>
+<p>Selecione probabilidade e consequência. A classificação é um exemplo didático e deve ser adaptada à política de risco da empresa.</p>
+<div class="interactive-grid">
+<div><label>Probabilidade: <b id="probV">3</b></label><input id="prob" type="range" min="1" max="5" value="3" oninput="risk()"></div>
+<div><label>Consequência: <b id="consV">3</b></label><input id="cons" type="range" min="1" max="5" value="3" oninput="risk()"></div>
+<div class="sim"><h3>Resultado</h3><div id="riskO" class="out">9 — Moderada</div><small>Segurança, operação, meio ambiente, financeiro e conformidade podem exigir critérios próprios.</small></div>
+</div>
+</section>
+
+
+
+
+<section class="tech-section academy-single" id="academia">
+<header><h2>Academia Interativa de Gestão de Frotas</h2></header>
+<div class="tech-content">
+<p>Conteúdo técnico interativo consolidado em um único ambiente. Acesse as aulas de OS, pneus, manutenção, combustível, baterias, lubrificantes, telemetria, checklist, infrações, sinistros, socorro, oficina, custos/TCO e renovação.</p>
+<button class="academy-main-btn" onclick="openAcademy()">ABRIR ACADEMIA INTERATIVA →</button>
+</div></section>
+<section class="tech-section" id="mod-os"><header><h2>Ordem de Serviço — do registro à inteligência</h2><button class="lesson-launch" onclick="openLesson('os')">Abrir aula completa →</button><h2 style="display:none"></h2></header><div class="tech-content">
+<p>Uma OS tecnicamente útil separa <b>sintoma, diagnóstico, causa, ação executada e resultado</b>. Essa separação permite identificar reincidência, falhas por sistema, tempo improdutivo, consumo de peças e custo por ativo. Abaixo, um modelo didático completo.</p>
+<div class="form-os"><div class="os-head"><b>ORDEM DE SERVIÇO #0001847</b><span>Corretiva • Prioridade Alta</span></div>
+<div class="os-grid"><div class="os-cell"><b>Veículo</b>ABC1D23</div><div class="os-cell"><b>Km</b>487.350</div><div class="os-cell"><b>Abertura</b>23/09/2026 08:15</div><div class="os-cell"><b>Centro de custo</b>Operação Sul</div></div>
+<div class="os-block"><b>SINTOMA / SOLICITAÇÃO</b><br>Motorista relata vibração e ruído durante frenagem. Evento percebido com maior intensidade no eixo dianteiro.</div>
+<div class="os-block"><b>DIAGNÓSTICO</b><br>Inspeção do conjunto de freio dianteiro identificou desgaste irregular. Avaliar componentes do conjunto, folgas e condição de montagem antes da substituição.</div>
+<div class="os-block"><b>CAUSA REGISTRADA</b><br>Desgaste acima do padrão de inspeção. Em caso de reincidência, abrir análise de causa raiz para investigar geometria, aplicação, montagem e condição dos componentes relacionados.</div>
+<table class="os-table"><tr><th>Serviço</th><th>Peça/insumo</th><th>Qtd.</th><th>Tempo</th><th>Custo</th></tr><tr><td>Inspeção e desmontagem</td><td>—</td><td>1</td><td>0h45</td><td>R$ 135</td></tr><tr><td>Substituição conforme diagnóstico</td><td>Kit exemplo</td><td>1</td><td>1h50</td><td>R$ 1.480</td></tr><tr><td>Teste e liberação</td><td>—</td><td>1</td><td>0h25</td><td>R$ 75</td></tr></table>
+<div class="os-grid"><div class="os-cell"><b>Mão de obra</b>3h00</div><div class="os-cell"><b>Indisponibilidade</b>5h20</div><div class="os-cell"><b>Custo exemplo</b>R$ 1.690</div><div class="os-cell"><b>Status</b>Liberado após teste</div></div></div>
+<div class="tech-grid" style="margin-top:14px"><div class="mini"><b>Preventiva</b><br>Origem: plano/quilometragem/tempo. Deve registrar itens previstos e encontrados.</div><div class="mini"><b>Corretiva</b><br>Origem: falha ou anomalia. Exige boa descrição de sintoma, diagnóstico e causa.</div><div class="mini"><b>Socorro em rota</b><br>Inclui localização, tempo de chegada, remoção, reparo emergencial e impacto operacional.</div></div>
+</div></section>
+
+<section class="tech-section" id="implementos"><header><h2>Biblioteca visual de implementos rodoviários</h2></header><div class="tech-content">
+<p>O implemento também é um ativo de manutenção. Além do tipo de carga, a gestão deve considerar estrutura, eixos, suspensão, freios, pneus, piso, portas, sistemas de amarração e equipamentos auxiliares.</p>
+<div class="tech-grid">
+<div class="impl-card" onclick="openDeep('Sider')"><svg class="impl-art" viewBox="0 0 500 220"><rect width="500" height="220" fill="#eef0f3"/><rect x="60" y="55" width="350" height="115" fill="#343a43"/><g stroke="#ff6a00" stroke-width="5"><line x1="80" y1="65" x2="80" y2="160"/><line x1="130" y1="65" x2="130" y2="160"/><line x1="180" y1="65" x2="180" y2="160"/><line x1="230" y1="65" x2="230" y2="160"/><line x1="280" y1="65" x2="280" y2="160"/><line x1="330" y1="65" x2="330" y2="160"/></g><circle cx="330" cy="180" r="25"/><circle cx="395" cy="180" r="25"/><text x="235" y="120" text-anchor="middle" fill="white" font-size="25">SIDER</text></svg><div class="pad"><h3>Sider</h3><p>Laterais de lona retrátil. Favorece acesso lateral e operações paletizadas. Inspecionar lona, trilhos, tensionadores, teto, piso, estrutura, travas, freios, suspensão e pneus.</p></div></div>
+<div class="impl-card" onclick="openDeep('Baú seco')"><svg class="impl-art" viewBox="0 0 500 220"><rect width="500" height="220" fill="#eef0f3"/><rect x="55" y="45" width="365" height="125" fill="#fff" stroke="#3e4650" stroke-width="5"/><circle cx="335" cy="183" r="25"/><circle cx="400" cy="183" r="25"/><text x="235" y="118" text-anchor="middle" font-size="26">BAÚ SECO</text></svg><div class="pad"><h3>Baú seco</h3><p>Estrutura fechada para carga geral. Pontos de atenção: painéis, teto, vedação, portas, dobradiças, piso, infiltração, estrutura e conjunto rodante.</p></div></div>
+<div class="impl-card" onclick="openDeep('Frigorífico / refrigerado')"><img src="https://www.facchini.com.br/adm/produtos/topo-sem_ffr7-m.webp" alt="Semirreboque frigorífico"><div class="pad"><h3>Frigorífico / refrigerado</h3><p>Adiciona isolamento térmico e equipamento de refrigeração. Além do chassi, exige controle de unidade frigorífica, vedação, portas, sensores e histórico de temperatura.</p></div></div>
+<div class="impl-card" onclick="openDeep('Tanque')"><img src="https://librelato.com/uploads/2026/04/07/8F60ParnBuQh94xGiPbOcpfedRbNVTDnmgH5Y4wA.png" alt="Semirreboque tanque"><div class="pad"><h3>Tanque</h3><p>Aplicado a líquidos e outras cargas conforme especificação. Exige atenção especial a estrutura, válvulas, tubulações, estanqueidade, elementos de segurança e requisitos específicos da carga.</p></div></div>
+<div class="impl-card" onclick="openDeep('Graneleiro')"><svg class="impl-art" viewBox="0 0 500 220"><rect width="500" height="220" fill="#eef0f3"/><polygon points="60,70 410,70 380,165 90,165" fill="#8d6e45"/><g stroke="#333" stroke-width="4"><line x1="105" y1="70" x2="125" y2="165"/><line x1="170" y1="70" x2="185" y2="165"/><line x1="235" y1="70" x2="240" y2="165"/><line x1="300" y1="70" x2="295" y2="165"/><line x1="365" y1="70" x2="350" y2="165"/></g><circle cx="330" cy="180" r="24"/><circle cx="390" cy="180" r="24"/><text x="235" y="125" text-anchor="middle" fill="white" font-size="23">GRANELEIRO</text></svg><div class="pad"><h3>Graneleiro</h3><p>Voltado a cargas a granel. Verificar laterais, tampas, travas, vedação, lona, estrutura, pontos de descarga e conjunto rodante.</p></div></div>
+<div class="impl-card" onclick="openDeep('Basculante')"><svg class="impl-art" viewBox="0 0 500 220"><rect width="500" height="220" fill="#eef0f3"/><polygon points="65,80 390,80 425,160 95,160" fill="#d26a2e"/><circle cx="335" cy="180" r="24"/><circle cx="395" cy="180" r="24"/><text x="240" y="128" text-anchor="middle" fill="white" font-size="23">BASCULANTE</text></svg><div class="pad"><h3>Basculante</h3><p>Possui sistema de elevação para descarga. A manutenção inclui estrutura, articulações, cilindro e circuito hidráulico, além de pneus, suspensão e freios.</p></div></div>
+<div class="impl-card" onclick="openDeep('Prancha')"><svg class="impl-art" viewBox="0 0 500 220"><rect width="500" height="220" fill="#eef0f3"/><rect x="55" y="140" width="370" height="22" fill="#343a43"/><polygon points="55,140 130,95 130,140" fill="#343a43"/><circle cx="330" cy="180" r="24"/><circle cx="390" cy="180" r="24"/><text x="240" y="125" text-anchor="middle" font-size="24">PRANCHA</text></svg><div class="pad"><h3>Prancha</h3><p>Usada para máquinas e equipamentos. Controlar rampas, pontos de amarração, estrutura, travas, dimensões, sistema hidráulico quando existente e distribuição de carga.</p></div></div>
+<div class="impl-card" onclick="openDeep('Cegonha')"><svg class="impl-art" viewBox="0 0 500 220"><rect width="500" height="220" fill="#eef0f3"/><rect x="65" y="145" width="360" height="18" fill="#343a43"/><rect x="90" y="95" width="310" height="12" fill="#ff6a00"/><g fill="#555"><rect x="110" y="70" width="70" height="25"/><rect x="210" y="70" width="70" height="25"/><rect x="310" y="70" width="70" height="25"/></g><circle cx="330" cy="180" r="24"/><circle cx="395" cy="180" r="24"/><text x="245" y="132" text-anchor="middle" font-size="22">CEGONHA</text></svg><div class="pad"><h3>Cegonha</h3><p>Transporte de veículos. Inspeções devem incluir plataformas, rampas, sistemas de elevação, travamentos, cintas/pontos de fixação e estrutura.</p></div></div>
+</div></div></section>
+
+<section class="tech-section" id="croqui"><header><h2>Croqui interativo de pneus — cavalo 6x2 + semirreboque 3 eixos</h2><button class="lesson-launch" onclick="openLesson('pneus')">Abrir aula completa →</button><h2 style="display:none"></h2></header><div class="tech-content">
+<p>O croqui transforma o pneu em ativo individual. Clique em uma posição. A nomenclatura abaixo é didática; a empresa pode adotar seu próprio padrão desde que seja consistente e documentado.</p>
+<div class="tire-map">
+<div style="text-align:center;color:#ff9b55;font-weight:900">FRENTE DO VEÍCULO ↑</div>
+<div class="axle"><div class="wheel" onclick="tirePos(this,'E1-L','Direcional','14 mm','108 psi','Vida 1')">E1-L</div><div class="axle-line"></div><div class="wheel" onclick="tirePos(this,'E1-R','Direcional','13 mm','108 psi','Vida 1')">E1-R</div></div>
+<div class="axle"><div class="dual"><div class="wheel" onclick="tirePos(this,'E2-LE','Tração','12 mm','105 psi','Vida 1')">LE</div><div class="wheel" onclick="tirePos(this,'E2-LI','Tração','11 mm','105 psi','Vida 1')">LI</div></div><div class="axle-line"></div><div class="dual"><div class="wheel" onclick="tirePos(this,'E2-RI','Tração','12 mm','105 psi','Vida 1')">RI</div><div class="wheel" onclick="tirePos(this,'E2-RE','Tração','11 mm','105 psi','Vida 1')">RE</div></div></div>
+<div class="axle"><div class="wheel" onclick="tirePos(this,'E3-L','Livre','10 mm','110 psi','Recapado')">E3-L</div><div class="axle-line"></div><div class="wheel" onclick="tirePos(this,'E3-R','Livre','10 mm','110 psi','Recapado')">E3-R</div></div>
+<hr style="border-color:#40454d"><div style="text-align:center;color:#aaa">SEMIRREBOQUE</div>
+<div class="axle"><div class="wheel" onclick="tirePos(this,'T1-L','Trailer','9 mm','110 psi','Recapado')">T1-L</div><div class="axle-line"></div><div class="wheel" onclick="tirePos(this,'T1-R','Trailer','9 mm','110 psi','Recapado')">T1-R</div></div>
+<div class="axle"><div class="wheel" onclick="tirePos(this,'T2-L','Trailer','8 mm','110 psi','Recapado')">T2-L</div><div class="axle-line"></div><div class="wheel" onclick="tirePos(this,'T2-R','Trailer','8 mm','110 psi','Recapado')">T2-R</div></div>
+<div class="axle"><div class="wheel" onclick="tirePos(this,'T3-L','Trailer','7 mm','110 psi','Recapado')">T3-L</div><div class="axle-line"></div><div class="wheel" onclick="tirePos(this,'T3-R','Trailer','7 mm','110 psi','Recapado')">T3-R</div></div>
+<div id="tireInfo" class="tire-info"><b>Selecione um pneu</b><br>Posição, aplicação, sulco, pressão e vida serão exibidos aqui.</div></div>
+<div class="case"><b>Gestão recomendada:</b> registrar identificação individual, marca/modelo, medida, DOT, posição, data/km de montagem, pressão, sulco, reformas, movimentações, retirada, motivo e custo/km. A regulamentação brasileira diferencia recapagem, recauchutagem e remoldagem; a carcaça precisa ser avaliada antes da reforma.</div>
+</div></section>
+
+<section class="tech-section" id="checklists"><header><h2>Checklists operacionais e de manutenção</h2><button class="lesson-launch" onclick="openLesson('checklist')">Abrir aula completa →</button><h2 style="display:none"></h2></header><div class="tech-content">
+<p>O checklist deve gerar ação. Itens críticos reprovados podem exigir bloqueio; itens não críticos podem gerar pendência programada. O modelo abaixo é interativo.</p>
+<table class="check-table"><tr><th>Grupo</th><th>Item</th><th>Criticidade</th><th>Situação</th><th>Ação esperada</th></tr>
+<tr><td>Pneus</td><td>Danos, pressão e condição visual</td><td class="crit">Alta</td><td><select onchange="ck(this)"><option>Conforme</option><option>Atenção</option><option>Não conforme</option></select></td><td class="act">Liberar</td></tr>
+<tr><td>Freios</td><td>Funcionamento / sinais de anomalia</td><td class="crit">Crítica</td><td><select onchange="ck(this)"><option>Conforme</option><option>Atenção</option><option>Não conforme</option></select></td><td class="act">Liberar</td></tr>
+<tr><td>Fluidos</td><td>Vazamentos e níveis</td><td>Alta</td><td><select onchange="ck(this)"><option>Conforme</option><option>Atenção</option><option>Não conforme</option></select></td><td class="act">Liberar</td></tr>
+<tr><td>Iluminação</td><td>Faróis, lanternas e sinalização</td><td>Alta</td><td><select onchange="ck(this)"><option>Conforme</option><option>Atenção</option><option>Não conforme</option></select></td><td class="act">Liberar</td></tr>
+<tr><td>Implemento</td><td>Travas, portas/lona, acoplamento e estrutura</td><td>Alta</td><td><select onchange="ck(this)"><option>Conforme</option><option>Atenção</option><option>Não conforme</option></select></td><td class="act">Liberar</td></tr>
+<tr><td>Cabine</td><td>Espelhos, limpadores, instrumentos</td><td>Média</td><td><select onchange="ck(this)"><option>Conforme</option><option>Atenção</option><option>Não conforme</option></select></td><td class="act">Liberar</td></tr></table>
+<div class="doclib" style="margin-top:14px"><div class="doc"><b>Pré-viagem</b>Condição antes da saída.</div><div class="doc"><b>Pós-viagem</b>Anomalias identificadas no retorno.</div><div class="doc"><b>Recebimento</b>Estado do ativo na entrada da frota.</div><div class="doc"><b>Pneus</b>Pressão, sulco, danos e posição.</div><div class="doc"><b>Implementos</b>Estrutura e sistemas específicos.</div><div class="doc"><b>Oficina</b>Inspeção e teste de liberação.</div></div>
+</div></section>
+
+<section class="tech-section" id="infracoes"><header><h2>Gestão de infrações — evolução da informação</h2><button class="lesson-launch" onclick="openLesson('infracoes')">Abrir aula completa →</button><h2 style="display:none"></h2></header><div class="tech-content">
+<p>Uma gestão madura deixa de tratar a infração apenas como pagamento. O dado passa a alimentar prevenção, comportamento, treinamento e gestão de risco.</p>
+<div class="maturity"><div><b>Nível 1 — Financeiro</b><br><small>Recebe, lança valor, paga e arquiva.</small></div><div><b>Nível 2 — Administrativo</b><br><small>Controla prazo, veículo, condutor, indicação e documentação.</small></div><div><b>Nível 3 — Analítico</b><br><small>Classifica tipo, local, horário, reincidência, filial e operação.</small></div><div><b>Nível 4 — Preventivo</b><br><small>Relaciona infração a telemetria, treinamento, políticas e ações corretivas.</small></div><div><b>Nível 5 — Risco</b><br><small>Usa tendências e padrões para priorizar ações antes de novos eventos.</small></div></div>
+<div class="flow" style="margin-top:16px"><span>Recebimento</span><i>→</i><span>Veículo</span><i>→</i><span>Condutor</span><i>→</i><span>Classificação</span><i>→</i><span>Prazo</span><i>→</i><span>Tratamento</span><i>→</i><span>Histórico</span><i>→</i><span>Prevenção</span></div>
+<h3>Dashboard didático</h3><div class="inf-kpis"><div><b>37</b>infrações no período</div><div><b>18</b>condutores envolvidos</div><div><b>4</b>reincidentes</div><div><b>32%</b>categoria mais recorrente*</div></div><small>*Números fictícios apenas para demonstrar o modelo de painel.</small>
+<p style="margin-top:14px"><b>Dimensões recomendadas:</b> tipo de infração, data/hora, local, veículo, condutor, filial, operação, valor, pontuação quando aplicável, reincidência, prazo, status, telemetria relacionada e ação educativa/corretiva.</p>
+</div></section>
+
+<section class="tech-section" id="biblioteca"><header><h2>Biblioteca de formulários e registros</h2></header><div class="tech-content"><div class="doclib">
+<div class="doc"><b>01 • Ordem de Serviço</b>Sintoma, diagnóstico, causa, serviços, peças, tempos e custos.</div>
+<div class="doc"><b>02 • Solicitação de Manutenção</b>Origem da demanda, evidência e criticidade.</div>
+<div class="doc"><b>03 • Plano Preventivo</b>Serviço, gatilho, tolerância e periodicidade.</div>
+<div class="doc"><b>04 • Ficha de Pneu</b>Identidade, posição, sulco, pressão, vidas e custo/km.</div>
+<div class="doc"><b>05 • Croqui de Pneus</b>Mapa das posições por configuração veicular.</div>
+<div class="doc"><b>06 • Checklist</b>Conforme, atenção, não conforme e ação.</div>
+<div class="doc"><b>07 • Socorro</b>Local, sintomas, atendimento, remoção e downtime.</div>
+<div class="doc"><b>08 • Sinistro</b>Evidências, terceiros, seguro, custos e conclusão.</div>
+<div class="doc"><b>09 • Infração</b>Veículo, condutor, prazo, status e prevenção.</div>
+<div class="doc"><b>10 • Abastecimento</b>Litros, preço, hodômetro, posto e anomalias.</div>
+<div class="doc"><b>11 • Inspeção de Implemento</b>Estrutura, acoplamento e sistemas específicos.</div>
+<div class="doc"><b>12 • Garantia / Recall</b>Elegibilidade, execução e evidência.</div>
+</div></div></section>
+
+
+<section id="chapters"><article class="chapter" data-cat="estratégia" id="cap-01">
+      <div class="chapter-head"><span class="num">01</span><div><span class="tag">Estratégia</span><h2>Fundamentos da Gestão de Frotas</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Gestão de frotas é a disciplina que planeja, disponibiliza, opera, conserva, mede e renova veículos e equipamentos. O objetivo não é simplesmente “gastar menos”, mas equilibrar disponibilidade, confiabilidade, segurança, produtividade e custo ao longo do ciclo de vida.</p><p>Uma gestão madura conecta o ativo à operação: veículo, implemento, motorista, viagem, combustível, manutenção, pneus, peças, fornecedores, custos e indicadores. Assim, uma despesa deixa de ser apenas um lançamento financeiro e passa a explicar o comportamento do ativo.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Frota própria, locada, agregada e terceirizada</li><li>Veículos, implementos, equipamentos e componentes</li><li>Disponibilidade x utilização x produtividade</li><li>Gestão reativa x preventiva x orientada por dados</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="estratégia" id="cap-02">
+      <div class="chapter-head"><span class="num">02</span><div><span class="tag">Estratégia</span><h2>Ciclo de Vida e TCO</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>A decisão econômica começa antes da compra. Especificação inadequada pode gerar consumo excessivo, manutenção prematura, baixa produtividade e perda de valor residual. Por isso o veículo deve ser acompanhado da necessidade operacional até a desmobilização.</p><p>O TCO (Total Cost of Ownership) considera o conjunto de custos associados ao ativo durante o período analisado: aquisição, capital, combustível, manutenção, pneus, seguros, tributos, indisponibilidade e outros custos, descontando o valor residual. É uma visão mais completa que comparar apenas preço de compra.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Planejamento → especificação → aquisição → operação → renovação</li><li>Vida física, contábil e econômica</li><li>Valor residual e depreciação</li><li>Custo de oportunidade e indisponibilidade</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="ativos" id="cap-03">
+      <div class="chapter-head"><span class="num">03</span><div><span class="tag">Ativos</span><h2>Cadastro Técnico e Hierarquia de Ativos</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>O cadastro técnico é a base da rastreabilidade. A estrutura recomendada permite descer do ativo até o componente: Frota → Veículo → Sistema → Conjunto → Componente → Peça. Quanto melhor a classificação, maior a capacidade de analisar falhas e custos.</p><p>Além da placa, devem ser controladas características técnicas, capacidade, tara, PBT/PBTC quando aplicável, eixos, motorização, combustível, centro de custo, filial, implementos vinculados e parâmetros de manutenção.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Ficha técnica e identificação</li><li>Hierarquia de sistemas e componentes</li><li>Centros de custo e aplicação operacional</li><li>Histórico de movimentações</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="manutenção" id="cap-04">
+      <div class="chapter-head"><span class="num">04</span><div><span class="tag">Manutenção</span><h2>Gestão da Manutenção</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Manutenção busca preservar a função do ativo com segurança e previsibilidade. A estratégia deve considerar criticidade, consequência da falha, custo, padrão de utilização e possibilidade de monitorar a condição.</p><p>O melhor plano não é necessariamente aquele com mais intervenções. O objetivo é aplicar a estratégia adequada a cada sistema e componente.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Corretiva planejada e não planejada</li><li>Preventiva por tempo, km, horímetro ou ciclos</li><li>Preditiva e baseada em condição</li><li>Detectiva e inspeções funcionais</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="manutenção" id="cap-05">
+      <div class="chapter-head"><span class="num">05</span><div><span class="tag">Manutenção</span><h2>Plano Preventivo</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Um plano preventivo transforma recomendações técnicas e experiência operacional em rotinas controladas. Cada tarefa deve possuir periodicidade, tolerância, critério de disparo, responsáveis e evidência de execução.</p><p>Planos podem variar conforme severidade. O mesmo modelo de caminhão pode exigir estratégias diferentes em operação rodoviária, urbana, mineração, construção ou distribuição.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Plano → serviço → periodicidade → tolerância → gatilho</li><li>Revisões, filtros, fluidos, freios e suspensão</li><li>Severidade operacional</li><li>Atrasos, antecipações e aderência ao plano</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="manutenção" id="cap-06">
+      <div class="chapter-head"><span class="num">06</span><div><span class="tag">Manutenção</span><h2>Ordem de Serviço e Oficina</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>A Ordem de Serviço é o registro central da manutenção. Deve explicar o sintoma, diagnóstico, causa, serviço executado, peças, mão de obra, tempos, custos e condição final do ativo.</p><p>Separar o tempo total de indisponibilidade do tempo efetivo de reparo revela gargalos: espera por diagnóstico, aprovação, peças, box, terceiro, teste ou liberação.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Solicitação → diagnóstico → orçamento → aprovação → execução</li><li>Mão de obra, peças e serviços terceiros</li><li>Tempo de box e tempo de espera</li><li>Garantia, retrabalho e reincidência</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="manutenção" id="cap-07">
+      <div class="chapter-head"><span class="num">07</span><div><span class="tag">Manutenção</span><h2>Confiabilidade, MTBF e MTTR</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Confiabilidade procura entender a frequência das falhas e a capacidade de restaurar o ativo. MTBF representa o intervalo médio entre falhas em ativos reparáveis; MTTR representa o tempo médio de reparo segundo a definição adotada.</p><p>Os indicadores precisam de critérios consistentes. Comparações só fazem sentido quando população, período, definição de falha e forma de medir o tempo são equivalentes.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>MTBF = tempo operacional / falhas</li><li>MTTR = tempo de reparo / reparos</li><li>Disponibilidade e confiabilidade</li><li>Tendência, recorrência e benchmarking</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="manutenção" id="cap-08">
+      <div class="chapter-head"><span class="num">08</span><div><span class="tag">Manutenção</span><h2>Engenharia de Manutenção e Análise de Falhas</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>A engenharia de manutenção transforma histórico em aprendizado. Em vez de apenas substituir novamente um componente, investiga por que a falha ocorre, em quais condições e como evitar recorrência.</p><p>Ferramentas como Pareto, 5 Porquês, Ishikawa, RCA e FMEA ajudam a estruturar a análise, mas dependem de dados de qualidade e validação técnica.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Pareto de falhas e custos</li><li>5 Porquês e causa raiz</li><li>FMEA e criticidade</li><li>Reincidência e ações de melhoria</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="manutenção" id="cap-09">
+      <div class="chapter-head"><span class="num">09</span><div><span class="tag">Manutenção</span><h2>Backlog, Planejamento e Programação</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Backlog é o conjunto de trabalhos identificados e ainda não executados. Deve ser analisado por idade, criticidade, horas previstas, materiais e impacto operacional.</p><p>Planejar define o que e como será feito; programar define quando, com quais recursos e em qual janela. Uma boa programação reduz indisponibilidade e intervenções emergenciais.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Backlog por criticidade</li><li>Capacidade da oficina</li><li>Janela de manutenção</li><li>Programação de pessoas, peças e boxes</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="pneus" id="cap-10">
+      <div class="chapter-head"><span class="num">10</span><div><span class="tag">Pneus</span><h2>Gestão de Pneus</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Pneus devem ser tratados como ativos rastreáveis. A gestão acompanha aquisição, identificação, montagem, posição, pressão, sulco, rodízio, retirada, reforma e descarte.</p><p>O objetivo é equilibrar segurança, aderência, consumo, vida útil e custo por quilômetro. A aplicação correta depende do veículo, eixo, operação e especificação do fabricante.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Anatomia e marcações</li><li>Direcional, tração, livre e aplicações mistas</li><li>Pressão, sulco e desgaste</li><li>Custo por km e vida da carcaça</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="pneus" id="cap-11">
+      <div class="chapter-head"><span class="num">11</span><div><span class="tag">Pneus</span><h2>Ciclo de Vida e Reforma de Pneus</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>O histórico do pneu deve permanecer mesmo quando ele muda de veículo ou posição. Isso permite medir a quilometragem de cada vida e avaliar a carcaça.</p><p>A reforma pode prolongar o aproveitamento econômico de carcaças tecnicamente aptas. A decisão precisa considerar inspeção, aplicação, política interna e requisitos técnicos/regulatórios.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Compra → estoque → montagem → operação</li><li>Rodízio e movimentações</li><li>Avaliação para reforma</li><li>Sucateamento e motivo de retirada</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="operação" id="cap-12">
+      <div class="chapter-head"><span class="num">12</span><div><span class="tag">Operação</span><h2>Combustíveis e Abastecimentos</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Combustível precisa ser analisado no contexto da operação. Km/l isolado não explica topografia, peso, trânsito, implemento, motorista ou rota. Por isso a gestão deve relacionar abastecimento, distância e contexto operacional.</p><p>Cada abastecimento deve registrar veículo, motorista, data/hora, local, produto, litros, valores e hodômetro, permitindo conciliações e análise de anomalias.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>km/l, L/100 km e R$/km</li><li>Tanque interno, externo e cartões</li><li>Capacidade e conciliação</li><li>Anomalias e investigação de desvios</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="insumos" id="cap-13">
+      <div class="chapter-head"><span class="num">13</span><div><span class="tag">Insumos</span><h2>Lubrificantes e Fluidos</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Óleos e fluidos são elementos de manutenção e também fontes de diagnóstico. Devem ser controlados por especificação, aplicação, volume, periodicidade e consumo.</p><p>Consumo anormal pode indicar vazamentos, desgaste ou falhas. Análise de óleo, quando aplicável, pode fornecer sinais sobre contaminação e condição de componentes.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Óleo de motor e transmissão</li><li>Diferencial, hidráulico e graxas</li><li>Arrefecimento e outros fluidos</li><li>Consumo, troca e análise de condição</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="componentes" id="cap-14">
+      <div class="chapter-head"><span class="num">14</span><div><span class="tag">Componentes</span><h2>Baterias e Sistema Elétrico</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Baterias possuem vida e histórico próprios. É útil controlar instalação, retirada, veículo, posição quando aplicável, garantia, testes, tensão e motivo da substituição.</p><p>Falhas recorrentes podem estar relacionadas não apenas à bateria, mas ao alternador, motor de partida, consumo parasita, chicotes, acessórios ou padrão operacional.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Identificação e garantia</li><li>Teste e condição</li><li>Alternador e partida</li><li>Falhas recorrentes e causa raiz</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="suprimentos" id="cap-15">
+      <div class="chapter-head"><span class="num">15</span><div><span class="tag">Suprimentos</span><h2>Peças e Estoque de Manutenção</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Estoque de manutenção deve equilibrar capital parado e risco de indisponibilidade. Uma peça barata com longo lead time pode ser mais crítica que uma peça cara disponível rapidamente.</p><p>Classificação por criticidade, consumo, prazo de reposição e impacto permite definir estoques mínimos, máximos e pontos de reposição.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Peças críticas e reparáveis</li><li>Estoque mínimo/máximo</li><li>Lead time e ponto de reposição</li><li>Giro, obsolescência e rastreabilidade</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="suprimentos" id="cap-16">
+      <div class="chapter-head"><span class="num">16</span><div><span class="tag">Suprimentos</span><h2>Fornecedores, Oficinas e Garantias</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Fornecedor deve ser avaliado por custo total do serviço, não somente preço. Prazo, qualidade, retrabalho, garantia, capacidade técnica e disponibilidade afetam diretamente o resultado.</p><p>Garantias de peças e serviços precisam ser registradas para evitar pagamento de reparos que deveriam ser cobertos pelo fornecedor ou fabricante.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Homologação e avaliação</li><li>SLA e prazo</li><li>Garantia e retrabalho</li><li>Oficina própria x terceirizada</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="manutenção" id="cap-17">
+      <div class="chapter-head"><span class="num">17</span><div><span class="tag">Manutenção</span><h2>Socorro Mecânico e Manutenção Externa</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Falhas em rota exigem processo específico. O atendimento deve registrar localização, sintoma, criticidade, fornecedor acionado, tempo de chegada, diagnóstico, solução, custos e necessidade de remoção.</p><p>Além do reparo, o evento deve alimentar a análise de confiabilidade para evitar que socorros sejam tratados como ocorrências isoladas.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Acionamento e triagem</li><li>Guincho e remoção</li><li>Reparo em rota</li><li>Tempo de resposta e custo total</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="segurança" id="cap-18">
+      <div class="chapter-head"><span class="num">18</span><div><span class="tag">Segurança</span><h2>Checklists e Inspeções</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Checklists conectam operação e manutenção. Inspeções pré e pós-viagem ajudam a identificar condições antes que se transformem em falhas ou riscos.</p><p>Itens reprovados devem gerar tratamento proporcional à criticidade, podendo resultar em orientação, solicitação de manutenção ou bloqueio do ativo.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Pré-viagem e pós-viagem</li><li>Inspeção de segurança</li><li>Não conformidade → OS</li><li>Evidências e rastreabilidade</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="operação" id="cap-19">
+      <div class="chapter-head"><span class="num">19</span><div><span class="tag">Operação</span><h2>Motoristas e Condução Econômica</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>O comportamento de condução influencia combustível, pneus, freios e manutenção. Entretanto, indicadores de motorista precisam ser contextualizados por rota, veículo, peso, trânsito e operação.</p><p>A finalidade deve ser desenvolver padrões seguros e eficientes, utilizando treinamento e feedback apoiados por dados.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Aceleração, frenagem e velocidade</li><li>RPM e marcha lenta</li><li>Contextualização operacional</li><li>Treinamento e feedback</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="tecnologia" id="cap-20">
+      <div class="chapter-head"><span class="num">20</span><div><span class="tag">Tecnologia</span><h2>Telemetria, CAN, IoT e TPMS</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Telemetria permite acompanhar eventos operacionais do veículo. Dependendo da arquitetura, dados podem vir de GPS, rede eletrônica do veículo, sensores adicionais e sistemas como TPMS.</p><p>A tecnologia deve servir a casos de uso: segurança, manutenção, consumo, disponibilidade e diagnóstico. Coletar grande volume de dados sem processo de decisão gera pouco valor.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>GPS e geolocalização</li><li>CAN e parâmetros eletrônicos</li><li>Sensores e IoT</li><li>TPMS e alertas de pneus</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="ativos" id="cap-21">
+      <div class="chapter-head"><span class="num">21</span><div><span class="tag">Ativos</span><h2>Implementos e Equipamentos Auxiliares</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>A gestão não termina no cavalo mecânico. Semirreboques, baús, siders, tanques, frigoríficos, plataformas e outros implementos também possuem pneus, documentação, componentes e manutenção.</p><p>Equipamentos auxiliares como unidades de refrigeração, plataformas elevatórias e sistemas hidráulicos podem possuir planos próprios por tempo ou horímetro.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Vínculo cavalo × implemento</li><li>Manutenção de implementos</li><li>Equipamentos auxiliares</li><li>Disponibilidade do conjunto</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="operação" id="cap-22">
+      <div class="chapter-head"><span class="num">22</span><div><span class="tag">Operação</span><h2>Lavagem, Higienização e Conservação</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Conservação influencia imagem, segurança, inspeção e vida de componentes. Algumas operações exigem rotinas específicas de higienização, descontaminação ou lavagem técnica.</p><p>O processo deve definir frequência, tipo de serviço, local, custo e evidências, evitando tratar lavagem apenas como gasto genérico.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Lavagem externa e interna</li><li>Higienização especializada</li><li>Conservação e inspeção visual</li><li>Custos e periodicidade</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="governança" id="cap-23">
+      <div class="chapter-head"><span class="num">23</span><div><span class="tag">Governança</span><h2>Documentação, Multas e Obrigações</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Veículos e condutores possuem documentos e obrigações com vencimentos e responsabilidades. A gestão deve antecipar prazos e impedir que pendências administrativas causem indisponibilidade.</p><p>Multas precisam de fluxo de identificação, análise, indicação de responsável quando aplicável, pagamento, recurso e histórico.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Licenciamento e documentos</li><li>Seguros e vencimentos</li><li>Multas e responsabilidades</li><li>Alertas e bloqueios administrativos</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="risco" id="cap-24">
+      <div class="chapter-head"><span class="num">24</span><div><span class="tag">Risco</span><h2>Sinistros, Avarias e Seguros</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Sinistros devem ser tratados como processo: ocorrência, evidências, análise, seguradora, terceiros, reparo, custos e encerramento.</p><p>O histórico permite identificar recorrências e medir impactos além do valor do reparo, incluindo franquia, indisponibilidade e perda operacional.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Colisão, tombamento e avaria</li><li>Evidências e comunicação</li><li>Seguro, franquia e terceiros</li><li>Custo total do evento</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="custos" id="cap-25">
+      <div class="chapter-head"><span class="num">25</span><div><span class="tag">Custos</span><h2>Custos Fixos, Variáveis e Centros de Custo</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>A classificação de custos ajuda a entender o comportamento econômico da frota. Custos fixos tendem a existir mesmo com menor utilização; custos variáveis acompanham mais diretamente a atividade, embora alguns gastos tenham comportamento misto.</p><p>Centros de custo e dimensões analíticas permitem visualizar gastos por veículo, filial, operação, cliente, contrato ou tipo de ativo.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Depreciação, seguros e capital</li><li>Combustível, pneus e manutenção</li><li>Custos semifixos/semivariáveis</li><li>Rateios e centros de custo</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="custos" id="cap-26">
+      <div class="chapter-head"><span class="num">26</span><div><span class="tag">Custos</span><h2>Custo por Quilômetro e Produtividade</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Custo/km é uma métrica fundamental, mas precisa ser decomposta. Combustível/km, pneu/km, manutenção/km e custo total/km ajudam a identificar a origem das variações.</p><p>Dependendo da operação, também são úteis custo por viagem, hora, tonelada e tonelada-quilômetro. A métrica deve refletir o que a frota efetivamente produz.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>R$/km total e por natureza</li><li>Custo por viagem e hora</li><li>Tonelada e tonelada-quilômetro</li><li>Produtividade e ociosidade</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="custos" id="cap-27">
+      <div class="chapter-head"><span class="num">27</span><div><span class="tag">Custos</span><h2>Custo da Indisponibilidade</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>O custo de uma falha não termina na oficina. Um veículo parado pode exigir substituição, reprogramação, transbordo ou gerar perda de capacidade operacional.</p><p>Medir downtime ajuda a priorizar ações que reduzem o impacto total, mesmo quando o reparo em si não é o item mais caro.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Reparo + perda operacional</li><li>Veículo reserva e transbordo</li><li>Horas/dias indisponíveis</li><li>Impacto na decisão de manutenção</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="indicadores" id="cap-28">
+      <div class="chapter-head"><span class="num">28</span><div><span class="tag">Indicadores</span><h2>Disponibilidade, Utilização e Ociosidade</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Disponibilidade informa se o ativo poderia trabalhar; utilização informa se efetivamente trabalhou. Confundir os dois conceitos pode levar a diagnósticos errados.</p><p>Um veículo pode estar mecanicamente disponível e ocioso por falta de demanda, motorista, carga ou programação. A causa precisa ser classificada.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Disponibilidade física/mecânica</li><li>Utilização</li><li>Ociosidade e causas</li><li>Capacidade instalada x utilizada</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="indicadores" id="cap-29">
+      <div class="chapter-head"><span class="num">29</span><div><span class="tag">Indicadores</span><h2>KPIs e Dashboard de Frota</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Indicadores devem apoiar perguntas de gestão. Um painel útil conecta resultado, tendência e causa provável, permitindo navegar do KPI para os ativos e eventos que o compõem.</p><p>Entre os indicadores: disponibilidade, utilização, MTBF, MTTR, custo/km, km/l, manutenção/km, pneu/km, backlog, preventiva x corretiva, retrabalho, idade média e TCO.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>O que mede</li><li>Como calcular</li><li>Como interpretar</li><li>Qual decisão suporta</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="estratégia" id="cap-30">
+      <div class="chapter-head"><span class="num">30</span><div><span class="tag">Estratégia</span><h2>Renovação e Desmobilização</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Renovar frota não deve depender somente da idade. Quilometragem, confiabilidade, consumo, manutenção, disponibilidade, valor residual e adequação à operação precisam ser combinados.</p><p>A vida econômica termina quando, dentro das premissas da organização, manter o ativo deixa de ser a alternativa mais interessante em relação à substituição.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Curva de envelhecimento</li><li>Valor residual</li><li>Critérios de substituição</li><li>Venda e desmobilização</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="governança" id="cap-31">
+      <div class="chapter-head"><span class="num">31</span><div><span class="tag">Governança</span><h2>Recall e Campanhas Técnicas</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Recall e campanhas técnicas precisam de rastreabilidade para identificar quais ativos são afetados, quais já foram atendidos e quais permanecem pendentes.</p><p>A gestão deve integrar comunicação do fabricante, agendamento, indisponibilidade, execução e evidência de conclusão.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Identificação de ativos afetados</li><li>Agendamento</li><li>Comprovação de execução</li><li>Pendências e risco</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="segurança" id="cap-32">
+      <div class="chapter-head"><span class="num">32</span><div><span class="tag">Segurança</span><h2>Segurança e Gestão de Riscos da Frota</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Segurança deve atravessar manutenção, operação e comportamento. Falhas críticas, condições inadequadas e eventos de condução precisam de critérios claros de tratamento.</p><p>Matrizes de risco podem combinar probabilidade e consequência, considerando pessoas, operação, patrimônio, ambiente e conformidade.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Criticidade</li><li>Bloqueio de veículo</li><li>Riscos operacionais</li><li>Ações preventivas</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="sustentabilidade" id="cap-33">
+      <div class="chapter-head"><span class="num">33</span><div><span class="tag">Sustentabilidade</span><h2>ESG, Emissões e Eficiência Ambiental</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>A frota possui impactos ambientais associados principalmente ao consumo de energia, emissões, pneus, óleos, peças e descarte de materiais. Gestão ambiental eficiente começa por medir consumo e destinação.</p><p>Indicadores ambientais devem ser contextualizados pela atividade produzida, permitindo acompanhar eficiência e não apenas volume absoluto.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Consumo e emissões</li><li>Destinação de pneus e óleos</li><li>Resíduos de manutenção</li><li>Eficiência por unidade produzida</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="tecnologia" id="cap-34">
+      <div class="chapter-head"><span class="num">34</span><div><span class="tag">Tecnologia</span><h2>Eletrificação e Novas Tecnologias</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Veículos elétricos e outras tecnologias alteram parte da lógica de frota. Autonomia, recarga, infraestrutura, bateria, perfil de rota e custo energético tornam-se variáveis relevantes.</p><p>A comparação com veículos convencionais deve considerar o ciclo de vida e a aplicação operacional, e não somente o preço de aquisição ou custo de energia.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>BEV e outras arquiteturas</li><li>Infraestrutura de recarga</li><li>Bateria e autonomia</li><li>TCO e adequação da rota</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="tecnologia" id="cap-35">
+      <div class="chapter-head"><span class="num">35</span><div><span class="tag">Tecnologia</span><h2>Governança de Dados e Integrações</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>Uma gestão orientada por dados depende de cadastros confiáveis e integração entre fontes. Hodômetro divergente, veículo duplicado ou centro de custo incorreto contaminam indicadores.</p><p>TMS, FMS, ERP, telemetria, abastecimento, oficina e BI podem compor o ecossistema, desde que existam regras de identificação, qualidade e responsabilidade pelos dados.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Dados mestres</li><li>Integrações e APIs</li><li>Qualidade e auditoria</li><li>Fonte oficial de cada informação</li></ul></div></div>
+    </article>
+<article class="chapter" data-cat="estratégia" id="cap-36">
+      <div class="chapter-head"><span class="num">36</span><div><span class="tag">Estratégia</span><h2>Modelo de Maturidade da Gestão de Frotas</h2></div></div>
+      <div class="chapter-body"><div class="explain"><p>A maturidade pode evoluir de uma gestão reativa para uma operação integrada e preditiva. O objetivo do modelo é permitir que a empresa identifique seu estágio e priorize próximos passos.</p><p>Um exemplo de evolução: registros básicos → manutenção preventiva → custos e KPIs → integração e telemetria → análise preditiva e otimização.</p></div>
+      <div class="keybox"><strong>Pontos-chave</strong><ul><li>Nível 1: reativo</li><li>Nível 2: controlado</li><li>Nível 3: integrado</li><li>Nível 4/5: analítico e preditivo</li></ul></div></div>
+    </article></section>
+</main>
+</div>
+<footer><strong>Manual Técnico de Gestão de Frotas — V6</strong><br>Estrutura independente de software, orientada a conceitos, processos e gestão.</footer>
+<script>
+const chapters=[...document.querySelectorAll('.chapter')], chips=[...document.querySelectorAll('.chip')];
+function apply(){
+ const q=document.getElementById('search').value.toLowerCase();
+ const f=document.querySelector('.chip.active').dataset.filter;
+ chapters.forEach(c=>{const okText=c.innerText.toLowerCase().includes(q); const okCat=f==='all'||c.dataset.cat===f; c.classList.toggle('hidden',!(okText&&okCat));});
+}
+document.getElementById('search').addEventListener('input',apply);
+chips.forEach(b=>b.onclick=()=>{chips.forEach(x=>x.classList.remove('active'));b.classList.add('active');apply();});
+function val(id){return parseFloat(document.getElementById(id).value)}
+function calcConsumo(){let a=val('km'),b=val('litros');document.getElementById('rConsumo').innerText=a>=0&&b>0?(a/b).toFixed(2)+' km/l':'Informe valores válidos';}
+function calcCusto(){let a=val('custo'),b=val('km2');document.getElementById('rCusto').innerText=a>=0&&b>0?'R$ '+(a/b).toFixed(3)+'/km':'Informe valores válidos';}
+function calcMtbf(){let a=val('tempo'),b=val('falhas');document.getElementById('rMtbf').innerText=a>=0&&b>0?(a/b).toFixed(1)+' h entre falhas':'Informe valores válidos';}
+
+function showSys(t,d){document.getElementById('sysInfo').innerHTML='<b>'+t+'</b><br>'+d+'<br><button onclick="openDeep(\''+t+'\')" style="margin-top:9px">Abrir módulo técnico →</button>'; }
+let osTimer;
+function animateOS(){clearInterval(osTimer);const s=[...document.querySelectorAll('#osAnim .pstep')];s.forEach(x=>x.classList.remove('on'));let i=0;s[0].classList.add('on');osTimer=setInterval(()=>{i++;if(i>=s.length){clearInterval(osTimer);return}s[i].classList.add('on')},450)}
+function mttr(){let h=+document.getElementById('mttrH').value,n=+document.getElementById('mttrN').value;document.getElementById('mttrO').innerText=n>0?(h/n).toFixed(2)+' h/reparo':'Informe valores válidos'}
+function disp(){let h=+document.getElementById('dispH').value,i=+document.getElementById('dispI').value;document.getElementById('dispO').innerText=h>0?(((h-i)/h)*100).toFixed(1)+'%':'Informe valores válidos'}
+function pneu(){let c=+document.getElementById('pnC').value,k=+document.getElementById('pnK').value;document.getElementById('pnO').innerText=k>0?'R$ '+(c/k).toFixed(4)+'/km':'Informe valores válidos'}
+function tco(){let a=+document.getElementById('tA').value,o=+document.getElementById('tO').value,r=+document.getElementById('tR').value;document.getElementById('tcoO').innerText='R$ '+(a+o-r).toLocaleString('pt-BR')}
+function caseAns(ok){document.getElementById('caseOut').innerHTML=ok?'<b style="color:#16833c">Correto.</b> A recorrência pede investigação estruturada: condição de montagem, lubrificação, alinhamento, carga, peça, fornecedor e contexto operacional.':'<b style="color:#b42318">Revise a decisão.</b> Uma falha recorrente pede investigação além da simples substituição.'}
+function risk(){let p=+document.getElementById('prob').value,c=+document.getElementById('cons').value,s=p*c;document.getElementById('probV').innerText=p;document.getElementById('consV').innerText=c;let x=s<=4?'Baixa':s<=9?'Moderada':s<=16?'Alta':'Crítica';document.getElementById('riskO').innerText=s+' — '+x}
+risk();
+
+
+function tirePos(el,pos,app,sulco,pressao,vida){
+ document.querySelectorAll('.wheel').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');
+ document.getElementById('tireInfo').innerHTML='<b>'+pos+'</b><br>Aplicação: '+app+' | Sulco: '+sulco+' | Pressão exemplo: '+pressao+' | '+vida+'<br><small>Valores ilustrativos; especificações reais devem seguir veículo, pneu, carga e fabricante.</small>';
+}
+function ck(s){
+ let row=s.closest('tr'),a=row.querySelector('.act'),v=s.value,crit=row.children[2].innerText;
+ if(v==='Conforme') a.innerText='Liberar';
+ else if(v==='Atenção') a.innerText='Registrar e avaliar';
+ else a.innerText=(crit==='Crítica'||crit==='Alta')?'Avaliar bloqueio / abrir manutenção':'Gerar pendência';
+}
+
+
+const deepData={
+"Motor":{
+img:"https://clipart-library.com/2023/Diesel-Engine-PNG-Clipart.png",
+intro:"O motor diesel deve ser gerenciado como um conjunto de sistemas interdependentes. Uma falha percebida como 'motor fraco', por exemplo, pode ter origem em alimentação de ar, combustível, gerenciamento eletrônico, sobrealimentação, arrefecimento ou condição mecânica.",
+cards:[
+["Função e conjuntos","Bloco e cabeçote; pistões, bielas e virabrequim; comando e válvulas; injeção; admissão/turbo; escape/pós-tratamento; lubrificação; arrefecimento; partida e gerenciamento eletrônico."],
+["O que inspecionar","Níveis e condição de fluidos, vazamentos, mangueiras, correias, filtros, pressão/temperatura, ruídos, fumaça, códigos de falha, consumo anormal, histórico de intervenções e recorrência."],
+["Sintoma → investigação","Superaquecimento → verificar nível/vazamento, radiador, bomba, válvula termostática, ventilação e carga operacional. Baixa potência → verificar admissão, combustível, turbo, escape, sensores e condição mecânica."],
+["Indicadores","MTBF do conjunto; custo de motor/km; falhas por 10.000 km; consumo de óleo; reincidência; horas de indisponibilidade; percentual preventiva/corretiva."]
+]},
+"Transmissão":{
+intro:"A transmissão leva torque do motor às rodas. A gestão precisa tratar embreagem, caixa, cardã, cruzetas, diferencial e lubrificação como cadeia; trocar um componente sem entender a causa pode apenas deslocar a falha.",
+cards:[
+["Sinais de atenção","Dificuldade de engate, patinação, vibração, trancos, ruído, vazamento, aquecimento, folgas e limalha/contaminação no lubrificante."],
+["Manutenção","Inspeção de vazamentos e fixações; lubrificação quando aplicável; controle de óleo; embreagem; cruzetas/cardã; diagnóstico eletrônico em transmissões automatizadas."],
+["Causa raiz","Vibração pode envolver cardã, balanceamento, cruzetas, ângulos, suportes ou pneus. Evite concluir pela peça antes do diagnóstico."],
+["Indicadores","Custo/km; vida da embreagem; falhas por componente; reincidência; tempo médio de reparo."]
+]},
+"Freios":{
+img:"https://vadenoriginal.com/docs/air-brake-system-diagram-en.png",
+intro:"Em veículos pesados, o sistema pneumático armazena e distribui ar comprimido para controlar a frenagem. A manutenção deve ser orientada à segurança e às especificações do fabricante, não apenas ao desgaste de uma peça.",
+cards:[
+["Cadeia funcional","Compressor → tratamento/secagem do ar → reservatórios → válvulas de controle/proteção → câmaras/atuadores → mecanismo de freio → roda. ABS/EBS acrescentam sensores e controle eletrônico."],
+["Inspeções","Tempo de enchimento e retenção de pressão, vazamentos, mangueiras, reservatórios, secador, válvulas, câmaras, desgaste do conjunto, sensores e alertas no painel."],
+["Anomalias","Perda de pressão, veículo puxando, aquecimento, ruído, baixa eficiência, desgaste desigual e alertas ABS/EBS devem gerar investigação antes da liberação."],
+["Gestão","Falha de freio deve ter criticidade alta. Checklist, bloqueio, OS, diagnóstico, teste final e evidência de liberação precisam estar conectados."]
+]},
+"Pneus":{
+intro:"O pneu deve ser acompanhado como ativo individual. O valor está no histórico completo: compra, montagem, posição, pressão, sulco, movimentações, reformas, retirada, motivo e descarte.",
+cards:[
+["Ficha individual","Identificação; fabricante/modelo/medida; DOT; valor; data/km de entrada; posição; pressão; sulcos; reformas; km por vida; motivo de retirada; custo/km."],
+["Leitura do desgaste","Desgaste central, ombros, unilateral, serrilhado ou localizado é um indício. Pressão, carga, alinhamento, suspensão, balanceamento, aplicação e condução devem ser investigados em conjunto."],
+["Movimentação","Toda troca de posição precisa registrar origem, destino, hodômetro e medição. Isso permite comparar desempenho por eixo e operação."],
+["Indicadores","R$/km por pneu; km por vida; índice de reforma; perda de carcaça; retiradas prematuras; pressão fora do padrão; diferença de sulco por posição."]
+]},
+"Telemetria":{
+intro:"Telemetria é uma fonte de eventos e contexto. O objetivo não é produzir mais gráficos, mas transformar sinais em decisões de manutenção, segurança, consumo e produtividade.",
+cards:[
+["Fontes","GPS; rede CAN; sensores adicionais; TPMS; temperatura; horas de motor; nível/consumo; eventos de condução; códigos de falha quando disponíveis."],
+["Regra de negócio","Dado → evento → regra → prioridade → ação → evidência → resultado. Ex.: temperatura elevada recorrente → alerta → análise → OS → causa → correção → monitoramento."],
+["Correlação","Infração + velocidade de telemetria; consumo + marcha lenta; pneu + TPMS; falha + código eletrônico; manutenção + horas/km."],
+["Qualidade","Odometria, identificação do veículo, motorista, timestamps e integração precisam ser confiáveis; caso contrário, o indicador pode induzir decisão errada."]
+]},
+"Implemento":{
+intro:"O implemento faz parte do conjunto produtivo. Deve possuir cadastro, plano de manutenção, checklist, pneus, custos, disponibilidade e histórico próprios.",
+cards:[
+["Estrutura","Chassi, quinta roda/pino-rei e acoplamentos, eixos, suspensão, freios, pneus, elétrica, iluminação, piso e estrutura específica da carroceria."],
+["Disponibilidade do conjunto","Um cavalo disponível não produz se o implemento necessário estiver indisponível. Meça disponibilidade por tipo de equipamento e por conjunto."],
+["Plano próprio","Periodicidades devem considerar uso, ambiente, carga, equipamento auxiliar e fabricante. Frigorífico, basculante e tanque possuem sistemas específicos."],
+["Indicadores","Disponibilidade, custo/km, custo por viagem, falhas, pneus, tempo de oficina e reincidência."]
+]},
+"Sider":{intro:"Implemento com fechamento lateral flexível, adequado a operações que valorizam acesso lateral e rapidez de carga/descarga.",cards:[
+["Componentes específicos","Lona, teto, trilhos, postes, catracas/tensionadores, cintas, portas, piso e pontos de amarração."],
+["Checklist","Rasgos e vedação da lona; tensão; funcionamento de trilhos; travas; integridade estrutural; piso; iluminação; acoplamento; freios; pneus."],
+["Falhas comuns a controlar","Danos de lona, travas/tensionadores, infiltração, desalinhamento de estruturas móveis e avarias de piso."],
+["Gestão","Separar custo da carroceria do custo do conjunto rodante ajuda a identificar onde está a recorrência."]
+]},
+"Baú seco":{intro:"Carroceria fechada para proteção da carga contra ambiente e acesso externo.",cards:[
+["Inspeção","Painéis, teto, portas, dobradiças, vedação, piso, infiltração, iluminação interna quando houver e estrutura."],
+["Avarias","Amassamentos, infiltração e danos internos devem ser vinculados a evento, rota, carga ou operação quando possível."],
+["Manutenção","Vedação e estrutura não devem ser tratadas somente de forma estética: podem afetar integridade da carga."],
+["Checklist de saída","Portas/travas, vedação, piso, iluminação, conjunto rodante e documentação."]
+]},
+"Frigorífico / refrigerado":{
+img:"https://www.facchini.com.br/adm/produtos/topo-sem_ffr7-m.webp",
+intro:"Além da estrutura do semirreboque, o refrigerado possui um sistema térmico que precisa ser gerenciado como equipamento auxiliar crítico.",
+cards:[
+["Sistemas","Isolamento, portas/vedação, unidade frigorífica, alimentação/combustível do equipamento, sensores, circulação de ar e registro de temperatura."],
+["Antes da viagem","Condição da caixa, vedação, unidade, setpoint aplicável à operação, alarmes, combustível/energia e evidência de funcionamento."],
+["Manutenção","Horas do equipamento podem ser mais relevantes que km. Controle revisão, filtros, correias, fluidos, falhas, sensores e calibrações quando aplicáveis."],
+["Risco","Falha térmica pode gerar impacto muito maior que o custo do reparo: perda de produto, reentrega, parada e não conformidade."]
+]},
+"Tanque":{
+intro:"Implementos tanque exigem gestão da estrutura e dos sistemas de contenção/transferência conforme produto, aplicação e requisitos aplicáveis.",
+cards:[
+["Pontos de controle","Corpo do tanque, suportes, válvulas, tubulações, tampas, vedações, conexões, elementos de segurança e aterramento quando aplicável."],
+["Checklist","Vazamento, integridade, fechamento, conexões, identificação/documentação, pneus, freios, iluminação e acoplamento."],
+["Manutenção","Intervenções devem respeitar produto transportado, procedimentos de segurança e requisitos técnicos específicos."],
+["Gestão de risco","Nunca generalize um procedimento entre produtos incompatíveis; aplicação e requisitos determinam inspeção e manutenção."]
+]},
+"Graneleiro":{intro:"Voltado a cargas a granel, combina estrutura aberta/fechável com mecanismos de contenção e descarga.",cards:[
+["Inspeção","Laterais, tampas, travas, lona, vedação, estrutura, piso/funil quando houver, descarga e conjunto rodante."],
+["Operação","Carga e distribuição de peso afetam estrutura, pneus, suspensão e estabilidade."],
+["Falhas","Trincas, deformações, travas, lona e desgaste por ambiente abrasivo merecem histórico."],
+["Indicadores","Avarias estruturais, tempo de indisponibilidade, custo por viagem e recorrência por rota/operação."]
+]},
+"Basculante":{intro:"O basculante adiciona sistema de elevação e riscos operacionais específicos.",cards:[
+["Sistema hidráulico","Cilindro, mangueiras, conexões, bomba/tomada de força e pontos de articulação."],
+["Checklist","Vazamentos, fixações, pinos, estrutura, tampa/trava, estabilidade e condições do terreno/operação."],
+["Manutenção","Lubrificação de articulações, inspeção de mangueiras e estrutura e tratamento rápido de vazamentos."],
+["Risco","Elevação altera o centro de gravidade. Operação segura depende também de solo, inclinação e distribuição da carga."]
+]},
+"Prancha":{intro:"Pranchas transportam máquinas/equipamentos e dependem de estrutura e amarração adequadas.",cards:[
+["Componentes","Plataforma, rampas, travas, pontos de amarração, sistema hidráulico quando existente, eixos e suspensão."],
+["Checklist","Rampas, travas, estrutura, fixação da carga, iluminação, pneus e acoplamento."],
+["Planejamento","Dimensões, massa, distribuição de carga e rota fazem parte da gestão do equipamento."],
+["Avarias","Deformação estrutural e danos em pontos de amarração precisam ser tratados antes de nova utilização."]
+]},
+"Cegonha":{intro:"A cegonha utiliza múltiplas plataformas para transporte de veículos e possui elevada quantidade de pontos móveis e de fixação.",cards:[
+["Componentes","Plataformas, rampas, cilindros/atuadores, travas, cintas, pontos de fixação e estrutura."],
+["Checklist","Movimentação das plataformas, travamento, vazamentos, cintas, estrutura, iluminação e conjunto rodante."],
+["Avarias","Além da manutenção do implemento, registrar danos de carga e sua etapa operacional ajuda a atacar causas."],
+["Indicadores","Falhas hidráulicas, avarias, tempo de carregamento, indisponibilidade e custo de manutenção."]
+]}
+};
+
+function renderDeep(name){
+ const d=deepData[name]; if(!d)return;
+ let img=d.img?'<img class="deep-img" src="'+d.img+'" alt="'+name+'">':'<div class="deep-card"><h3>Mapa de estudo</h3><div class="microflow"><span>Função</span><b>→</b><span>Componentes</span><b>→</b><span>Inspeção</span><b>→</b><span>Falha</span><b>→</b><span>Diagnóstico</span><b>→</b><span>Manutenção</span><b>→</b><span>Indicador</span></div></div>';
+ let cards=d.cards.map(x=>'<div class="deep-card"><h3>'+x[0]+'</h3><div>'+x[1]+'</div></div>').join('');
+ return '<div class="deep-cols"><div><p style="font-size:16px;line-height:1.6">'+d.intro+'</p>'+cards+'</div><div>'+img+
+ '<div class="deep-card"><h3>Exercício de aplicação</h3><p>Ao identificar uma anomalia, não registre apenas a peça. Pergunte: <b>qual foi o sintoma, qual sistema está envolvido, qual evidência sustenta o diagnóstico, qual causa foi identificada e como comprovar a correção?</b></p></div>'+
+ '<div class="actionbar"><button onclick="deepTab(\'inspecao\')">Checklist técnico</button><button onclick="deepTab(\'falha\')">Árvore de falhas</button><button onclick="deepTab(\'kpi\')">Indicadores</button></div><div id="deepExtra"></div></div></div>';
+}
+function openDeep(name){ if(!deepData[name])return; document.getElementById('deepTitle').innerText=name;document.getElementById('deepBody').innerHTML=renderDeep(name);document.getElementById('deepModal').classList.add('open');}
+function closeDeep(){document.getElementById('deepModal').classList.remove('open')}
+function deepTab(t){
+ let m={inspecao:'<div class="deep-card"><h3>Checklist técnico</h3><ul class="deep-list"><li>Condição visual e evidências.</li><li>Fixações, folgas, vazamentos e desgaste.</li><li>Parâmetros disponíveis: pressão, temperatura, nível, km/horas.</li><li>Histórico de falhas e última intervenção.</li><li>Classificar criticidade e definir ação.</li></ul></div>',
+ falha:'<div class="deep-card"><h3>Árvore de investigação</h3><div class="microflow"><span>Sintoma</span><b>→</b><span>Confirmar evidência</span><b>→</b><span>Isolar sistema</span><b>→</b><span>Testar hipóteses</span><b>→</b><span>Causa</span><b>→</b><span>Ação</span><b>→</b><span>Validar</span></div></div>',
+ kpi:'<div class="deep-card"><h3>Indicadores mínimos</h3><div class="diag-grid"><div class="diag">Falhas / período</div><div class="diag">Custo / km ou hora</div><div class="diag">Indisponibilidade</div><div class="diag">Reincidência</div><div class="diag">Preventiva x corretiva</div><div class="diag">Tempo de reparo</div></div></div>'};
+ document.getElementById('deepExtra').innerHTML=m[t];
+}
+
+
+const lessons={
+os:{title:"Ordem de Serviço",intro:"A OS é o prontuário técnico e econômico da intervenção. O valor do registro depende da qualidade da cadeia sintoma → diagnóstico → causa → ação → validação.",steps:[
+["Conceito","<h3>O que uma boa OS precisa responder?</h3><div class='diag-grid'><div class='diag'><b>Origem</b><br>Quem/qual evento abriu?</div><div class='diag'><b>Sintoma</b><br>O que foi percebido?</div><div class='diag'><b>Diagnóstico</b><br>O que a inspeção/teste encontrou?</div><div class='diag'><b>Causa</b><br>Por que ocorreu?</div><div class='diag'><b>Ação</b><br>O que foi feito?</div><div class='diag'><b>Validação</b><br>Como foi comprovada a liberação?</div></div>"],
+["Fluxo","<h3>Ciclo completo</h3><div class='lesson-flow'><span>Checklist/alerta</span><b>→</b><span>Solicitação</span><b>→</b><span>Triagem</span><b>→</b><span>OS</span><b>→</b><span>Diagnóstico</span><b>→</b><span>Aprovação</span><b>→</b><span>Execução</span><b>→</b><span>Teste</span><b>→</b><span>Liberação</span><b>→</b><span>Análise</span></div><p>Separe espera por peça, aprovação, box, terceiro e teste do tempo efetivo de reparo. Isso mostra onde está o verdadeiro downtime.</p>"],
+["Exemplo","<h3>Exemplo de registro</h3><table><tr><th>Campo</th><th>Registro útil</th></tr><tr><td>Sintoma</td><td>Vibração no volante durante frenagem acima de determinada condição.</td></tr><tr><td>Diagnóstico</td><td>Inspeção encontrou desgaste irregular no conjunto dianteiro.</td></tr><tr><td>Causa</td><td>Definida após testes; se não confirmada, registrar como causa em investigação.</td></tr><tr><td>Ação</td><td>Serviços/peças executados conforme diagnóstico.</td></tr><tr><td>Validação</td><td>Teste funcional e inspeção final sem recorrência do sintoma.</td></tr></table>"],
+["Indicadores","<h3>O que extrair da OS?</h3><div class='diag-grid'><div class='diag'>Custo por sistema</div><div class='diag'>MTTR</div><div class='diag'>Downtime total</div><div class='diag'>Reincidência</div><div class='diag'>Peças por ativo</div><div class='diag'>Preventiva x corretiva</div><div class='diag'>Tempo aguardando peça</div><div class='diag'>Retrabalho</div></div>"],
+["Decisão","<div class='scenario'><b>Cenário:</b> o veículo retorna 3 vezes em 45 dias com o mesmo sintoma.<br><button onclick=\"lessonFeedback(true,'Abrir análise de causa raiz e relacionar as OS anteriores.')\">Analisar recorrência</button><button onclick=\"lessonFeedback(false,'Fechar nova OS isoladamente perde o histórico da recorrência.')\">Tratar isoladamente</button><div id='lessonFb'></div></div>"]
+]},
+pneus:{title:"Pneus e Croqui",intro:"Pneus devem ser gerenciados por identidade e posição. O croqui liga o ativo físico ao histórico de pressão, sulco, quilometragem, movimentações e reformas.",steps:[
+["Cadastro","<h3>Ficha individual</h3><table><tr><th>Grupo</th><th>Dados</th></tr><tr><td>Identidade</td><td>Número interno, marca, modelo, medida, DOT.</td></tr><tr><td>Financeiro</td><td>Compra, reformas, reparos, valor de carcaça/descarte.</td></tr><tr><td>Operação</td><td>Veículo, posição, montagem, retirada, km e motivo.</td></tr><tr><td>Inspeção</td><td>Pressão, sulco por ponto, danos e observações.</td></tr></table>"],
+["Croqui","<h3>Por que posição importa?</h3><p>Eixos direcionais, de tração e livres trabalham de forma diferente. O histórico por posição ajuda a investigar desgaste e aplicação.</p><div class='lesson-flow'><span>Identificar</span><b>→</b><span>Montar</span><b>→</b><span>Medir</span><b>→</b><span>Movimentar</span><b>→</b><span>Reformar</span><b>→</b><span>Retirar</span></div>"],
+["Desgaste","<h3>Desgaste é pista, não diagnóstico</h3><div class='diag-grid'><div class='diag'><b>Centro</b><br>Investigar pressão/aplicação.</div><div class='diag'><b>Ombros</b><br>Investigar pressão, carga e aplicação.</div><div class='diag'><b>Unilateral</b><br>Investigar geometria/alinhamento.</div><div class='diag'><b>Irregular</b><br>Investigar suspensão, balanceamento, geometria e operação.</div></div>"],
+["Indicadores","<h3>Indicadores</h3><div class='diag-grid'><div class='diag'>R$/km</div><div class='diag'>Km por vida</div><div class='diag'>Índice de reforma</div><div class='diag'>Perda de carcaça</div><div class='diag'>Retirada prematura</div><div class='diag'>Pressão fora do padrão</div></div>"],
+["Decisão","<div class='scenario'><b>Cenário:</b> pneu apresenta desgaste unilateral recorrente na mesma posição.<br><button onclick=\"lessonFeedback(true,'Além do pneu, investigue geometria, suspensão, folgas e histórico daquela posição.')\">Investigar conjunto</button><button onclick=\"lessonFeedback(false,'Apenas trocar o pneu pode repetir a falha.')\">Somente substituir</button><div id='lessonFb'></div></div>"]
+]},
+manutencao:{title:"Tipos de Manutenção",intro:"A estratégia de manutenção deve combinar criticidade, consequência da falha, previsibilidade e custo.",steps:[
+["Comparar","<table><tr><th>Tipo</th><th>Gatilho</th><th>Uso</th></tr><tr><td>Corretiva</td><td>Falha ocorrida</td><td>Planejada ou emergencial.</td></tr><tr><td>Preventiva</td><td>Tempo/km/horas</td><td>Intervenção periódica.</td></tr><tr><td>Preditiva</td><td>Tendência de condição</td><td>Análise de óleo, vibração, temperatura etc.</td></tr><tr><td>Baseada em condição</td><td>Limite observado</td><td>Intervir conforme estado real.</td></tr><tr><td>Detectiva</td><td>Teste funcional</td><td>Descobrir falhas ocultas.</td></tr></table>"],
+["Estratégia","<h3>Escolha por criticidade</h3><p>Nem todo componente precisa da mesma estratégia. Segurança, impacto operacional, detectabilidade, custo e consequência orientam a decisão.</p>"],
+["Planejamento","<div class='lesson-flow'><span>Ativo</span><b>→</b><span>Sistema</span><b>→</b><span>Modo de falha</span><b>→</b><span>Criticidade</span><b>→</b><span>Tarefa</span><b>→</b><span>Gatilho</span><b>→</b><span>Evidência</span></div>"],
+["Indicadores","<div class='diag-grid'><div class='diag'>% preventiva</div><div class='diag'>% corretiva</div><div class='diag'>Backlog</div><div class='diag'>MTBF</div><div class='diag'>MTTR</div><div class='diag'>Disponibilidade</div></div>"],
+["Decisão","<div class='scenario'><b>Cenário:</b> componente crítico apresenta tendência mensurável antes da falha.<br><button onclick=\"lessonFeedback(true,'A condição pode ser usada como gatilho, desde que exista método confiável e limite definido.')\">Usar condição</button><button onclick=\"lessonFeedback(false,'Esperar a quebra aumenta exposição quando a falha é crítica e previsível.')\">Esperar quebrar</button><div id='lessonFb'></div></div>"]
+]},
+combustivel:{title:"Combustível e Abastecimento",intro:"Consumo deve ser analisado com contexto: veículo, motorista, rota, peso, marcha lenta, topografia, operação e qualidade dos registros.",steps:[
+["Registro","<h3>Dados mínimos</h3><p>Veículo, motorista, data/hora, local/posto, produto, litros, preço, valor, hodômetro/horímetro, tanque e identificação da transação.</p>"],
+["Conciliação","<div class='lesson-flow'><span>Abastecimento</span><b>→</b><span>Validação do km</span><b>→</b><span>Capacidade</span><b>→</b><span>Consumo esperado</span><b>→</b><span>Exceção</span><b>→</b><span>Investigação</span></div>"],
+["Anomalias","<div class='diag-grid'><div class='diag'>Litros > capacidade plausível</div><div class='diag'>Km regressivo</div><div class='diag'>Abastecimentos muito próximos</div><div class='diag'>Consumo fora da faixa</div><div class='diag'>Preço fora do padrão</div><div class='diag'>Transação sem veículo/condutor</div></div>"],
+["Indicadores","<div class='diag-grid'><div class='diag'>km/l</div><div class='diag'>L/100 km</div><div class='diag'>R$/km</div><div class='diag'>Marcha lenta</div><div class='diag'>Consumo por rota</div><div class='diag'>Desvio por veículo</div></div>"],
+["Decisão","<div class='scenario'><b>Cenário:</b> consumo piorou 12%, mas o veículo passou a operar em rota mais pesada.<br><button onclick=\"lessonFeedback(true,'Compare contexto operacional antes de concluir falha ou comportamento inadequado.')\">Contextualizar</button><button onclick=\"lessonFeedback(false,'Comparar apenas km/l pode gerar conclusão errada.')\">Punir pelo km/l</button><div id='lessonFb'></div></div>"]
+]},
+baterias:{title:"Baterias e Sistema de Carga",intro:"Trocar bateria repetidamente sem testar o sistema elétrico é um exemplo clássico de manutenção de sintoma.",steps:[
+["Ciclo","<div class='lesson-flow'><span>Compra</span><b>→</b><span>Instalação</span><b>→</b><span>Testes</span><b>→</b><span>Ocorrência</span><b>→</b><span>Remoção</span><b>→</b><span>Garantia/Descarte</span></div>"],
+["Diagnóstico","<h3>Investigue o sistema</h3><p>Bateria, alternador, motor de partida, conexões, aterramento, chicote, acessórios e consumo parasita podem participar do mesmo sintoma.</p>"],
+["Registro","<p>Identificação, especificação, data de instalação, veículo/posição, testes, tensão/condição, remoção, motivo, garantia e destino.</p>"],
+["Indicadores","<div class='diag-grid'><div class='diag'>Vida média</div><div class='diag'>Trocas prematuras</div><div class='diag'>Garantias recuperadas</div><div class='diag'>Falhas por veículo</div></div>"],
+["Decisão","<div class='scenario'><b>Cenário:</b> terceira bateria em curto período no mesmo veículo.<br><button onclick=\"lessonFeedback(true,'Teste carga, partida, conexões e consumo parasita antes de condenar nova bateria.')\">Diagnóstico elétrico</button><button onclick=\"lessonFeedback(false,'Nova substituição sem diagnóstico tende a repetir o evento.')\">Trocar novamente</button><div id='lessonFb'></div></div>"]
+]},
+lubrificantes:{title:"Lubrificantes e Fluidos",intro:"Lubrificante não é apenas item de troca. Especificação, consumo e condição podem revelar saúde do conjunto.",steps:[
+["Famílias","<p>Motor, transmissão, diferencial, hidráulico, graxas, fluido de arrefecimento e outros fluidos conforme o equipamento.</p>"],
+["Controle","<p>Especificação correta, volume, periodicidade, lote/fornecedor quando necessário, consumo entre trocas, vazamentos e condição.</p>"],
+["Análise","<div class='lesson-flow'><span>Amostra</span><b>→</b><span>Contaminação/desgaste</span><b>→</b><span>Tendência</span><b>→</b><span>Decisão</span></div><p>Uma análise isolada é menos valiosa que uma tendência consistente e corretamente amostrada.</p>"],
+["Indicadores","<div class='diag-grid'><div class='diag'>Litros/1.000 km</div><div class='diag'>Consumo por conjunto</div><div class='diag'>Vazamentos</div><div class='diag'>Extensão/redução de intervalo validada</div></div>"],
+["Decisão","<div class='scenario'><b>Cenário:</b> consumo de óleo aumentou sem vazamento externo visível.<br><button onclick=\"lessonFeedback(true,'Investigue condição mecânica e tendência; não trate apenas como reposição de estoque.')\">Investigar</button><button onclick=\"lessonFeedback(false,'Somente completar o nível esconde a tendência.')\">Só completar</button><div id='lessonFb'></div></div>"]
+]},
+telemetria:{title:"Telemetria aplicada à Frota",intro:"Telemetria ganha valor quando o dado dispara uma regra e essa regra termina em uma ação verificável.",steps:[
+["Arquitetura","<div class='lesson-flow'><span>GPS/CAN/Sensor</span><b>→</b><span>Comunicação</span><b>→</b><span>Plataforma</span><b>→</b><span>Regra</span><b>→</b><span>Ação</span><b>→</b><span>BI</span></div>"],
+["Eventos","<div class='diag-grid'><div class='diag'>Velocidade</div><div class='diag'>Marcha lenta</div><div class='diag'>Temperatura</div><div class='diag'>Pressão de pneu</div><div class='diag'>Código de falha</div><div class='diag'>Horas de motor</div></div>"],
+["Integração","<p>Eventos podem abrir análise, alimentar checklist, priorizar OS, contextualizar infrações e explicar consumo. Evite automação sem filtro: alertas excessivos viram ruído.</p>"],
+["Indicadores","<div class='diag-grid'><div class='diag'>Eventos/1000 km</div><div class='diag'>Alertas tratados</div><div class='diag'>Tempo alerta→ação</div><div class='diag'>Falhas evitadas</div></div>"],
+["Decisão","<div class='scenario'><b>Cenário:</b> alerta de temperatura aparece repetidamente, mas some após minutos.<br><button onclick=\"lessonFeedback(true,'A recorrência deve ser correlacionada a carga, rota, sensores e sistema de arrefecimento.')\">Investigar tendência</button><button onclick=\"lessonFeedback(false,'Ignorar recorrência elimina o valor preditivo do dado.')\">Ignorar</button><div id='lessonFb'></div></div>"]
+]},
+checklist:{title:"Checklist e Inspeções",intro:"Checklist é mecanismo de detecção e geração de trabalho; não deve terminar em uma lista arquivada.",steps:[
+["Estrutura","<p>Item, critério, evidência, situação, criticidade, observação, responsável, data/hora e ação gerada.</p>"],
+["Criticidade","<table><tr><th>Situação</th><th>Tratamento</th></tr><tr><td>Conforme</td><td>Registrar e seguir.</td></tr><tr><td>Atenção</td><td>Avaliar e programar.</td></tr><tr><td>Não conforme</td><td>Gerar ação; bloquear quando risco/critério exigir.</td></tr></table>"],
+["Integração","<div class='lesson-flow'><span>Inspeção</span><b>→</b><span>Não conformidade</span><b>→</b><span>Criticidade</span><b>→</b><span>Solicitação/OS</span><b>→</b><span>Correção</span><b>→</b><span>Baixa</span></div>"],
+["Indicadores","<div class='diag-grid'><div class='diag'>Adesão</div><div class='diag'>Não conformidades</div><div class='diag'>Itens críticos</div><div class='diag'>Tempo para correção</div><div class='diag'>Reincidência</div></div>"],
+["Decisão","<div class='scenario'><b>Cenário:</b> item crítico é marcado não conforme.<br><button onclick=\"lessonFeedback(true,'A política deve definir bloqueio e tratamento antes da liberação.')\">Tratar criticidade</button><button onclick=\"lessonFeedback(false,'Checklist sem consequência operacional perde efetividade.')\">Apenas registrar</button><div id='lessonFb'></div></div>"]
+]},
+infracoes:{title:"Gestão de Infrações",intro:"A evolução ocorre quando o registro administrativo vira informação sobre comportamento, exposição e prevenção.",steps:[
+["Processo","<div class='lesson-flow'><span>Receber</span><b>→</b><span>Validar</span><b>→</b><span>Veículo</span><b>→</b><span>Condutor</span><b>→</b><span>Prazo</span><b>→</b><span>Tratamento</span><b>→</b><span>Histórico</span><b>→</b><span>Prevenção</span></div>"],
+["Dados","<p>Tipo, enquadramento, data/hora, local, veículo, condutor, filial, operação, valor, prazos, status, reincidência, evidências e ação adotada.</p>"],
+["Evolução","<table><tr><th>Nível</th><th>Uso</th></tr><tr><td>1 Financeiro</td><td>Pagar/controlar valor.</td></tr><tr><td>2 Administrativo</td><td>Prazo e responsável.</td></tr><tr><td>3 Analítico</td><td>Padrões e reincidência.</td></tr><tr><td>4 Preventivo</td><td>Treinamento e telemetria.</td></tr><tr><td>5 Risco</td><td>Priorização de exposição.</td></tr></table>"],
+["Indicadores","<div class='diag-grid'><div class='diag'>Infrações/100 mil km</div><div class='diag'>Reincidência</div><div class='diag'>Valor</div><div class='diag'>Por tipo/local</div><div class='diag'>Por condutor</div><div class='diag'>Prazo perdido</div></div>"],
+["Decisão","<div class='scenario'><b>Cenário:</b> mesma infração cresce em um trecho específico.<br><button onclick=\"lessonFeedback(true,'Analise local, horário, operação e telemetria antes de definir ação.')\">Investigar padrão</button><button onclick=\"lessonFeedback(false,'Tratar cada multa isoladamente perde a dimensão operacional.')\">Só cobrar motorista</button><div id='lessonFb'></div></div>"]
+]},
+sinistros:{title:"Sinistros, Avarias e Seguros",intro:"O custo do sinistro vai além da franquia: inclui reparo, indisponibilidade, terceiros, reprogramação e impacto operacional.",steps:[
+["Resposta","<div class='lesson-flow'><span>Segurança</span><b>→</b><span>Evidências</span><b>→</b><span>Comunicação</span><b>→</b><span>Seguro/terceiros</span><b>→</b><span>Reparo</span><b>→</b><span>Custos</span><b>→</b><span>Análise</span></div>"],
+["Registro","<p>Local, data/hora, veículo, condutor, descrição, fotos/evidências, terceiros, danos, acionamentos, oficina, tempos, custos e conclusão.</p>"],
+["Custo total","<p>Reparo + franquia + remoção + veículo substituto + indisponibilidade + carga/operação + terceiros + demais custos atribuíveis.</p>"],
+["Indicadores","<div class='diag-grid'><div class='diag'>Eventos/1M km</div><div class='diag'>Custo/evento</div><div class='diag'>Downtime</div><div class='diag'>Recorrência</div></div>"],
+["Decisão","<div class='scenario'><b>Cenário:</b> pequenas avarias se repetem no mesmo pátio.<br><button onclick=\"lessonFeedback(true,'Analise layout, manobra, iluminação, treinamento e processo do local.')\">Atacar causa sistêmica</button><button onclick=\"lessonFeedback(false,'Somente reparar mantém a fonte do problema.')\">Somente reparar</button><div id='lessonFb'></div></div>"]
+]},
+socorro:{title:"Socorro Mecânico",intro:"Socorro é manutenção fora da condição planejada e deve alimentar confiabilidade, não terminar no guincho.",steps:[
+["Triagem","<p>Localização, segurança, sintoma, possibilidade de movimentação, carga, criticidade, diagnóstico inicial e recurso necessário.</p>"],
+["Fluxo","<div class='lesson-flow'><span>Acionamento</span><b>→</b><span>Triagem</span><b>→</b><span>Prestador</span><b>→</b><span>Chegada</span><b>→</b><span>Diagnóstico</span><b>→</b><span>Reparo/remoção</span><b>→</b><span>Liberação</span></div>"],
+["Tempos","<p>Meça separadamente tempo até acionamento, deslocamento do prestador, diagnóstico, reparo/remoção e retorno à operação.</p>"],
+["Indicadores","<div class='diag-grid'><div class='diag'>Socorros/100 mil km</div><div class='diag'>Tempo resposta</div><div class='diag'>Custo</div><div class='diag'>Falha por sistema</div><div class='diag'>Reincidência</div></div>"],
+["Decisão","<div class='scenario'><b>Cenário:</b> socorros por mesma causa aumentam.<br><button onclick=\"lessonFeedback(true,'Leve o padrão ao plano preventivo e à análise de confiabilidade.')\">Retroalimentar manutenção</button><button onclick=\"lessonFeedback(false,'Socorro isolado não reduz recorrência.')\">Tratar caso a caso</button><div id='lessonFb'></div></div>"]
+]},
+oficina:{title:"Gestão de Oficina",intro:"A oficina é um sistema de capacidade. Veículo parado aguardando box, peça ou aprovação é indisponibilidade mesmo sem mecânico trabalhando.",steps:[
+["Capacidade","<p>Boxes, técnicos, especialidades, ferramentas, turnos, terceiros, peças e restrições determinam capacidade real.</p>"],
+["Backlog","<table><tr><th>Priorizar por</th><th>Exemplo</th></tr><tr><td>Segurança</td><td>Risco crítico primeiro.</td></tr><tr><td>Impacto operacional</td><td>Ativo sem substituto.</td></tr><tr><td>Prazo/idade</td><td>Evitar backlog envelhecido.</td></tr><tr><td>Recursos</td><td>Peças, técnico, box.</td></tr></table>"],
+["Tempos","<div class='lesson-flow'><span>Fila</span><b>+</b><span>Diagnóstico</span><b>+</b><span>Aprovação</span><b>+</b><span>Peças</span><b>+</b><span>Reparo</span><b>+</b><span>Teste</span></div>"],
+["Indicadores","<div class='diag-grid'><div class='diag'>Ocupação de box</div><div class='diag'>Produtividade</div><div class='diag'>Backlog</div><div class='diag'>Lead time OS</div><div class='diag'>Retrabalho</div><div class='diag'>Espera por peça</div></div>"],
+["Decisão","<div class='scenario'><b>Cenário:</b> MTTR mecânico é baixo, mas veículos ficam dias parados.<br><button onclick=\"lessonFeedback(true,'Quebre o downtime em filas e esperas para encontrar o gargalo.')\">Analisar lead time</button><button onclick=\"lessonFeedback(false,'Olhar só horas de reparo esconde as esperas.')\">Olhar só reparo</button><div id='lessonFb'></div></div>"]
+]},
+custos:{title:"Custos, Custo/km e TCO",intro:"O custo deve permitir decisão: quanto custa manter, operar, parar e substituir o ativo.",steps:[
+["Estrutura","<table><tr><th>Grupo</th><th>Exemplos</th></tr><tr><td>Fixos</td><td>Depreciação, seguro, capital e custos não diretamente ligados ao km.</td></tr><tr><td>Variáveis</td><td>Combustível, pneus, manutenção e itens associados ao uso.</td></tr><tr><td>Indisponibilidade</td><td>Substituição, reprogramação, perda de capacidade e efeitos operacionais.</td></tr></table>"],
+["Custo/km","<p><b>Custo/km = custos atribuídos ao período ÷ km produtivos/rodados definidos pela política.</b> O denominador precisa ser consistente para permitir comparação.</p>"],
+["TCO","<div class='lesson-flow'><span>Aquisição</span><b>+</b><span>Capital</span><b>+</b><span>Operação</span><b>+</b><span>Manutenção</span><b>+</b><span>Pneus</span><b>+</b><span>Paradas</span><b>−</b><span>Residual</span></div>"],
+["Indicadores","<div class='diag-grid'><div class='diag'>R$/km</div><div class='diag'>R$/hora</div><div class='diag'>R$/viagem</div><div class='diag'>Manutenção/km</div><div class='diag'>Pneu/km</div><div class='diag'>TCO</div></div>"],
+["Decisão","<div class='scenario'><b>Cenário:</b> veículo antigo tem manutenção barata no mês, mas baixa disponibilidade.<br><button onclick=\"lessonFeedback(true,'Inclua indisponibilidade e produtividade na comparação econômica.')\">Avaliar custo total</button><button onclick=\"lessonFeedback(false,'Somente a nota da oficina não representa o custo econômico.')\">Olhar só manutenção</button><div id='lessonFb'></div></div>"]
+]},
+renovacao:{title:"Renovação e Desmobilização",intro:"Idade sozinha não define renovação. A decisão combina confiabilidade, custo, disponibilidade, produtividade, valor residual e aderência operacional.",steps:[
+["Curvas","<p>Com o envelhecimento, valor residual tende a cair; manutenção e risco de indisponibilidade podem crescer. A decisão busca o melhor ponto dentro das premissas da empresa.</p>"],
+["Critérios","<div class='diag-grid'><div class='diag'>Idade/km/horas</div><div class='diag'>Manutenção</div><div class='diag'>Disponibilidade</div><div class='diag'>Consumo</div><div class='diag'>Residual</div><div class='diag'>Aderência à operação</div></div>"],
+["Comparação","<table><tr><th>Manter</th><th>Substituir</th></tr><tr><td>Custos futuros de operação/manutenção</td><td>Investimento e financiamento/capital</td></tr><tr><td>Risco de parada</td><td>Ganho de eficiência/disponibilidade</td></tr><tr><td>Valor residual futuro</td><td>Valor residual do novo ciclo</td></tr></table>"],
+["Governança","<p>Documente premissas: horizonte, km anual, combustível, manutenção, taxa de capital, valor residual, disponibilidade e cenário operacional.</p>"],
+["Decisão","<div class='scenario'><b>Cenário:</b> dois veículos têm mesma idade, mas histórico e aplicação muito diferentes.<br><button onclick=\"lessonFeedback(true,'A decisão deve usar dados individuais e contexto, não somente idade.')\">Comparar individualmente</button><button onclick=\"lessonFeedback(false,'Regra de idade pode ser critério de triagem, mas não explica toda a decisão econômica.')\">Trocar ambos por idade</button><div id='lessonFb'></div></div>"]
+]}
+};
+
+let currentLesson=null,currentStep=0;
+function openLesson(id){currentLesson=id;currentStep=0;const l=lessons[id];document.getElementById('lessonTitle').innerText=l.title;document.getElementById('lessonIntro').innerHTML='<p style="font-size:16px;line-height:1.6">'+l.intro+'</p>';document.getElementById('lessonTabs').innerHTML=l.steps.map((s,i)=>'<button onclick="lessonStep('+i+')">'+(i+1)+'. '+s[0]+'</button>').join('');document.getElementById('lessonModal').classList.add('open');lessonStep(0)}
+function closeLesson(){document.getElementById('lessonModal').classList.remove('open')}
+function lessonStep(i){currentStep=i;let l=lessons[currentLesson];document.querySelectorAll('#lessonTabs button').forEach((b,x)=>b.classList.toggle('on',x===i));document.getElementById('lessonStage').innerHTML=l.steps[i][1]+'<div style="display:flex;justify-content:space-between;margin-top:14px"><button '+(i===0?'disabled':'')+' onclick="lessonStep('+(i-1)+')">← Anterior</button><button '+(i===l.steps.length-1?'disabled':'')+' onclick="lessonStep('+(i+1)+')">Próximo →</button></div>';document.getElementById('lessonProg').style.width=((i+1)/l.steps.length*100)+'%'}
+function lessonFeedback(ok,msg){let x=document.getElementById('lessonFb');if(x)x.innerHTML='<p style="font-weight:800;color:'+(ok?'#16833c':'#b42318')+'">'+msg+'</p>'}
+
+
+function openAcademy(){document.getElementById('academyModal').classList.add('open')}
+function closeAcademy(){document.getElementById('academyModal').classList.remove('open')}
+function academyLesson(id){closeAcademy();openLesson(id)}
+function toggleNavGroup(btn){
+ const items=btn.nextElementSibling,sp=btn.querySelector('span');
+ items.classList.toggle('collapsed');sp.textContent=items.classList.contains('collapsed')?'+':'−';
+}
+function goSection(id){if(id==='top'){window.scrollTo({top:0,behavior:'smooth'});return}let e=document.getElementById(id);if(e)e.scrollIntoView({behavior:'smooth',block:'start'})}
+function goChapter(num){
+ const candidates=[...document.querySelectorAll('main section, .chapter, section')];
+ const rx=new RegExp('^0?'+num+'\\\\b');
+ let found=candidates.find(s=>{
+   const h=s.querySelector('h2,h3');
+   if(!h)return false;
+   const t=h.textContent.trim();
+   return rx.test(t) || t.startsWith(String(num).padStart(2,'0')+' ');
+ });
+ if(!found){
+   // fallback: usa links antigos, se ainda existirem IDs/âncoras no documento
+   const texts={
+    1:'Fundamentos da Gestão de Frotas',2:'Ciclo de Vida e TCO',3:'Cadastro Técnico e Hierarquia de Ativos',
+    4:'Gestão da Manutenção',5:'Plano Preventivo',6:'Ordem de Serviço e Oficina',7:'Confiabilidade, MTBF e MTTR',
+    8:'Engenharia de Manutenção e Análise de Falhas',9:'Backlog, Planejamento e Programação',10:'Gestão de Pneus',
+    11:'Ciclo de Vida e Reforma de Pneus',12:'Combustíveis e Abastecimentos',13:'Lubrificantes e Fluidos',
+    14:'Baterias e Sistema Elétrico',15:'Peças e Estoque de Manutenção',16:'Fornecedores, Oficinas e Garantias',
+    17:'Socorro Mecânico e Manutenção Externa',18:'Checklists e Inspeções',19:'Motoristas e Condução Econômica',
+    20:'Telemetria, CAN, IoT e TPMS',21:'Implementos e Equipamentos Auxiliares',22:'Lavagem, Higienização e Conservação',
+    23:'Documentação, Multas e Obrigações',24:'Sinistros, Avarias e Seguros',25:'Custos Fixos, Variáveis e Centros de Custo',
+    26:'Custo por Quilômetro e Produtividade',27:'Custo da Indisponibilidade',28:'Disponibilidade, Utilização e Ociosidade',
+    29:'KPIs e Dashboard de Frota',30:'Renovação e Desmobilização',31:'Recall e Campanhas Técnicas',
+    32:'Segurança e Gestão de Riscos da Frota',33:'ESG, Emissões e Eficiência Ambiental',
+    34:'Eletrificação e Novas Tecnologias',35:'Governança de Dados e Integrações',36:'Modelo de Maturidade da Gestão de Frotas'
+   };
+   found=candidates.find(s=>{const h=s.querySelector('h2,h3');return h&&h.textContent.includes(texts[num])});
+ }
+ if(found)found.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+</script>
+
+<div id="deepModal" class="deep-modal" onclick="if(event.target===this)closeDeep()">
+ <div class="deep-box"><div class="deep-head"><h2 id="deepTitle">Módulo técnico</h2><button class="deep-close" onclick="closeDeep()">×</button></div><div id="deepBody" class="deep-body"></div></div>
+</div>
+
+<div id="lessonModal" class="deep-modal" onclick="if(event.target===this)closeLesson()">
+ <div class="deep-box"><div class="deep-head"><h2 id="lessonTitle">Aula</h2><button class="deep-close" onclick="closeLesson()">×</button></div>
+ <div class="deep-body"><div id="lessonIntro"></div><div class="lesson-progress"><i id="lessonProg"></i></div>
+ <div class="lesson-tabs" id="lessonTabs"></div><div class="lesson-stage" id="lessonStage"></div></div></div>
+</div>
+
+<div id="academyModal" class="deep-modal" onclick="if(event.target===this)closeAcademy()">
+<div class="deep-box">
+<div class="deep-head"><h2>Academia Interativa de Gestão de Frotas</h2><button class="deep-close" onclick="closeAcademy()">×</button></div>
+<div class="deep-body">
+<p>Selecione o assunto. Todo o conteúdo interativo fica centralizado nesta única ação.</p>
+<div class="academy-picker">
+<button onclick="academyLesson('os')">🧾 Ordem de Serviço</button>
+<button onclick="academyLesson('pneus')">🛞 Pneus e Croqui</button>
+<button onclick="academyLesson('manutencao')">🔧 Tipos de Manutenção</button>
+<button onclick="academyLesson('combustivel')">⛽ Combustível</button>
+<button onclick="academyLesson('baterias')">🔋 Baterias</button>
+<button onclick="academyLesson('lubrificantes')">🛢 Lubrificantes</button>
+<button onclick="academyLesson('telemetria')">📡 Telemetria</button>
+<button onclick="academyLesson('checklist')">☑ Checklist</button>
+<button onclick="academyLesson('infracoes')">🚦 Infrações</button>
+<button onclick="academyLesson('sinistros')">⚠ Sinistros</button>
+<button onclick="academyLesson('socorro')">🚨 Socorro Mecânico</button>
+<button onclick="academyLesson('oficina')">🏭 Oficina</button>
+<button onclick="academyLesson('custos')">💰 Custos e TCO</button>
+<button onclick="academyLesson('renovacao')">♻ Renovação</button>
+</div></div></div></div>
+</body></html>
