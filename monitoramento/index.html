@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Manual Digital — Monitoramento Veicular | NSTECH</title>
+<style>
+:root{--o:#f36a10;--ink:#111827;--nav:#0c1522;--paper:#fff;--bg:#eef1f4;--muted:#667085;--line:#d9dee7;--blue:#163c72;--green:#15803d;--red:#b42318}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.58}
+.topbar{height:70px;position:sticky;top:0;z-index:40;background:#080c12;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 26px;border-bottom:3px solid var(--o)}.logo{font-weight:800;font-size:24px}.logo em{font-style:normal;color:var(--o)}.sub{font-size:13px;color:#cbd5e1}
+.shell{display:grid;grid-template-columns:300px minmax(0,1fr);max-width:1600px;margin:auto}.toc{position:sticky;top:70px;height:calc(100vh - 70px);overflow:auto;background:var(--nav);padding:22px 15px;color:#fff}.toc-title{font-size:12px;text-transform:uppercase;color:#93a4bc;letter-spacing:1px;margin:5px 8px 14px}.toc-mod{color:#ff9a5b;font-size:12px;font-weight:800;text-transform:uppercase;margin:20px 8px 7px;border-top:1px solid #243044;padding-top:13px}.toc a{display:flex;gap:10px;padding:8px 9px;color:#e5e7eb;text-decoration:none;font-size:13px}.toc a:hover{background:#17263b}.toc a b{color:var(--o);min-width:23px}.toc a span{line-height:1.3}
+main{padding:0 34px 50px;min-width:0}.cover{background:linear-gradient(115deg,#fff 0,#fff 64%,#fff3e9 100%);margin:28px auto;border-top:7px solid var(--o);padding:58px 64px;max-width:1100px;box-shadow:0 8px 28px #10182814}.eyebrow{color:var(--o);font-weight:800;text-transform:uppercase;letter-spacing:1px}.cover h1{font-size:46px;line-height:1.05;margin:10px 0 18px}.cover p{font-size:18px;color:#475467;max-width:850px}.journey{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:30px}.journey span{background:#101828;color:#fff;padding:9px 12px;font-size:12px}.journey i{color:var(--o);font-style:normal;font-weight:900}
+.chapter{max-width:1100px;margin:26px auto;background:#fff;padding:46px 56px 52px;border:1px solid var(--line);box-shadow:0 5px 18px #1018280d;scroll-margin-top:85px}.chapter-header{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:28px}.chapter-no{color:var(--o);font-size:12px;font-weight:900;letter-spacing:1px}.chapter h2{font-size:34px;line-height:1.1;margin:7px 0 5px}.chapter-header p{margin:0;color:var(--muted)}.toplink{font-size:12px;color:var(--blue);text-decoration:none;white-space:nowrap}.lead{font-size:18px;line-height:1.65;color:#344054}h3{margin:30px 0 10px;font-size:21px;color:#152238}h4{font-size:17px;margin:0 0 8px}
+table{width:100%;border-collapse:collapse;margin:18px 0 26px;font-size:14px}th{background:#121b2a;color:#fff;text-align:left;padding:11px}td{padding:10px 11px;border:1px solid #dfe3e8;vertical-align:top}tr:nth-child(even) td{background:#fafbfc}.flow{display:flex;align-items:stretch;gap:7px;flex-wrap:wrap;margin:22px 0}.flow span{background:#f8fafc;border:1px solid #cfd6df;border-left:4px solid var(--o);padding:10px 12px;font-weight:700;font-size:13px;flex:1;min-width:100px}.flow i{align-self:center;font-style:normal;color:var(--o);font-size:20px;font-weight:900}
+.callout{border-left:5px solid #98a2b3;background:#f8fafc;padding:14px 16px;margin:22px 0}.callout b{display:block;margin-bottom:5px}.callout p{margin:0}.callout.key{border-color:var(--o);background:#fff4ec}.callout.warn{border-color:#b42318;background:#fff1f0}.callout.note{border-color:#175cd3;background:#eff8ff}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}.cards div,.compare3 div{border:1px solid var(--line);padding:16px;background:#fafbfc;border-top:4px solid var(--o)}.cards b{display:block;font-size:16px;margin-bottom:5px}.compare{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:20px 0}.compare>div{border:1px solid var(--line);padding:18px;border-top:4px solid #101828}.compare>div+div{border-top-color:var(--o)}.compare3{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:20px 0}
+.arch{display:flex;flex-direction:column;align-items:center;gap:7px;margin:24px auto;max-width:650px}.arch span{width:100%;text-align:center;padding:12px;border:1px solid #cfd6df;border-left:5px solid var(--o);background:#f8fafc;font-weight:800}.arch i{font-style:normal;color:var(--o);font-size:22px}
+.interactive{border:1px solid #f0b58e;background:#fff8f3;padding:18px;margin:24px 0}.interactive label{display:inline-flex;gap:6px;align-items:center;margin:7px 14px 7px 0}.interactive button{background:var(--o);border:0;color:#fff;padding:10px 15px;font-weight:800;cursor:pointer;margin:8px}.result{font-size:16px;font-weight:800;margin-top:10px;color:#172b4d}.steps li{margin:12px 0;padding:12px;background:#f8fafc;border-left:4px solid var(--o)}.glossary{display:grid;grid-template-columns:180px 1fr;border:1px solid var(--line)}.glossary b,.glossary span{padding:10px;border-bottom:1px solid var(--line)}.glossary b{background:#f8fafc}
+.refs{max-width:1100px;margin:26px auto;background:#fff;padding:36px 50px;border:1px solid var(--line)}.refs a{color:var(--blue)}.badge{display:inline-block;background:#fff4ec;color:#9a3412;border:1px solid #fdba74;padding:3px 8px;font-size:11px;font-weight:800;margin:2px}
+@media(max-width:980px){.shell{grid-template-columns:1fr}.toc{position:relative;top:0;height:auto}.chapter{padding:30px 24px}main{padding:0 12px}.cover{padding:40px 25px}.cover h1{font-size:36px}.cards{grid-template-columns:1fr 1fr}.compare3{grid-template-columns:1fr}}
+
+/* ===== V2 — CAMADA DINÂMICA ===== */
+.toolbar{max-width:1100px;margin:18px auto 0;background:#0c1522;color:#fff;border-left:6px solid var(--o);padding:14px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.toolbar input,.toolbar select{min-height:40px;border:1px solid #475467;background:#fff;color:#111827;padding:8px 10px;border-radius:0;font-size:14px}
+.toolbar input{flex:1;min-width:220px}.toolbar button,.sim-btn{min-height:40px;border:0;background:var(--o);color:#fff;padding:9px 14px;font-weight:800;cursor:pointer;border-radius:0}
+.toolbar small{color:#cbd5e1}.hidden-by-search{display:none!important}
+.level-tech{display:none}.show-tech .level-tech{display:block}
+.lab{border:1px solid #d0d5dd;background:#f8fafc;margin:22px 0;padding:20px;border-left:6px solid var(--o)}
+.lab h3{margin-top:0}.lab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.lab-card{background:#fff;border:1px solid #d0d5dd;padding:14px}.lab-card strong{display:block;margin-bottom:6px}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}.kpi{background:#101828;color:#fff;padding:15px}.kpi b{display:block;font-size:26px;color:#ff8b45}.kpi span{font-size:12px;color:#cbd5e1}
+.timeline{border-left:3px solid #d0d5dd;margin:18px 0 18px 12px;padding-left:22px}.tl-item{position:relative;margin:0 0 14px;background:#fff;border:1px solid #d0d5dd;padding:11px 12px}.tl-item:before{content:"";position:absolute;left:-30px;top:16px;width:11px;height:11px;background:#98a2b3;border:3px solid #fff;outline:2px solid #98a2b3;border-radius:50%}.tl-item.ok:before{background:#15803d;outline-color:#15803d}.tl-item.warn:before{background:#f59e0b;outline-color:#f59e0b}.tl-item.crit:before{background:#b42318;outline-color:#b42318}.tl-item b{display:inline-block;min-width:58px}
+.progress{height:18px;background:#e4e7ec;margin:12px 0}.progress>span{display:block;height:100%;background:var(--o);width:0;transition:width .25s}
+.statusbox{padding:13px 15px;border:1px solid #d0d5dd;background:#fff;margin-top:12px}.statusbox.ok{border-left:6px solid #15803d}.statusbox.warn{border-left:6px solid #f59e0b}.statusbox.crit{border-left:6px solid #b42318}
+.supplier-tools{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.supplier-tools button{border:1px solid #98a2b3;background:#fff;padding:8px 11px;cursor:pointer;border-radius:0}.supplier-tools button.active{background:#101828;color:#fff;border-color:#101828}
+.supplier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.supplier-card{border:1px solid #d0d5dd;background:#fff;padding:15px;min-width:0}.supplier-head{display:flex;align-items:center;gap:10px}.supplier-icon{width:44px;height:44px;border:1px solid #d0d5dd;background:#f2f4f7;display:grid;place-items:center;font-weight:900;color:#101828;overflow:hidden}.supplier-icon img{width:30px;height:30px;object-fit:contain}.supplier-card h4{margin:0}.supplier-card p{font-size:13px;color:#475467}.tag{display:inline-block;border:1px solid #fdba74;background:#fff7ed;color:#9a3412;padding:3px 6px;font-size:10px;font-weight:800;margin:2px}
+.map-stage{position:relative;min-height:250px;background:linear-gradient(90deg,#f8fafc 1px,transparent 1px),linear-gradient(#f8fafc 1px,transparent 1px);background-size:24px 24px;border:1px solid #d0d5dd;overflow:hidden}.route{position:absolute;left:7%;right:7%;top:50%;height:5px;background:#98a2b3}.poi{position:absolute;width:18px;height:18px;border-radius:50%;background:#101828;top:calc(50% - 7px)}.poi.a{left:8%}.poi.b{left:42%}.poi.c{left:82%}.truck{position:absolute;top:calc(50% - 28px);left:8%;font-size:28px;transition:left .5s}.geofence{position:absolute;left:72%;top:22%;width:120px;height:120px;border:3px dashed #f36a10;border-radius:50%;background:#f36a1012}.signal{display:flex;gap:4px;align-items:end;height:28px}.signal i{display:block;width:6px;background:#98a2b3}.signal i:nth-child(1){height:7px}.signal i:nth-child(2){height:12px}.signal i:nth-child(3){height:18px}.signal i:nth-child(4){height:25px}.signal.good i{background:#15803d}.signal.bad i{background:#b42318}
+.arch-builder{display:grid;grid-template-columns:260px 1fr;gap:16px}.arch-options{background:#fff;border:1px solid #d0d5dd;padding:14px}.arch-output{border:1px solid #d0d5dd;background:#fff;padding:14px;min-height:220px}.arch-node{padding:9px;border-left:5px solid var(--o);background:#f8fafc;margin:7px 0;font-weight:800}.arch-arrow{text-align:center;color:var(--o);font-weight:900}
+.quiz-q{border-top:1px solid #d0d5dd;padding-top:14px;margin-top:14px}.quiz-q label{display:block;padding:5px 0}.quiz-feedback{font-weight:800;margin-top:8px}
+.decision-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.decision-grid button{background:#fff;border:1px solid #98a2b3;padding:12px;text-align:left;cursor:pointer}.decision-grid button:hover{border-color:var(--o)}
+.macro-terminal{max-width:440px;background:#101828;color:#fff;border:5px solid #344054;padding:18px}.macro-terminal button{display:block;width:100%;text-align:left;background:#1d2939;color:#fff;border:1px solid #475467;padding:9px;margin:5px 0;cursor:pointer}.macro-terminal button:hover{border-color:#f36a10}
+@media(max-width:980px){.lab-grid,.supplier-grid,.kpi-grid{grid-template-columns:1fr 1fr}.arch-builder{grid-template-columns:1fr}}
+@media(max-width:620px){.lab-grid,.supplier-grid,.kpi-grid,.decision-grid{grid-template-columns:1fr}.toolbar{align-items:stretch}.toolbar input,.toolbar select,.toolbar button{width:100%}}
+
+</style></head>
+<body id="topo">
+<header class="topbar"><div class="logo"><em>ns</em>tech <span class="sub">| Manual Digital</span></div><div class="sub">Monitoramento • Tecnologia Embarcada • Gerenciamento de Risco • Integração</div></header>
+<div class="shell"><aside class="toc"><div class="toc-title">Sumário do manual</div><div class="toc-mod">Fundamentos</div><a href="#fundamentos"><b>01</b><span>Fundamentos do monitoramento veicular</span></a><a href="#arquitetura"><b>02</b><span>Arquitetura de uma solução de rastreamento</span></a><div class="toc-mod">Tecnologias</div><a href="#gnss"><b>03</b><span>GPS, GNSS e posicionamento</span></a><a href="#comunicacao"><b>04</b><span>GPRS, 4G/LTE, IoT, satélite e híbrido</span></a><div class="toc-mod">Equipamentos</div><a href="#equipamentos"><b>05</b><span>Localizador, rastreador e computador de bordo</span></a><div class="toc-mod">Telemetria</div><a href="#telemetria"><b>06</b><span>Telemetria e barramento CAN</span></a><a href="#sensores"><b>07</b><span>Sensores, periféricos e identificação</span></a><div class="toc-mod">Monitoramento</div><a href="#eventos"><b>08</b><span>Eventos, regras, cercas e rotogramas</span></a><div class="toc-mod">Segurança</div><a href="#risco"><b>09</b><span>Gerenciamento de risco, comandos e contingência</span></a><a href="#jammer"><b>10</b><span>Jammer, interferência e redundância</span></a><div class="toc-mod">Tecnologias avançadas</div><a href="#video"><b>11</b><span>Videotelemetria, ADAS, DMS e IA</span></a><a href="#frio"><b>12</b><span>Cadeia fria e telemetria ambiental</span></a><a href="#implementos"><b>13</b><span>Carretas, implementos, iscas e ativos independentes</span></a><div class="toc-mod">Integração</div><a href="#integracao"><b>14</b><span>APIs, WebServices, integradores e TMS</span></a><div class="toc-mod">Mercado brasileiro</div><a href="#trafegus"><b>15</b><span>Integração e Gerenciamento de Risco — Trafegus</span></a><a href="#fornecedores"><b>16</b><span>Fornecedores e soluções encontradas no Brasil</span></a><div class="toc-mod">Aplicação</div><a href="#casos"><b>17</b><span>Casos práticos de operação</span></a><div class="toc-mod">Gestão</div><a href="#indicadores"><b>18</b><span>Indicadores de monitoramento e telemetria</span></a><a href="#implantacao"><b>19</b><span>Como implantar uma solução de monitoramento</span></a>
+<div class="toc-mod">Tecnologia embarcada avançada</div>
+<a href="#macros"><b>21</b><span>Macros, regras embarcadas e Edge</span></a>
+<a href="#dados"><b>22</b><span>Buffer, latência, frequência e saúde</span></a>
+<div class="toc-mod">Gerenciamento de Risco</div>
+<a href="#gr"><b>23</b><span>Ecossistema do Gerenciamento de Risco</span></a>
+<a href="#pgr"><b>24</b><span>PGR, apólice, DDR e plano de viagem</span></a>
+<a href="#checklist"><b>25</b><span>Checklist de liberação</span></a>
+<a href="#nconformidade"><b>26</b><span>Não conformidades e pronta resposta</span></a>
+<a href="#gerenciadoras"><b>27</b><span>Gerenciadoras do mercado brasileiro</span></a>
+<div class="toc-mod">Laboratórios</div>
+<a href="#laboratorio"><b>28</b><span>Laboratório interativo End-to-End</span></a>
+<a href="#diagnostico"><b>29</b><span>Diagnóstico interativo</span></a>
+<a href="#quiz"><b>30</b><span>Quiz e validação do aprendizado</span></a>
+<div class="toc-mod">Referência</div><a href="#glossario"><b>20</b><span>Glossário técnico</span></a></aside><main>
+<section class="cover"><div class="eyebrow">Manual conceitual e operacional • Tecnologia embarcada</div><h1>Monitoramento Veicular, Tecnologia Embarcada e Gerenciamento de Risco</h1>
+<p>Do posicionamento GNSS à gestão integrada: rastreamento, comunicação celular e satelital, tecnologia híbrida, telemetria CAN, sensores, videotelemetria, gerenciamento de risco, cadeia fria, implementos, integrações e principais soluções encontradas no mercado brasileiro.</p>
+<div class="journey"><span>Posicionar</span><i>→</i><span>Comunicar</span><i>→</i><span>Interpretar</span><i>→</i><span>Alertar</span><i>→</i><span>Integrar</span><i>→</i><span>Gerir</span></div></section>
+
+<section class="toolbar" aria-label="Ferramentas do manual">
+  <input id="manualSearch" type="search" placeholder="Buscar: jammer, PGR, macro, CAN, BRK..." aria-label="Buscar no manual">
+  <select id="levelMode" aria-label="Nível de conteúdo">
+    <option value="concept">Nível: Conceitual</option>
+    <option value="tech">Nível: Conceitual + Técnico</option>
+  </select>
+  <button type="button" id="clearSearch">Limpar busca</button>
+  <small id="searchCount">Manual completo</small>
+</section>
+
+<article id="fundamentos" class="chapter"><div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 01</span><h2>Fundamentos do monitoramento veicular</h2><p>Fundamentos</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">Monitoramento veicular é o conjunto de tecnologias, processos e sistemas usados para observar a posição, o estado, os eventos e o comportamento operacional de veículos, implementos, cargas e condutores.</p>
+<div class="callout key"><b>Evolução do conceito</b><p>Localização responde <strong>onde está</strong>; rastreamento adiciona histórico; monitoramento interpreta eventos; telemetria mede o comportamento do veículo; gestão transforma esses dados em decisões.</p></div>
+<div class="flow"><span>Localização</span><i>→</i><span>Rastreamento</span><i>→</i><span>Monitoramento</span><i>→</i><span>Telemetria</span><i>→</i><span>Gestão</span><i>→</i><span>Inteligência</span></div>
+<h3>O que pode ser monitorado?</h3>
+<div class="cards"><div><b>Veículo</b>posição, ignição, velocidade, CAN, bateria.</div><div><b>Implemento</b>carreta, porta, engate, quilometragem.</div><div><b>Carga</b>isca, temperatura, umidade, integridade.</div><div><b>Condutor</b>identificação, jornada e comportamento.</div></div>
+</article>
+<article id="arquitetura" class="chapter"><div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 02</span><h2>Arquitetura de uma solução de rastreamento</h2><p>Fundamentos</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">Uma solução completa possui camadas diferentes. Entender essas camadas evita o erro comum de chamar tudo de “GPS”.</p>
+<div class="arch"><span>Satélites GNSS</span><i>↓</i><span>Receptor / Rastreador</span><i>↓</i><span>Rede de comunicação</span><i>↓</i><span>Backend do fornecedor</span><i>↓</i><span>Plataforma / Integrador</span><i>↓</i><span>TMS • GR • Torre • ERP</span></div>
+<table><tr><th>Camada</th><th>Função</th><th>Exemplos</th></tr>
+<tr><td>Posicionamento</td><td>Determina coordenadas, velocidade e tempo.</td><td>GPS, Galileo, GLONASS, BeiDou.</td></tr>
+<tr><td>Comunicação</td><td>Transporta mensagens entre equipamento e servidor.</td><td>2G/GPRS, 4G/LTE, Cat-M1, satélite, LoRa.</td></tr>
+<tr><td>Hardware</td><td>Coleta dados e executa regras/comandos.</td><td>Rastreador, terminal, câmera, sensor, atuador.</td></tr>
+<tr><td>Software</td><td>Transforma mensagens em eventos e gestão.</td><td>Portal do fornecedor, GR, integrador, TMS.</td></tr></table>
+</article>
+<article id="gnss" class="chapter"><div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 03</span><h2>GPS, GNSS e posicionamento</h2><p>Tecnologias</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead"><strong>GNSS</strong> é o conceito global de navegação por satélite. GPS é uma das constelações. Equipamentos atuais podem combinar várias constelações para melhorar disponibilidade e robustez.</p>
+<table><tr><th>Sistema</th><th>Origem</th><th>Papel</th></tr><tr><td>GPS</td><td>Estados Unidos</td><td>Posicionamento global</td></tr><tr><td>GLONASS</td><td>Rússia</td><td>Posicionamento global</td></tr><tr><td>Galileo</td><td>União Europeia</td><td>Posicionamento global</td></tr><tr><td>BeiDou</td><td>China</td><td>Posicionamento global</td></tr></table>
+<div class="callout warn"><b>GPS não é o canal de comunicação</b><p>Um rastreador pode calcular sua posição por GNSS e transmitir o dado por 4G. Nesse cenário, perder a rede celular não significa necessariamente perder a capacidade de calcular a posição; significa perder ou postergar a transmissão.</p></div>
+<h3>Fontes de erro</h3><p>Ambientes cobertos, túneis, cânions urbanos, posicionamento da antena, obstruções e interferências podem degradar a solução. O sistema deve diferenciar <strong>posição inválida, ausência de comunicação e equipamento desligado</strong>.</p>
+</article>
+<article id="comunicacao" class="chapter"><div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 04</span><h2>GPRS, 4G/LTE, IoT, satélite e híbrido</h2><p>Tecnologias</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">O canal de comunicação define como a mensagem sai do veículo e chega à infraestrutura do fornecedor.</p>
+<table><tr><th>Tecnologia</th><th>Perfil</th><th>Ponto forte</th><th>Limitação típica</th></tr>
+<tr><td>2G / GPRS</td><td>Celular legado</td><td>Baixo volume de dados</td><td>Dependência da evolução/desativação das redes</td></tr>
+<tr><td>4G / LTE</td><td>Celular</td><td>Maior capacidade e disponibilidade atual</td><td>Área de cobertura da operadora</td></tr>
+<tr><td>LTE Cat-M1</td><td>IoT celular</td><td>Eficiência energética e mobilidade</td><td>Depende da cobertura oferecida</td></tr>
+<tr><td>Satélite</td><td>Rede não terrestre</td><td>Áreas remotas</td><td>Custo, latência e características do serviço</td></tr>
+<tr><td>Híbrido</td><td>Celular + satélite</td><td>Redundância/cobertura</td><td>Maior complexidade</td></tr>
+<tr><td>LoRa/LoRaWAN</td><td>LPWAN</td><td>Longo alcance e baixo consumo</td><td>Depende da arquitetura/rede disponível</td></tr></table>
+<div class="interactive"><h4>Simulador de escolha de comunicação</h4><label><input id="remote" type="checkbox"> Rota com trechos remotos</label><label><input id="video" type="checkbox"> Transmissão frequente de vídeo</label><label><input id="asset" type="checkbox"> Ativo de bateria longa</label><button onclick="chooseComm()">Analisar cenário</button><div id="commResult" class="result"></div></div>
+</article>
+<article id="equipamentos" class="chapter"><div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 05</span><h2>Localizador, rastreador e computador de bordo</h2><p>Equipamentos</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">Os termos são usados comercialmente de maneiras diferentes. Para fins didáticos, o manual separa-os pela profundidade funcional.</p>
+<div class="compare3"><div><h4>Localizador</h4><p>Foco principal em posição e recuperação do ativo. Pode operar com bateria própria e poucos periféricos.</p></div><div><h4>Rastreador</h4><p>Posição + histórico + eventos + entradas/saídas + regras e, conforme o modelo, comandos.</p></div><div><h4>Terminal/Computador de bordo</h4><p>Maior interação com motorista, periféricos, CAN, mensagens, regras e telemetria.</p></div></div>
+<h3>Entradas e saídas</h3><p><strong>Entradas</strong> recebem estados de ignição, porta, pânico e sensores. <strong>Saídas</strong> podem acionar periféricos autorizados, como sinalização ou imobilização, conforme projeto e regras de segurança.</p>
+</article>
+<article id="telemetria" class="chapter"><div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 06</span><h2>Telemetria e barramento CAN</h2><p>Telemetria</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">Telemetria é a coleta e transmissão remota de medições. No veículo, uma das fontes mais ricas é o <strong>barramento CAN</strong>, rede pela qual módulos eletrônicos trocam mensagens.</p>
+<div class="flow"><span>ECUs / Sensores</span><i>→</i><span>CAN</span><i>→</i><span>Gateway / Rastreador</span><i>→</i><span>Rede</span><i>→</i><span>Plataforma</span></div>
+<table><tr><th>Dado</th><th>Uso gerencial</th></tr><tr><td>RPM</td><td>Faixa de operação e condução</td></tr><tr><td>Consumo</td><td>Eficiência e custo</td></tr><tr><td>Velocidade</td><td>Segurança e conformidade</td></tr><tr><td>Odômetro/horímetro</td><td>Manutenção e utilização</td></tr><tr><td>Aceleração/frenagem</td><td>Comportamento e risco</td></tr><tr><td>Temperaturas/falhas disponíveis</td><td>Diagnóstico e manutenção</td></tr></table>
+<div class="callout note"><b>Importante</b><p>Nem todo dado existe em todo veículo. Disponibilidade depende de fabricante, modelo, ano, rede eletrônica, interface e solução contratada.</p></div>
+</article>
+<article id="sensores" class="chapter"><div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 07</span><h2>Sensores, periféricos e identificação</h2><p>Telemetria</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">O rastreador pode receber informações que não vêm do GNSS nem do CAN. Sensores e periféricos ampliam a leitura do contexto operacional.</p>
+<div class="cards"><div><b>Porta</b>abertura/fechamento.</div><div><b>Temperatura</b>baú, produto ou equipamento.</div><div><b>RFID/iButton</b>identificação do condutor.</div><div><b>Engate</b>vínculo cavalo × implemento.</div><div><b>Pânico</b>evento deliberado de emergência.</div><div><b>TPMS</b>pressão/temperatura dos pneus quando suportado.</div></div>
+<h3>Ativo composto</h3><p>Uma viagem pode combinar cavalo, carreta, motorista e carga. Cada componente pode possuir identidade e telemetria próprias. A plataforma deve correlacionar esses vínculos no tempo.</p>
+</article>
+<article id="eventos" class="chapter"><div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 08</span><h2>Eventos, regras, cercas e rotogramas</h2><p>Monitoramento</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">Posições isoladas têm pouco valor operacional. O monitoramento transforma dados em <strong>eventos</strong> comparando o estado recebido com regras parametrizadas.</p>
+<div class="flow"><span>Dado bruto</span><i>→</i><span>Regra</span><i>→</i><span>Evento</span><i>→</i><span>Severidade</span><i>→</i><span>Tratativa</span><i>→</i><span>Evidência</span></div>
+<h3>Exemplos</h3><p>Entrada/saída de cerca, desvio de rota, parada indevida, velocidade, porta fora de ponto autorizado, perda de sinal, ignição, pânico, atraso, violação de temperatura e condução agressiva.</p>
+<div class="interactive"><h4>Simulador de geofence</h4><input id="dist" type="range" min="0" max="20" value="12" oninput="geoSim()"><div id="geoResult" class="result"></div></div>
+</article>
+<article id="risco" class="chapter"><div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 09</span><h2>Gerenciamento de risco, comandos e contingência</h2><p>Segurança</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">No gerenciamento de risco, tecnologia é combinada com regras operacionais, pessoas, planos de viagem, áreas de risco, eventos e procedimentos de resposta.</p>
+<h3>Camadas de proteção</h3><div class="cards"><div><b>Prevenção</b>rota, cerca, checklist, motorista.</div><div><b>Detecção</b>pânico, violação, jammer, desvio.</div><div><b>Resposta</b>tratativa e comandos autorizados.</div><div><b>Contingência</b>redundância de comunicação/localização.</div></div>
+<div class="callout warn"><b>Comandos críticos</b><p>Imobilização/bloqueio deve obedecer ao projeto do equipamento, procedimentos do fornecedor e critérios de segurança. O manual trata o conceito, não instrui intervenções elétricas ou improvisações.</p></div>
+</article>
+<article id="jammer" class="chapter"><div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 10</span><h2>Jammer, interferência e redundância</h2><p>Segurança</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">Jammer é um interferidor de radiofrequência. Em logística, o tema é relevante porque uma tentativa de interferência pode afetar canais de posicionamento ou comunicação, conforme frequências e cenário.</p>
+<div class="compare"><div><b>Sem contingência</b><p>Um único canal pode criar ponto único de falha.</p></div><div><b>Com redundância</b><p>Projetos podem combinar celular, satélite, RF/LoRa, inteligência embarcada, armazenamento local e outros mecanismos.</p></div></div>
+<p>A solução deve registrar a diferença entre <strong>silêncio de comunicação</strong>, falha de alimentação, perda de GNSS e evento de interferência detectado pelo equipamento.</p>
+</article>
+<article id="video" class="chapter"><div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 11</span><h2>Videotelemetria, ADAS, DMS e IA</h2><p>Tecnologias avançadas</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">Videotelemetria combina vídeo com dados de contexto para investigar eventos e, em soluções específicas, gerar alertas preventivos.</p>
+<table><tr><th>Camada</th><th>Exemplos</th></tr><tr><td>Câmera de via</td><td>Contexto frontal, eventos e evidências.</td></tr><tr><td>Câmera de cabine</td><td>Comportamento do condutor conforme política e solução.</td></tr><tr><td>DMS</td><td>Monitoramento do motorista: fadiga/distração em soluções compatíveis.</td></tr><tr><td>ADAS</td><td>Assistência baseada no ambiente viário em soluções compatíveis.</td></tr><tr><td>IA</td><td>Classificação/priorização de eventos de vídeo.</td></tr></table>
+<div class="callout note"><b>Governança</b><p>Vídeo envolve privacidade, retenção, acesso, finalidade e políticas internas. O projeto deve considerar requisitos jurídicos e de proteção de dados.</p></div>
+</article>
+<article id="frio" class="chapter"><div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 12</span><h2>Cadeia fria e telemetria ambiental</h2><p>Tecnologias avançadas</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">Em cargas refrigeradas, a pergunta deixa de ser apenas “onde está?” e passa a incluir “em que condição a mercadoria está?”.</p>
+<div class="flow"><span>Sensor</span><i>→</i><span>Temperatura/umidade</span><i>→</i><span>Gateway</span><i>→</i><span>Plataforma</span><i>→</i><span>Alerta</span><i>→</i><span>Auditoria</span></div>
+<p>Podem ser monitorados temperatura, umidade, porta, equipamento de refrigeração, movimento e outras variáveis, dependendo da solução. A Neokohm, por exemplo, divulga telemetria integrada a equipamentos de refrigeração e integração com WMS/TMS/ERP/GR/Torre de Controle.</p>
+</article>
+<article id="implementos" class="chapter"><div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 13</span><h2>Carretas, implementos, iscas e ativos independentes</h2><p>Tecnologias avançadas</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">O cavalo mecânico não é o único objeto rastreável. Implementos e cargas podem possuir dispositivos próprios, inclusive quando desacoplados.</p>
+<div class="cards"><div><b>Carreta</b>posição, km, manutenção, pátio.</div><div><b>Isca</b>localização independente da carga.</div><div><b>Container</b>posição e sensores conforme projeto.</div><div><b>Equipamento</b>máquinas e ativos móveis.</div></div>
+<p>A Omnilink divulga o Omnicarreta com comunicação 4G e LoRa e operação independente da tecnologia do cavalo; fornecedores também oferecem localizadores de carga com bateria própria.</p>
+</article>
+<article id="integracao" class="chapter"><div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 14</span><h2>APIs, WebServices, integradores e TMS</h2><p>Integração</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">Uma frota pode utilizar diversas tecnologias. A integração evita que a operação dependa de múltiplos portais isolados.</p>
+<div class="arch"><span>Rastreadores</span><i>→</i><span>APIs / WebServices</span><i>→</i><span>Integrador</span><i>→</i><span>TMS / GR / Torre</span><i>→</i><span>Eventos e decisões</span></div>
+<h3>Dados típicos de integração</h3><p>Veículo, data/hora, latitude/longitude, velocidade, ignição, odômetro, direção, evento, motorista, viagem, sensores e telemetria — conforme contrato e API.</p>
+<div class="callout key"><b>Integração não é só mapa</b><p>O valor aumenta quando posição e evento são correlacionados com viagem, ordem, coleta, entrega, SLA, cliente e documento do TMS.</p></div>
+</article>
+<article id="trafegus" class="chapter"><div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 15</span><h2>Integração e Gerenciamento de Risco — Trafegus</h2><p>Mercado brasileiro</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">A Trafegus representa uma camada diferente do fabricante do rastreador: uma plataforma de gerenciamento de risco e integração. A empresa informa integração com mais de 50 tecnologias do mercado.</p>
+<div class="flow"><span>Sascar</span><span>Omnilink</span><span>Autotrac</span><span>Ravex</span><span>3S</span><i>→</i><span>Integrador</span><i>→</i><span>Central / TMS</span></div>
+<p>Esse modelo é especialmente relevante para transportadoras com frota própria, agregados e terceiros usando tecnologias distintas.</p>
+</article>
+<article id="fornecedores" class="chapter" data-keywords="sascar omnilink autotrac ravex positron 3s neokohm onisys onixsat rastreamento telemetria">
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 16</span><h2>Rastreadoras e tecnologias encontradas no Brasil</h2><p>Mercado brasileiro</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">O mercado reúne fornecedores de rastreamento, telemetria, comunicação, vídeo, segurança e tecnologias especializadas. Foram retiradas desta versão as integrações que estavam classificadas como <strong>“A validar”</strong>. A presença de uma funcionalidade no fornecedor não significa que ela exista em todos os equipamentos ou contratos.</p>
+
+<div class="supplier-tools" id="trackerFilters">
+<button type="button" class="active" data-filter="all">Todos</button>
+<button type="button" data-filter="rastreamento">Rastreamento</button>
+<button type="button" data-filter="telemetria">Telemetria</button>
+<button type="button" data-filter="satelite">Satélite/Híbrido</button>
+<button type="button" data-filter="video">Vídeo</button>
+<button type="button" data-filter="frio">Cadeia fria</button>
+</div>
+
+<div class="supplier-grid" id="trackerGrid">
+<div class="supplier-card" data-tags="rastreamento telemetria satelite video">
+ <div class="supplier-head"><div class="supplier-icon"><img src="https://www.google.com/s2/favicons?domain=sascar.com.br&sz=128" alt="Ícone Sascar"></div><h4>Sascar</h4></div>
+ <p>Rastreamento, monitoramento e gestão de frotas. O portfólio público inclui comunicação híbrida GSM/satelital, regras, alertas, áreas e pontos de interesse.</p>
+ <span class="tag">Rastreamento</span><span class="tag">Híbrido</span><span class="tag">Telemetria</span>
+</div>
+
+<div class="supplier-card" data-tags="rastreamento telemetria satelite video">
+ <div class="supplier-head"><div class="supplier-icon"><img src="https://www.google.com/s2/favicons?domain=omnilink.com.br&sz=128" alt="Ícone Omnilink"></div><h4>Omnilink</h4></div>
+ <p>Ecossistema de rastreamento e gestão de risco com telemetria, câmeras com IA, iscas, anti-jammer e soluções para frotas e implementos.</p>
+ <span class="tag">Rastreamento</span><span class="tag">Telemetria</span><span class="tag">Vídeo</span>
+</div>
+
+<div class="supplier-card" data-tags="rastreamento telemetria satelite video">
+ <div class="supplier-head"><div class="supplier-icon"><img src="https://www.google.com/s2/favicons?domain=autotrac.com.br&sz=128" alt="Ícone Autotrac"></div><h4>Autotrac</h4></div>
+ <p>Soluções para segurança, gestão, logística e tecnologia, incluindo rastreamento, telemetria, jornada e serviços digitais.</p>
+ <span class="tag">Rastreamento</span><span class="tag">Telemetria</span><span class="tag">Logística</span>
+</div>
+
+<div class="supplier-card" data-tags="rastreamento telemetria satelite frio video">
+ <div class="supplier-head"><div class="supplier-icon"><img src="https://www.google.com/s2/favicons?domain=ravex.com.br&sz=128" alt="Ícone Ravex"></div><h4>Ravex</h4></div>
+ <p>Rastreamento e telemetria com 4G, Cat-M1, 2G, Bluetooth e Wi-Fi em produtos publicados, além de soluções satelitais, vídeo, iscas e cadeia fria.</p>
+ <span class="tag">4G/Cat-M1</span><span class="tag">Satélite</span><span class="tag">Cadeia fria</span>
+</div>
+
+<div class="supplier-card" data-tags="rastreamento telemetria">
+ <div class="supplier-head"><div class="supplier-icon">P</div><h4>Pósitron</h4></div>
+ <p>Segurança veicular e soluções para frotas. Os recursos utilizados devem ser confirmados conforme produto e contrato integrado.</p>
+ <span class="tag">Segurança</span><span class="tag">Frota</span>
+</div>
+
+<div class="supplier-card" data-tags="rastreamento telemetria">
+ <div class="supplier-head"><div class="supplier-icon">3S</div><h4>3S Tecnologia</h4></div>
+ <p>Rastreamento, telemetria e soluções corporativas. O detalhamento técnico deve seguir o equipamento e serviço contratado.</p>
+ <span class="tag">Rastreamento</span><span class="tag">Telemetria</span>
+</div>
+
+<div class="supplier-card" data-tags="telemetria frio">
+ <div class="supplier-head"><div class="supplier-icon">NK</div><h4>Neokohm</h4></div>
+ <p>Telemetria especializada com aplicação em cadeia fria, sensores, refrigeração e integração com sistemas.</p>
+ <span class="tag">Cadeia fria</span><span class="tag">Sensores</span>
+</div>
+
+<div class="supplier-card" data-tags="telemetria video">
+ <div class="supplier-head"><div class="supplier-icon">ON</div><h4>Onisys</h4></div>
+ <p>Soluções associadas a telemetria, videomonitoramento e análise comportamental. A disponibilidade depende da solução contratada.</p>
+ <span class="tag">Telemetria</span><span class="tag">Vídeo</span><span class="tag">Comportamento</span>
+</div>
+
+<div class="supplier-card" data-tags="rastreamento">
+ <div class="supplier-head"><div class="supplier-icon">OX</div><h4>OnixSat</h4></div>
+ <p>Fornecedor historicamente presente no ecossistema brasileiro de rastreamento e integrações de transporte. Os recursos devem ser validados por produto/contrato.</p>
+ <span class="tag">Rastreamento</span><span class="tag">Integração</span>
+</div>
+
+<div class="supplier-card" data-tags="rastreamento telemetria">
+ <div class="supplier-head"><div class="supplier-icon">UT</div><h4>Unitop</h4></div>
+ <p>Gestão e integração presentes no ecossistema do TMS. Os módulos e recursos utilizados devem seguir a documentação da integração contratada.</p>
+ <span class="tag">Gestão</span><span class="tag">Integração</span>
+</div>
+</div>
+
+<div class="callout note"><b>Itens removidos desta versão</b><p>SmartTracking, Rastreamento CSX, Rastrear, ViaLink, Evo Solutions e Unique foram retirados porque estavam classificados como <strong>“A validar”</strong>. Eles podem retornar ao manual quando houver identificação inequívoca da empresa/produto e documentação suficiente.</p></div>
+<div class="callout key"><b>Como ler os cards</b><p>Fornecedor não define sozinho a tecnologia. O mesmo fornecedor pode possuir equipamentos celulares, híbridos, satelitais, CAN, vídeo ou dispositivos independentes. Sempre valide o <strong>modelo, pacote e contrato</strong>.</p></div>
+</article>
+<article id="casos" class="chapter"><div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 17</span><h2>Casos práticos de operação</h2><p>Aplicação</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">A melhor forma de entender a tecnologia é observar como as camadas se combinam em situações reais.</p>
+<h3>Cenário A — distribuição urbana</h3><p>GNSS + 4G + ignição + app/TMS. Foco em rota, parada, ETA e produtividade.</p>
+<h3>Cenário B — longa distância</h3><p>GNSS + comunicação celular com contingência/híbrida conforme risco e cobertura + telemetria CAN + GR.</p>
+<h3>Cenário C — carga refrigerada</h3><p>Rastreamento + temperatura/umidade + porta + equipamento de refrigeração + alertas e trilha de auditoria.</p>
+<h3>Cenário D — alto risco</h3><p>Camadas independentes de rastreamento/carga, regras embarcadas, eventos de risco, central e contingência definida no PGR.</p>
+</article>
+<article id="indicadores" class="chapter"><div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 18</span><h2>Indicadores de monitoramento e telemetria</h2><p>Gestão</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">Indicadores devem medir resultado operacional, não apenas quantidade de mensagens recebidas.</p>
+<div class="cards"><div><b>% disponibilidade</b>ativos comunicando adequadamente.</div><div><b>Desvios de rota</b>quantidade e tratativa.</div><div><b>Excesso de velocidade</b>eventos por km/motorista.</div><div><b>Marcha lenta</b>tempo e consumo associado.</div><div><b>ETA x SLA</b>aderência à promessa.</div><div><b>Temperatura</b>tempo fora da faixa.</div><div><b>Eventos críticos</b>tempo de resposta.</div><div><b>Telemetria</b>score por motorista/veículo.</div></div>
+</article>
+<article id="implantacao" class="chapter"><div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 19</span><h2>Como implantar uma solução de monitoramento</h2><p>Gestão</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">A implantação deve começar pelo processo que será controlado, e não pela compra do equipamento.</p>
+<ol class="steps"><li><b>Objetivo</b> — segurança, logística, telemetria, cadeia fria ou combinação.</li><li><b>Cobertura</b> — rotas, regiões, áreas de sombra e criticidade.</li><li><b>Ativos</b> — veículos, implementos, cargas e motoristas.</li><li><b>Hardware</b> — interfaces, sensores, CAN e alimentação.</li><li><b>Regras</b> — eventos, cercas, perfis e tratativas.</li><li><b>Integrações</b> — TMS, ERP, GR, Torre e APIs.</li><li><b>Homologação</b> — testes de campo e critérios de aceite.</li><li><b>Operação</b> — central, SLA, manutenção e governança.</li></ol>
+</article>
+
+<article id="macros" class="chapter" data-keywords="macro macros embarcada edge firmware regra local terminal motorista">
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 21</span><h2>Macros, regras embarcadas e inteligência local</h2><p>Tecnologia embarcada avançada</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">Macros estruturam a comunicação operacional. Regras embarcadas levam parte da decisão para o próprio equipamento, permitindo registrar ou reagir a condições mesmo quando a comunicação com a central está indisponível.</p>
+<div class="compare3"><div><h4>Macro manual</h4><p>Motorista seleciona uma mensagem padronizada no terminal/app.</p></div><div><h4>Evento automático</h4><p>Plataforma identifica uma condição, como entrada em cerca.</p></div><div><h4>Regra embarcada</h4><p>Equipamento executa lógica local conforme sua configuração e capacidade.</p></div></div>
+<div class="flow"><span>Motorista / sensor</span><i>→</i><span>Terminal / rastreador</span><i>→</i><span>Macro ou evento</span><i>→</i><span>Rede</span><i>→</i><span>Plataforma</span><i>→</i><span>TMS / GR</span></div>
+<div class="lab"><h3>Terminal embarcado — teste de macros</h3><div class="macro-terminal" id="macroTerminal">
+<strong>TERMINAL EMBARCADO</strong><small style="display:block;color:#cbd5e1;margin-bottom:10px">Selecione uma macro para visualizar o fluxo.</small>
+<button type="button" data-macro="01|Início de viagem">01 — Início de viagem</button>
+<button type="button" data-macro="02|Parada autorizada">02 — Parada autorizada</button>
+<button type="button" data-macro="04|Chegada no cliente">04 — Chegada no cliente</button>
+<button type="button" data-macro="05|Início de descarga">05 — Início de descarga</button>
+<button type="button" data-macro="08|Pernoite">08 — Pernoite</button></div>
+<div id="macroResult" class="statusbox">Selecione uma macro.</div></div>
+<div class="level-tech"><div class="callout note"><b>Camada técnica</b><p>O comportamento real depende do firmware, protocolo e produto. Uma macro pode gerar código, timestamp, posição, motorista e viagem. O sistema receptor precisa mapear códigos, evitar duplicidades e preservar a data real do evento.</p></div></div>
+</article>
+
+<article id="dados" class="chapter" data-keywords="store forward buffer latencia heartbeat frequência posição saúde equipamento ota fota apn sim m2m">
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 22</span><h2>Buffer, latência, frequência e saúde do equipamento</h2><p>Qualidade do dado</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">Uma posição pode existir no equipamento e ainda não ter chegado ao TMS. Por isso é fundamental separar momento do evento, transmissão, recebimento e processamento.</p>
+<div class="flow"><span>14:03 Evento</span><i>→</i><span>Sem rede: buffer</span><i>→</i><span>14:08 rede retorna</span><i>→</i><span>Envio histórico</span><i>→</i><span>API</span><i>→</i><span>TMS</span></div>
+<table><tr><th>Conceito</th><th>O que significa</th><th>Impacto</th></tr>
+<tr><td>Store and Forward</td><td>Armazenar registros localmente e transmitir posteriormente.</td><td>Evita confundir ausência de comunicação com perda definitiva do histórico.</td></tr>
+<tr><td>Latência</td><td>Tempo entre ocorrência e disponibilidade do dado.</td><td>Afeta alertas, ETA e sequência operacional.</td></tr>
+<tr><td>Frequência</td><td>Reporte por tempo, distância, mudança ou evento.</td><td>Equilibra detalhe, consumo de dados e bateria.</td></tr>
+<tr><td>Heartbeat</td><td>Sinal periódico de presença/comunicação.</td><td>Apoia diagnóstico de disponibilidade.</td></tr>
+<tr><td>Saúde</td><td>Alimentação, bateria, GNSS, rede, memória e periféricos.</td><td>Permite manutenção preventiva.</td></tr></table>
+<div class="level-tech"><div class="callout note"><b>Camada técnica</b><p>Também entram SIM M2M/IoT, multioperadora, APN, protocolos TCP/UDP/HTTP/MQTT conforme solução, OTA/FOTA e reconciliação de mensagens offline.</p></div></div>
+</article>
+
+<article id="gr" class="chapter" data-keywords="gerenciamento risco gr seguradora corretora transportadora embarcador pronta resposta central">
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 23</span><h2>Ecossistema do Gerenciamento de Risco</h2><p>Gerenciamento de Risco</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">Gerenciamento de Risco é um processo que combina regras, pessoas, tecnologia, monitoramento e resposta. O rastreador é uma das ferramentas utilizadas dentro desse processo.</p>
+<div class="flow"><span>Apólice / PGR</span><i>→</i><span>Cadastro / Perfil</span><i>→</i><span>Checklist</span><i>→</i><span>Plano de viagem</span><i>→</i><span>Monitoramento</span><i>→</i><span>Tratativa</span><i>→</i><span>Encerramento</span></div>
+<div class="cards"><div><b>Seguradora</b>define condições de cobertura e exigências aplicáveis.</div><div><b>Gerenciadora</b>executa/apoia controles, monitoramento e protocolos contratados.</div><div><b>Transportadora</b>executa a operação e os procedimentos definidos.</div><div><b>Tecnologia</b>fornece posição, eventos, sensores, comunicação e comandos.</div></div>
+<div class="callout key"><b>Princípio</b><p>Rastreador não é sinônimo de GR. Uma operação de risco depende também de cadastro, procedimentos, regras, pessoas, monitoramento e governança.</p></div>
+</article>
+
+<article id="pgr" class="chapter" data-keywords="pgr apólice ddr plano viagem perfil securitário rota valor carga">
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 24</span><h2>PGR, apólice, DDR e plano de viagem</h2><p>Gerenciamento de Risco</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">O PGR organiza controles e procedimentos aplicáveis à operação. O plano de viagem aplica as regras à execução de uma viagem específica. Requisitos reais variam conforme contrato, apólice, operação, mercadoria e demais critérios aplicáveis.</p>
+<div class="compare"><div><h4>PGR</h4><p>Conjunto de regras, responsabilidades, controles e procedimentos para tratar riscos da operação.</p></div><div><h4>Plano de viagem</h4><p>Aplicação operacional: motorista, veículo, carga, origem, destino, rota, horários, paradas e tecnologia.</p></div></div>
+<div class="lab"><h3>Simulador didático de análise pré-viagem</h3><div class="lab-grid">
+<div class="lab-card"><label>Tipo de carga<br><select id="pgrCargo"><option>Geral</option><option>Eletrônicos</option><option>Medicamentos</option><option>Refrigerada</option></select></label></div>
+<div class="lab-card"><label>Trecho remoto<br><select id="pgrRemote"><option value="0">Não</option><option value="1">Sim</option></select></label></div>
+<div class="lab-card"><label>Pernoite<br><select id="pgrNight"><option value="0">Não</option><option value="1">Sim</option></select></label></div></div>
+<button type="button" class="sim-btn" id="runPgr">Analisar cenário</button><div id="pgrResult" class="statusbox">Simulação educacional — não substitui PGR, apólice ou orientação da gerenciadora/seguradora.</div></div>
+</article>
+
+<article id="checklist" class="chapter" data-keywords="checklist liberação motorista veículo rastreador sensor atuador carga viagem">
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 25</span><h2>Checklist interativo de liberação</h2><p>Gerenciamento de Risco</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">O checklist pode combinar verificações cadastrais, operacionais e tecnológicas. O exemplo abaixo é didático e deve ser parametrizado conforme a operação real.</p>
+<div class="lab" id="releaseChecklist"><div class="lab-grid">
+<div class="lab-card"><strong>Motorista</strong><label><input type="checkbox"> Cadastro/pesquisa conforme regra</label><br><label><input type="checkbox"> Vínculo conferido</label></div>
+<div class="lab-card"><strong>Veículo</strong><label><input type="checkbox"> Veículo/implemento corretos</label><br><label><input type="checkbox"> Documentação operacional conferida</label></div>
+<div class="lab-card"><strong>Tecnologia</strong><label><input type="checkbox"> Rastreador comunicando</label><br><label><input type="checkbox"> Sensores previstos testados</label></div>
+<div class="lab-card"><strong>Viagem</strong><label><input type="checkbox"> Plano de viagem</label><br><label><input type="checkbox"> Rota/paradas configuradas</label></div>
+<div class="lab-card"><strong>Carga</strong><label><input type="checkbox"> Tipo/valor conferidos</label><br><label><input type="checkbox"> Controles específicos avaliados</label></div>
+<div class="lab-card"><strong>Contingência</strong><label><input type="checkbox"> Contatos/protocolo disponíveis</label><br><label><input type="checkbox"> Exigências aplicáveis verificadas</label></div>
+</div><div class="progress"><span id="checkProgress"></span></div><div id="checkResult" class="statusbox warn">0 de 12 itens marcados.</div></div>
+</article>
+
+<article id="nconformidade" class="chapter" data-keywords="não conformidade pronta resposta evento desvio rota parada porta perda comunicação workflow escalonamento">
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 26</span><h2>Não conformidades, workflow e pronta resposta</h2><p>Gerenciamento de Risco</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">O valor do monitoramento aparece quando um evento é transformado em tratativa. O processo deve classificar, direcionar, registrar e encerrar ocorrências de forma rastreável.</p>
+<div class="flow"><span>Evento</span><i>→</i><span>Regra</span><i>→</i><span>Não conformidade</span><i>→</i><span>Criticidade</span><i>→</i><span>Tratativa</span><i>→</i><span>Escalonamento</span><i>→</i><span>Encerramento</span></div>
+<div class="lab"><h3>Cenário de decisão</h3><p><strong>11:55</strong> — veículo registra parada não programada. <strong>11:57</strong> — sensor de porta gera evento fora de ponto previsto.</p>
+<div class="decision-grid"><button type="button" data-decision="observe">Apenas observar</button><button type="button" data-decision="nc">Abrir não conformidade e seguir workflow</button><button type="button" data-decision="end">Encerrar a viagem</button><button type="button" data-decision="ignore">Ignorar o evento</button></div>
+<div id="decisionResult" class="statusbox">Escolha uma ação para ver a análise didática.</div></div>
+<div class="callout warn"><b>Pronta resposta</b><p>Protocolos de emergência devem seguir a gerenciadora, seguradora, PGR e procedimentos vigentes. O manual ensina papéis e fluxo, não procedimentos táticos sensíveis.</p></div>
+</article>
+
+<article id="gerenciadoras" class="chapter" data-keywords="brk brasil risk buonny opentech raster tecnorisk nox mundial golden krona trans sat track brasil griscargo apisul">
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 27</span><h2>Gerenciadoras e plataformas do mercado brasileiro</h2><p>Ecossistema de GR</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">A tela de integrações do TMS reúne gerenciadoras, plataformas e serviços específicos. Os cards abaixo são uma visão didática; produtos e escopos devem ser confirmados na contratação e documentação vigente.</p>
+<div class="supplier-tools" id="grFilters"><button type="button" class="active" data-filter="all">Todos</button><button type="button" data-filter="gr">GR</button><button type="button" data-filter="cadastro">Cadastro/Perfil</button><button type="button" data-filter="checklist">Checklist</button><button type="button" data-filter="pronta">Pronta Resposta</button><button type="button" data-filter="torre">Torre/Logística</button></div>
+<div class="supplier-grid" id="grGrid">
+<div class="supplier-card" data-tags="gr cadastro pronta torre"><div class="supplier-head"><div class="supplier-icon"><img src="https://www.google.com/s2/favicons?domain=brktecnologia.com.br&sz=128" alt=""></div><h4>BRK Tecnologia<br><small>Brasil Risk</small></h4></div><p>GR com monitoramento, parâmetros personalizados e integração com tecnologias de rastreamento. A BRK informa homologação de Autotrac, Ravex, Pósitron, OnixSat, Omnilink e Sascar.</p><span class="tag">GR</span><span class="tag">Perfil</span><span class="tag">Monitoramento</span></div>
+<div class="supplier-card" data-tags="gr cadastro pronta torre"><div class="supplier-head"><div class="supplier-icon"><img src="https://www.google.com/s2/favicons?domain=buonny.com.br&sz=128" alt=""></div><h4>Buonny</h4></div><p>Monitoramento 24/7, cadastro de motoristas, plataforma WebGuardian, pronta resposta e serviços de apoio ao GR.</p><span class="tag">Cadastro</span><span class="tag">GR</span><span class="tag">Pronta Resposta</span></div>
+<div class="supplier-card" data-tags="gr cadastro"><div class="supplier-head"><div class="supplier-icon">OT</div><h4>OpenTech</h4></div><p>Integração presente no ecossistema de cadastro/GR. Detalhamento deve seguir a solução contratada e documentação vigente.</p><span class="tag">GR</span><span class="tag">Cadastro</span></div>
+<div class="supplier-card" data-tags="gr cadastro checklist torre"><div class="supplier-head"><div class="supplier-icon"><img src="https://www.google.com/s2/favicons?domain=raster.com.br&sz=128" alt=""></div><h4>Raster</h4></div><p>Risk, List e P&amp;C: workflows, alertas, rotograma, checklist e pesquisa/consulta.</p><span class="tag">Workflow</span><span class="tag">Checklist</span><span class="tag">Perfil</span></div>
+<div class="supplier-card" data-tags="gr checklist pronta torre"><div class="supplier-head"><div class="supplier-icon"><img src="https://www.google.com/s2/favicons?domain=tecnorisk.com.br&sz=128" alt=""></div><h4>Tecnorisk</h4></div><p>PGR, monitoramento 24/7, checklist de sensores/atuadores, Torre, Logtec e Postos Avançados.</p><span class="tag">PGR</span><span class="tag">Checklist</span><span class="tag">PA</span></div>
+<div class="supplier-card" data-tags="gr cadastro"><div class="supplier-head"><div class="supplier-icon">NOX</div><h4>NOX</h4></div><p>Gerenciamento de risco e gestão logística; recursos específicos devem ser confirmados por produto.</p><span class="tag">GR</span><span class="tag">Perfil</span></div>
+<div class="supplier-card" data-tags="gr checklist"><div class="supplier-head"><div class="supplier-icon">MR</div><h4>Mundial Risk</h4></div><p>GR e integração multitecnologia; usar documentação vigente para regras, comandos e serviços contratados.</p><span class="tag">GR</span><span class="tag">Integração</span></div>
+<div class="supplier-card" data-tags="gr pronta torre"><div class="supplier-head"><div class="supplier-icon">GS</div><h4>Golden Service</h4></div><p>GR, monitoramento e serviços logísticos/Torre conforme solução contratada.</p><span class="tag">GR</span><span class="tag">Torre</span></div>
+<div class="supplier-card" data-tags="gr torre"><div class="supplier-head"><div class="supplier-icon">KR</div><h4>Krona</h4></div><p>Monitoramento de risco e soluções logísticas; validar módulos utilizados pela operação.</p><span class="tag">GR</span><span class="tag">Logística</span></div>
+<div class="supplier-card" data-tags="gr checklist pronta"><div class="supplier-head"><div class="supplier-icon">TS</div><h4>Trans Sat</h4></div><p>GR e monitoramento; recursos variam conforme contratação.</p><span class="tag">GR</span><span class="tag">Monitoramento</span></div>
+<div class="supplier-card" data-tags="gr checklist"><div class="supplier-head"><div class="supplier-icon">TB</div><h4>Track Brasil</h4></div><p>GR, gestão logística e controles operacionais conforme solução.</p><span class="tag">GR</span><span class="tag">Checklist</span></div>
+<div class="supplier-card" data-tags="gr checklist torre"><div class="supplier-head"><div class="supplier-icon">GC</div><h4>GrisCargo</h4></div><p>GR, monitoramento, checklist e plataforma de gestão conforme solução.</p><span class="tag">GR</span><span class="tag">API</span></div>
+<div class="supplier-card" data-tags="gr torre"><div class="supplier-head"><div class="supplier-icon">AP</div><h4>Apisul / ApisulLog</h4></div><p>Ecossistema de gerenciamento de risco e plataforma logística. Diferenciar empresa, serviço e sistema.</p><span class="tag">GR</span><span class="tag">Plataforma</span></div>
+</div>
+<div class="callout note"><b>Integrações ainda a identificar com precisão</b><p>Angellira, Telerisco, Infolog, LogRisk, VS Track e variantes específicas como Buonny RNTRC/BrasilRisk Motoristas-Veículos/BrasilRiskSML devem ser documentadas conforme a interface real do TMS e documentação do fornecedor.</p></div>
+</article>
+
+<article id="laboratorio" class="chapter" data-keywords="simulador viagem end to end mapa central monitoramento evento macro">
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 28</span><h2>Laboratório interativo End-to-End</h2><p>Aprenda simulando</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">Acompanhe uma viagem didática do checklist ao encerramento. Os eventos são fictícios e servem apenas para treinamento.</p>
+<div class="kpi-grid"><div class="kpi"><b id="simStep">0</b><span>ETAPA</span></div><div class="kpi"><b id="simStatus">PRÉ</b><span>STATUS</span></div><div class="kpi"><b id="simAlerts">0</b><span>ALERTAS</span></div><div class="kpi"><b id="simComm">4G</b><span>COMUNICAÇÃO</span></div></div>
+<div class="map-stage"><div class="route"></div><div class="poi a"></div><div class="poi b"></div><div class="poi c"></div><div class="geofence" title="Cerca do destino"></div><div id="simTruck" class="truck">🚚</div></div>
+<div class="timeline" id="simTimeline"><div class="tl-item ok"><b>07:52</b> Checklist concluído.</div></div>
+<button type="button" class="sim-btn" id="simNext">Avançar viagem</button> <button type="button" class="sim-btn" id="simReset" style="background:#344054">Reiniciar</button>
+</article>
+
+<article id="diagnostico" class="chapter" data-keywords="diagnóstico sem posição rastreador comunicação gnss api energia integração">
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 29</span><h2>Diagnóstico interativo — veículo sem posição</h2><p>Suporte e implantação</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">Use uma árvore de decisão para separar falha de equipamento, comunicação, posicionamento e integração.</p>
+<div class="lab"><h3 id="diagQuestion">O equipamento aparece como comunicando?</h3><div class="decision-grid" id="diagButtons"><button type="button" data-diag="commYes">Sim</button><button type="button" data-diag="commNo">Não</button></div><div id="diagResult" class="statusbox">Comece pela disponibilidade de comunicação.</div><button type="button" class="sim-btn" id="diagReset" style="display:none">Reiniciar diagnóstico</button></div>
+</article>
+
+<article id="quiz" class="chapter" data-keywords="quiz prova avaliação conhecimento treinamento">
+<div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 30</span><h2>Quiz — validação do aprendizado</h2><p>Capacitação</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">Perguntas curtas para validar conceitos centrais. O resultado fica somente nesta página.</p>
+<div class="lab" id="quizBox">
+<div class="quiz-q" data-answer="b"><strong>1. Qual afirmação está correta?</strong><label><input type="radio" name="q1" value="a"> GPS necessariamente transmite o dado para a central.</label><label><input type="radio" name="q1" value="b"> GNSS determina posição; outro canal pode transmitir o dado.</label><label><input type="radio" name="q1" value="c"> CAN é uma rede celular.</label></div>
+<div class="quiz-q" data-answer="c"><strong>2. Qual opção melhor descreve GR?</strong><label><input type="radio" name="q2" value="a"> Apenas rastreamento.</label><label><input type="radio" name="q2" value="b"> Apenas seguro.</label><label><input type="radio" name="q2" value="c"> Processo que combina regras, pessoas, tecnologia, monitoramento e resposta.</label></div>
+<div class="quiz-q" data-answer="a"><strong>3. Store and Forward significa:</strong><label><input type="radio" name="q3" value="a"> Armazenar registros e transmitir quando a comunicação retornar.</label><label><input type="radio" name="q3" value="b"> Bloquear automaticamente o veículo.</label><label><input type="radio" name="q3" value="c"> Converter GPS em CAN.</label></div>
+<button type="button" class="sim-btn" id="quizCheck">Corrigir</button><div id="quizFeedback" class="statusbox">Responda às três questões.</div></div>
+</article>
+
+<article id="glossario" class="chapter"><div class="chapter-header"><div><span class="chapter-no">CAPÍTULO 20</span><h2>Glossário técnico</h2><p>Referência</p></div><a class="toplink" href="#topo">↑ Sumário</a></div>
+<p class="lead">Referência rápida dos principais termos utilizados no manual.</p>
+<div class="glossary"><b>GNSS</b><span>Sistemas globais de navegação por satélite.</span><b>GPS</b><span>Constelação GNSS dos EUA.</span><b>GPRS</b><span>Transmissão de dados em rede celular 2G.</span><b>LTE</b><span>Família de tecnologias de rede móvel 4G.</span><b>Cat-M1</b><span>Categoria LTE voltada a aplicações IoT.</span><b>LoRa</b><span>Tecnologia de rádio de longo alcance e baixo consumo.</span><b>CAN</b><span>Rede de comunicação eletrônica entre módulos do veículo.</span><b>ECU</b><span>Unidade eletrônica de controle.</span><b>Geofence</b><span>Cerca virtual geográfica.</span><b>Jammer</b><span>Interferidor de radiofrequência.</span><b>Telemetria</b><span>Medição e transmissão remota de dados.</span><b>DMS</b><span>Sistema de monitoramento do motorista.</span><b>ADAS</b><span>Sistemas avançados de assistência ao condutor.</span><b>ETA</b><span>Previsão de horário de chegada.</span><b>PGR</b><span>Plano/processo de gerenciamento de risco conforme contexto da operação.</span></div>
+</article>
+<section class="refs"><h2>Fontes e notas de pesquisa</h2>
+<p>Conteúdo conceitual consolidado com pesquisa em materiais públicos dos fornecedores. Recursos comerciais mudam com produto, contrato, região e geração de hardware; valide sempre a documentação técnica vigente.</p>
+<p><span class="badge">Sascar</span> Telemetria CAN, GSM/satelital, RF, segurança e câmeras. 
+<span class="badge">Omnilink</span> Omnicarreta, LoRa, telemetria, câmeras, iscas e anti-jammer.
+<span class="badge">Autotrac</span> soluções celular/satélite/híbridas e CAN.
+<span class="badge">Ravex</span> 4G, Cat-M1, 2G, Bluetooth, Wi-Fi e soluções satelitais.
+<span class="badge">Trafegus</span> integração multitecnologia e gerenciamento de risco.
+<span class="badge">Neokohm</span> cadeia fria e integração.
+<span class="badge">Pósitron</span> GSM, telemetria, RFID e WebService.
+<span class="badge">Onisys</span> telemetria, vídeo e fadiga.</p>
+
+<p><span class="badge">Atualização V2</span> O módulo de GR foi aprofundado com referências públicas recentes de BRK Tecnologia, Buonny, Raster e Tecnorisk. A BRK informa integração/homologação de Autotrac, Ravex, Pósitron, OnixSat, Omnilink e Sascar; Buonny publica monitoramento 24/7, cadastro e pronta resposta; Raster publica workflows, rotograma e testes de sensores/atuadores; Tecnorisk publica PGR, checklist, Torre e Postos Avançados.</p>
+<p>Versão V2 dinâmica para refinamento contínuo. O capítulo de fornecedores diferencia funcionalidades confirmadas publicamente de nomes de integração ainda pendentes de identificação exata.</p></section>
+</main></div>
+
+<script>
+(function(){
+  const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+
+  function chooseComm(){
+    const r=$('#remote'),v=$('#video'),a=$('#asset'); if(!r||!v||!a)return;
+    let t=[]; if(r.checked)t.push('avaliar comunicação satelital ou híbrida para trechos sem cobertura celular');
+    if(v.checked)t.push('dimensionar canal e política de transmissão para vídeo');
+    if(a.checked)t.push('avaliar baixo consumo, bateria e estratégia de reporte');
+    if(!t.length)t.push('avaliar 4G/LTE conforme cobertura, risco e requisitos da operação');
+    const el=$('#commResult'); if(el)el.textContent='Para este cenário: '+t.join('; ')+'.';
+  }
+  function geoSim(){const d=$('#dist');const el=$('#geoResult');if(!d||!el)return;const n=+d.value;el.textContent=n<5?'Veículo dentro da área autorizada.':n<10?'Veículo próximo ao limite: monitorar.':'Veículo fora da cerca: gerar evento conforme regra.';}
+  window.chooseComm=chooseComm; window.geoSim=geoSim; geoSim();
+
+  // Busca
+  const search=$('#manualSearch'), count=$('#searchCount');
+  function runSearch(){
+    const q=(search.value||'').trim().toLowerCase(); let visible=0;
+    $$('.chapter').forEach(ch=>{const hit=!q || (ch.innerText+' '+(ch.dataset.keywords||'')).toLowerCase().includes(q);ch.classList.toggle('hidden-by-search',!hit);if(hit)visible++;});
+    count.textContent=q?visible+' capítulo(s) encontrado(s)':'Manual completo';
+  }
+  search.addEventListener('input',runSearch); $('#clearSearch').addEventListener('click',()=>{search.value='';runSearch();search.focus();});
+  $('#levelMode').addEventListener('change',e=>document.body.classList.toggle('show-tech',e.target.value==='tech'));
+
+  // Macros
+  $$('#macroTerminal button').forEach(b=>b.addEventListener('click',()=>{
+    const [code,name]=b.dataset.macro.split('|');
+    $('#macroResult').innerHTML='<strong>Macro '+code+' — '+name+'</strong><br>Motorista → terminal → rastreador → rede → plataforma → integração → TMS/GR. A posição e o horário podem acompanhar a mensagem conforme a solução.';
+  }));
+
+  // PGR didático
+  $('#runPgr').addEventListener('click',()=>{
+    const cargo=$('#pgrCargo').value, remote=$('#pgrRemote').value==='1', night=$('#pgrNight').value==='1';
+    const items=['cadastro/perfil aplicável','checklist tecnológico','plano de viagem','rota e pontos autorizados'];
+    if(remote)items.push('cobertura e estratégia de comunicação/contingência');
+    if(night)items.push('pontos e procedimentos de pernoite');
+    if(cargo==='Refrigerada')items.push('telemetria ambiental e alarmes de temperatura');
+    if(cargo==='Eletrônicos'||cargo==='Medicamentos')items.push('controles adicionais definidos pelo PGR/apólice');
+    $('#pgrResult').innerHTML='<strong>Pontos para avaliação:</strong> '+items.join(' • ')+'.<br><small>Simulação educacional: exigências reais dependem da operação, PGR, apólice e regras vigentes.</small>';
+  });
+
+  // Checklist
+  const checks=$$('#releaseChecklist input[type=checkbox]');
+  function updateCheck(){
+    const n=checks.filter(c=>c.checked).length, pct=Math.round(n/checks.length*100);
+    $('#checkProgress').style.width=pct+'%'; const r=$('#checkResult'); r.className='statusbox '+(pct===100?'ok':pct>=75?'warn':'crit');
+    r.innerHTML='<strong>'+n+' de '+checks.length+' itens marcados — '+pct+'%</strong><br>'+(pct===100?'Checklist didático completo. A liberação real ainda depende das regras aplicáveis.':'Existem itens pendentes para análise.');
+  }
+  checks.forEach(c=>c.addEventListener('change',updateCheck)); updateCheck();
+
+  // Decisão
+  $$('.decision-grid [data-decision]').forEach(b=>b.addEventListener('click',()=>{
+    const m={observe:['warn','Observar isoladamente pode ser insuficiente: há combinação de parada não programada + porta fora de ponto previsto. Avalie as regras aplicáveis.'],nc:['ok','Boa leitura do cenário didático: registrar a não conformidade permite classificar criticidade, executar workflow e manter evidência.'],end:['warn','Encerrar a viagem não é consequência automática do evento. A tratativa deve seguir o protocolo aplicável.'],ignore:['crit','Ignorar elimina a rastreabilidade da ocorrência. Eventos relevantes devem seguir as regras e workflows definidos.']};
+    const [cls,msg]=m[b.dataset.decision]; const r=$('#decisionResult');r.className='statusbox '+cls;r.textContent=msg;
+  }));
+
+  // Filtros de rastreadoras
+  $$('#trackerFilters button').forEach(b=>b.addEventListener('click',()=>{
+    $$('#trackerFilters button').forEach(x=>x.classList.remove('active')); b.classList.add('active');
+    const f=b.dataset.filter;
+    $$('#trackerGrid .supplier-card').forEach(c=>c.style.display=(f==='all'||c.dataset.tags.includes(f))?'block':'none');
+  }));
+
+  // Filtros GR
+  $$('#grFilters button').forEach(b=>b.addEventListener('click',()=>{
+    $$('#grFilters button').forEach(x=>x.classList.remove('active'));b.classList.add('active');const f=b.dataset.filter;
+    $$('#grGrid .supplier-card').forEach(c=>c.style.display=(f==='all'||c.dataset.tags.includes(f))?'block':'none');
+  }));
+
+  // Simulador de viagem
+  const events=[
+    ['08:00','Macro: início de viagem.','ok','VIAGEM','4G',0,18],
+    ['09:34','Parada autorizada registrada.','ok','VIAGEM','4G',0,35],
+    ['11:42','Entrada em trecho de atenção.','warn','ATENÇÃO','4G',1,48],
+    ['11:55','Parada não programada.','warn','ATENÇÃO','4G',2,55],
+    ['11:57','Evento de porta fora de ponto previsto.','crit','CRÍTICO','4G',3,58],
+    ['12:01','Comunicação celular indisponível; registros locais aguardam envio.','crit','CRÍTICO','OFF',4,63],
+    ['12:08','Comunicação restabelecida; histórico reconciliado.','ok','VIAGEM','4G',4,70],
+    ['15:46','Entrada na cerca do destino.','ok','CHEGADA','4G',4,84],
+    ['16:02','Macro: fim de descarga / encerramento didático.','ok','FIM','4G',4,90]
+  ]; let step=0;
+  function renderSim(){
+    $('#simStep').textContent=step; const e=events[Math.max(0,step-1)];
+    if(e){$('#simStatus').textContent=e[3];$('#simAlerts').textContent=e[5];$('#simComm').textContent=e[4];$('#simTruck').style.left=e[6]+'%';}
+  }
+  $('#simNext').addEventListener('click',()=>{
+    if(step>=events.length)return; const e=events[step++]; const div=document.createElement('div');div.className='tl-item '+e[2];div.innerHTML='<b>'+e[0]+'</b> '+e[1];$('#simTimeline').appendChild(div);renderSim();
+  });
+  $('#simReset').addEventListener('click',()=>{step=0;$('#simTimeline').innerHTML='<div class="tl-item ok"><b>07:52</b> Checklist concluído.</div>';$('#simStatus').textContent='PRÉ';$('#simAlerts').textContent='0';$('#simComm').textContent='4G';$('#simTruck').style.left='8%';renderSim();});
+
+  // Diagnóstico
+  function diag(state){
+    const q=$('#diagQuestion'), btn=$('#diagButtons'), res=$('#diagResult'), reset=$('#diagReset');
+    if(state==='commYes'){q.textContent='O GNSS/posição está válido no fornecedor?';btn.innerHTML='<button type="button" data-diag="gnssYes">Sim</button><button type="button" data-diag="gnssNo">Não</button>';res.textContent='Comunicação existe. Agora separe posicionamento de integração.';}
+    else if(state==='commNo'){q.textContent='Verifique alimentação, rede/SIM, antena, cobertura e saúde do equipamento.';btn.innerHTML='';res.className='statusbox warn';res.textContent='Sem comunicação: o problema pode estar antes da plataforma/TMS. Consulte diagnóstico do fornecedor e instalação.';reset.style.display='inline-block';}
+    else if(state==='gnssNo'){q.textContent='Investigue GNSS/antena/visibilidade/configuração.';btn.innerHTML='';res.className='statusbox warn';res.textContent='O equipamento comunica, mas não entrega posição válida. Diferencie falha GNSS de falha de rede.';reset.style.display='inline-block';}
+    else if(state==='gnssYes'){q.textContent='A posição aparece no fornecedor, mas não no TMS?';btn.innerHTML='<button type="button" data-diag="apiYes">Sim</button><button type="button" data-diag="apiNo">Não</button>';res.textContent='Se o fornecedor possui a posição, avance para API, integração, mapeamento e processamento.';}
+    else if(state==='apiYes'){q.textContent='Camada de integração';btn.innerHTML='';res.className='statusbox ok';res.textContent='Verifique autenticação, endpoint, fila/webhook, mapeamento do veículo, timestamps, duplicidade, logs e latência.';reset.style.display='inline-block';}
+    else if(state==='apiNo'){q.textContent='Valide o cenário novamente';btn.innerHTML='';res.className='statusbox warn';res.textContent='Se nem fornecedor nem TMS exibem a posição, retorne ao equipamento, GNSS e comunicação.';reset.style.display='inline-block';}
+    $$('#diagButtons [data-diag]').forEach(b=>b.addEventListener('click',()=>diag(b.dataset.diag)));
+  }
+  $$('#diagButtons [data-diag]').forEach(b=>b.addEventListener('click',()=>diag(b.dataset.diag)));
+  $('#diagReset').addEventListener('click',()=>{location.hash='diagnostico';$('#diagQuestion').textContent='O equipamento aparece como comunicando?';$('#diagButtons').innerHTML='<button type="button" data-diag="commYes">Sim</button><button type="button" data-diag="commNo">Não</button>';$('#diagResult').className='statusbox';$('#diagResult').textContent='Comece pela disponibilidade de comunicação.';$('#diagReset').style.display='none';$$('#diagButtons [data-diag]').forEach(b=>b.addEventListener('click',()=>diag(b.dataset.diag)));});
+
+  // Quiz
+  $('#quizCheck').addEventListener('click',()=>{
+    let score=0,answered=0; $$('#quizBox .quiz-q').forEach(q=>{const x=$('input:checked',q);if(x){answered++;if(x.value===q.dataset.answer)score++;}});
+    const r=$('#quizFeedback'); if(answered<3){r.className='statusbox warn';r.textContent='Responda às três questões antes de corrigir.';return;}
+    r.className='statusbox '+(score===3?'ok':score>=2?'warn':'crit');r.innerHTML='<strong>Resultado: '+score+'/3</strong><br>'+(score===3?'Ótimo: os conceitos centrais foram compreendidos.':'Revise GNSS × comunicação, conceito de GR e Store and Forward.');
+  });
+})();
+</script>
+
+</body></html>
